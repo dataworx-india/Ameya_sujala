@@ -279,16 +279,7 @@
                                                                         <label for="soilManagement" class="control-label">Soil Management Unit <span class='require'>*</span></label>
                                                                         <select id="selSoilManagement" class="form-control">
                                                                             <option value="">Select</option>
-                                                                            <option value="LMU 1">LMU 1</option>
-                                                                            <option value="LMU 2">LMU 2</option>
-                                                                            <option value="LMU 3">LMU 3</option>
-                                                                            <option value="LMU 4">LMU 4</option>
-                                                                            <option value="LMU 5">LMU 5</option>
-                                                                            <option value="LMU 6">LMU 6</option>
-                                                                            <option value="LMU 7">LMU 7</option>
-                                                                            <option value="LMU 8">LMU 8</option>
-                                                                            <option value="LMU 9">LMU 9</option>
-                                                                            <option value="LMU 10">LMU 10</option>
+                                                                           
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -297,11 +288,9 @@
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label for="selTopography" class="control-label">Topography <span class='require'>*</span></label>
-                                                                        <select id="seltopography" class="form-control">
+                                                                        <select id="selTopography" class="form-control">
                                                                             <option value="">Select</option>
-                                                                            <option value="">Ridge</option>
-                                                                            <option value="">Mid</option>
-                                                                            <option value="">Valley</option>
+                                                                           
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -777,7 +766,6 @@ function clearCloneValues(element){
 			}
 		});
 		$('.selVillage').html(village_html).trigger('liszt:updated');
-
 	});
 
 	//Fetch Village
@@ -808,13 +796,15 @@ function clearCloneValues(element){
 			}
 		});
 		$('.selVillage').html(village_html).trigger('liszt:updated');
-
 	});
+	
+	
 
 
 
 function saveOnly(){
-		var dist_val = document.getElementById("selDistrict").value;
+	//alert(dist_topography);
+	var dist_val = document.getElementById("selDistrict").value;
 	var taluk_val = document.getElementById("selTaluk").value;
 	var hobli_val = document.getElementById("selHobli").value;
 	var panch_val = document.getElementById("selGP").value;
@@ -825,7 +815,7 @@ function saveOnly(){
   var dist_village = document.getElementById("selVillage").value;
   var dist_hamlet = document.getElementById("keyHamlet").value;
   var dist_soilManagement = document.getElementById("selSoilManagement").value;
-  var dist_topography = document.getElementById("seltopography").value;
+  var dist_topography = document.getElementById("selTopography").value;
   var dist_farmerName = document.getElementById("farmerName").value;
   var dist_fatherName = document.getElementById("fatherName").value;
   var dist_phone = document.getElementById("phoneNumber").value;
@@ -1074,7 +1064,34 @@ function set_storage_item(itm,val)
 		});
 		$('#selCaste').html(caste_html).trigger('liszt:updated');
 
-
+		
+			var globlesmu = [{'soilmuId':'1','soilmuVal':'LMU 1'},{'soilmuId':'2','soilmuVal':'LMU 2'},{'soilmuId':'3','soilmuVal':'LMU 3'},{'soilmuId':'4','soilmuVal':'LMU 4'}];
+		var soil_unit_html='';
+		soil_unit_html +='<option value="" >Choose Soil Manaqement Unit</option>';
+		$.each(globlesmu,function(i,itm){
+			var  selectval ='';
+					if(cur_selSoilManagement_val==itm.soilmuId)
+					{
+						selectval="selected='selected'";
+					}
+			soil_unit_html +='<option value="'+ itm.soilmuId+'" '+selectval+'>'+itm.soilmuVal+'</option>';
+		});
+		$('#selSoilManagement').html(soil_unit_html).trigger('liszt:updated');
+		
+		
+		
+			var globletop = [{'topgId':'1','topgVal':'Ridge'},{'topgId':'2','topgVal':'Mid'},{'topgId':'3','topgVal':'valley'}];
+		var topgId_html='';
+		topgId_html +='<option value="">Choose Topography</option>';
+		$.each(globletop,function(i,itm){
+			var  selectval ='';
+					if(cur_seltopography_val==itm.topgId)
+					{
+						selectval="selected='selected'";
+					}
+			topgId_html +='<option value="'+ itm.topgId+'" '+selectval+'>'+itm.topgVal+'</option>';
+		});
+		$('#selTopography').html(topgId_html).trigger('liszt:updated');
 						
 	// survaey number
 			if(cur_surveyNo_val.length > 0)

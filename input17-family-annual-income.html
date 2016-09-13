@@ -168,8 +168,8 @@
                                                         <option value="">Select Source of Income</option>
                                                     </select>
                                                 </td>
-                                                <td><input id="txtDrylandIncome" type="number" name="txtDrylandIncome" value="" class="form-control" /></td>
-                                                <td><input id="txtDrylandExp" name="txtDrylandExp" type="number" value="" class="form-control" /></td>
+                                                <td><input id="txtDrylandIncome" type="number" name="txtDrylandIncome[]" value="" class="form-control" /></td>
+                                                <td><input id="txtDrylandExp" name="txtDrylandExp[]" type="number" value="" class="form-control" /></td>
                                                 <td>
                                                     <button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)">
                                                         <i class="fa fa-trash-o"></i>&nbsp;
@@ -209,6 +209,7 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -236,6 +237,122 @@
     <!--LOADING SCRIPTS FOR PAGE-->
     <script src="js/table-action.js"></script>
     <script type="text/javascript" >
+	
+	
+	
+		/* add rows */
+
+function childRecursive(element, func){
+    // Applies that function to the given element.
+    func(element);
+    var children = element.children();
+    if (children.length > 0) {
+        children.each(function (){
+            // Applies that function to all children recursively
+            childRecursive($(this), func);
+        });
+    }
+}
+
+// Expects format to be xxx-#[-xxxx] (e.g. item-1 or item-1-name)
+function getNewAttr(str, newNum){
+    // Split on -
+    var arr = str.split('');
+    // Change the 1 to wherever the incremented value is in your id
+    arr[1] = newNum;
+    // Smash it back together and return
+    return arr.join('');
+}
+
+// Written with Twitter Bootstrap form field structure in mind
+// Checks for id, name, and for attributes.
+function setCloneAttr(element, value){
+    // Check to see if the element has an id attribute
+    if (element.attr('id') !== undefined){
+        // If so, increment it
+        element.attr('id', getNewAttr(element.attr('id'),value));
+    } else { /*If for some reason you want to handle an else, here you go */}
+    // Do the same with name...
+    if(element.attr('name') !== undefined){
+       // element.attr('name', getNewAttr(element.attr('name'),value));
+    } else {}
+    // And don't forget to show some love to your labels.
+    if (element.attr('for') !== undefined){
+        element.attr('for', getNewAttr(element.attr('for'),value));
+    } else {}
+}
+
+// Sets an element's value to ''
+function clearCloneValues(element){
+    if (element.attr('value') !== undefined){
+        element.val('');
+    }
+}
+
+//$(document).ready(function(){
+    $('#btnfamilyAdd').click(function(){
+        //increment the value of our counter
+       $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
+        //clone the first .item element
+        var newItem = $('tr#addedFamily').first().clone();
+        //recursively set our id, name, and for attributes properly
+        childRecursive(newItem,
+            // Remember, the recursive function expects to be able to pass in
+            // one parameter, the element.
+            function(e){
+                setCloneAttr(e, $('#treeCounter').val());
+        });
+        // Clear the values recursively
+        childRecursive(newItem,
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
+        // Finally, add the new div.item to the end
+        newItem.appendTo($('#addingTree'));
+		//$('#addingTree').append(fetch_data());
+		
+    });
+
+
+
+function deleteTable(btndel) {
+    if (typeof(btndel) == "object") {
+        $(btndel).closest("tr").remove();
+    } else {
+        return false;
+    }
+}
+
+
+function fetch_data()
+{
+	var fhtml ='';
+						fhtml += '<tr id="addedFamily">';
+						fhtml += '<td><select id="selIncomeSource" class="form-control selIncomeSource" name="selIncomeSource[]">';
+                        fhtml += '<option value="">Select Source of Income</option></select></td>';
+						fhtml += '<td><input id="txtDrylandIncome" type="number" name="txtDrylandIncome[]" value="" class="form-control" /></td>';
+						fhtml += '<td><input id="txtDrylandExp" name="txtDrylandExp[]" type="number" value="" class="form-control" /></td>';
+						
+						fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+						fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+						return fhtml;
+
+
+}
+
+function deleteTable(btndel) {
+    if (typeof(btndel) == "object") {
+        $(btndel).closest("tr").remove();
+    } else {
+        return false;
+    }
+}
+	
+	
+	
+	
 
 //display name of the district
 
@@ -299,6 +416,7 @@ var store_village = get_current_data(village_val,'villageId','villageName',villa
 
 
 
+
 function get_current_data(arrval,keyid,keyname,keyval)
 {
 	var valname = '';
@@ -315,89 +433,9 @@ function get_current_data(arrval,keyid,keyname,keyval)
 
 
 
-		/* add rows */
-
-function childRecursive(element, func){
-    // Applies that function to the given element.
-    func(element);
-    var children = element.children();
-    if (children.length > 0) {
-        children.each(function (){
-            // Applies that function to all children recursively
-            childRecursive($(this), func);
-        });
-    }
-}
-
-// Expects format to be xxx-#[-xxxx] (e.g. item-1 or item-1-name)
-function getNewAttr(str, newNum){
-    // Split on -
-    var arr = str.split('');
-    // Change the 1 to wherever the incremented value is in your id
-    arr[1] = newNum;
-    // Smash it back together and return
-    return arr.join('');
-}
-
-// Written with Twitter Bootstrap form field structure in mind
-// Checks for id, name, and for attributes.
-function setCloneAttr(element, value){
-    // Check to see if the element has an id attribute
-    if (element.attr('id') !== undefined){
-        // If so, increment it
-        element.attr('id', getNewAttr(element.attr('id'),value));
-    } else { /*If for some reason you want to handle an else, here you go */}
-    // Do the same with name...
-    if(element.attr('name') !== undefined){
-       // element.attr('name', getNewAttr(element.attr('name'),value));
-    } else {}
-    // And don't forget to show some love to your labels.
-    if (element.attr('for') !== undefined){
-        element.attr('for', getNewAttr(element.attr('for'),value));
-    } else {}
-}
-
-// Sets an element's value to ''
-function clearCloneValues(element){
-    if (element.attr('value') !== undefined){
-        element.val('');
-    }
-}
-
-//$(document).ready(function(){
-    $('#btnfamilyAdd').click(function(){
-        //increment the value of our counter
-        $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
-        //clone the first .item element
-        var newItem = $('tr#addedFamily').first().clone();
-        //recursively set our id, name, and for attributes properly
-        childRecursive(newItem,
-            // Remember, the recursive function expects to be able to pass in
-            // one parameter, the element.
-            function(e){
-                setCloneAttr(e, $('#treeCounter').val());
-        });
-        // Clear the values recursively
-        childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
-        // Finally, add the new div.item to the end
-        newItem.appendTo($('#addingTree'));
-    });
-
-
-function deleteTable(btndel) {
-    if (typeof(btndel) == "object") {
-        $(btndel).closest("tr").remove();
-    } else {
-        return false;
-    }
-}
 
 //fetch JSON data 
 
-$(function(){
 	var incomesource_val = JSON.parse(localStorage.getItem('incomesource_det'));
 	
 	var incomesource_html='';
@@ -408,16 +446,14 @@ $(function(){
 	$('.selIncomeSource').html(incomesource_html).trigger('liszt:updated');
 	
 	
-});
 
 
 
 
 //store data
 
-function saveOnly(){
-	
-var durableAssets = [];
+function saveOnly() {
+var selIncomeSource = [];
   $('select[name="selIncomeSource[]"]').map(function(index,val) {
 			 if($(val).val()!="")
 			 selIncomeSource[index] = ($(val).val());
@@ -440,7 +476,8 @@ var txtDrylandExp = [];
 		set_storage_item('txtDrylandIncome',txtDrylandIncome);
 		set_storage_item('txtDrylandExp',txtDrylandExp);	
 	
-	}
+
+}
 
 function save_current_form()
 {
@@ -462,6 +499,63 @@ function set_storage_item(itm,val)
 {
 	window.localStorage.setItem(itm,val);
 }
+
+
+
+// back process
+
+	var cur_IncomeSource_val = localStorage.getItem('selIncomeSource');
+	var cur_DrylandIncome_val = localStorage.getItem('txtDrylandIncome');
+	var cur_dryLandExp_val = localStorage.getItem('txtDrylandExp');
+	
+	
+	if(cur_IncomeSource_val.length > 0)
+			{
+				$('#addingTree').html('');
+				var curIncSrcval = cur_IncomeSource_val.split(',');
+				var curDryLandIncome = cur_DrylandIncome_val.split(',');
+				var curdryLandexp = cur_dryLandExp_val.split(',');
+				var fhtml ='';
+				
+				 for (var i = 0; i < curIncSrcval.length; i++) {
+						
+						
+						
+							
+						fhtml += '<tr id="addedFamily">';
+						
+						fhtml += '<td><select id="selIncomeSource" name="selIncomeSource[]" class="form-control">';
+						fhtml += '		<option value="">Select</option>';
+								
+								$.each(incomesource_val,function(k,itm){
+									var seledug ='';
+									if(curIncSrcval[i]==itm.incomeSourceId)
+									{
+										seledug="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.incomeSourceId+'" '+seledug+'>'+itm.incomeSourceName+'</option>';
+							});
+						fhtml += '</select></td>';
+						
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="txtDrylandIncome[]" value="'+curDryLandIncome[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder=" " name="txtDrylandExp[]" value="'+curdryLandexp[i]+'" class="form-control" /></td>';
+						
+						
+						
+						
+						
+						
+						
+						
+						fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+						fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+						
+
+				 }
+
+				 $('#addingTree').append(fhtml);
+			}
 
 
 </script>

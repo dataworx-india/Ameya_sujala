@@ -166,16 +166,14 @@
                                         <input type="hidden" id="treeCounter" name="itemCounter" value="0">
                                             <tr id="addedFamily">
                                                 <td style="min-width:160px;">
-                                                    <select id="fodderType" class="form-control">
+                                                    <select id="fodderType" class="form-control" name="fodderType[]">
                                                         <option value="">Select Fodder Type</option>
-                                                        <option value="Green Fodder">Green Fodder</option>
-                                                        <option value="Dry Fodder">Dry Fodder</option>
                                                     </select>
                                                 </td>
-                                                <td><input id="txtFdAvailQty" type="number" value="" class="form-control" /></td>
-                                                <td><input id="txtFdAvailDur" type="number" value="" class="form-control" /></td>
+                                                <td><input id="txtFdAvailQty" type="number" value="" class="form-control" name="txtGreenFdAvailQty[]" /></td>
+                                                <td><input id="txtFdAvailDur" type="number" value="" class="form-control" name="txtFdAvailDur[]" /></td>
                                                 <td>
-                                                    <select id="selFdAdequacy" class="form-control">
+                                                    <select id="selFdAdequacy" class="form-control" name="selFdAdequacy[]">
                                                         <option value="">Select</option>
                                                         <option value="Adequate">Adequate</option>
                                                         <option value="Inadequate">Inadequate</option>
@@ -222,6 +220,7 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -315,9 +314,11 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+           function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTree'));
     });
@@ -418,7 +419,7 @@ var fodderType = [];
 	    });
 
 var txtGreenFdAvailQty = [];
-  $('input[name="txtFdAvailQty[]"]').each(function() {
+  $('input[name="txtGreenFdAvailQty[]"]').each(function() {
 			 if($(this).val()!="")
 			 txtGreenFdAvailQty.push($(this).val());
 	    });
@@ -431,10 +432,10 @@ var txtFdAvailDur = [];
 	    });
 		
 var selFdAdequacy = [];
-  $('input[name="selFdAdequacy[]"]').each(function() {
-			 if($(this).val()!="")
-			 selFdAdequacy.push($(this).val());
-	    });		
+  $('select[name="selFdAdequacy[]"]').map(function(index,val) {
+			 if($(val).val()!="")
+			 selFdAdequacy[index] = ($(val).val());
+	    });	
 		
 		
 		
@@ -450,17 +451,14 @@ function prevPage(){
 	
 		saveOnly();
 		location.href='input15-cost-of-production-on-subsidiary-enterprises.html';
-	
-	
+
 	}
 
 
 function save_current_form()
 {
-
 		saveOnly();
 		location.href='input17-family-annual-income.html';
-	
 }
 
 function set_storage_item(itm,val)
@@ -468,6 +466,71 @@ function set_storage_item(itm,val)
 	window.localStorage.setItem(itm,val);
 }
 
+
+//local arrays 
+
+var globeFod = [{'fodderId':'Green Fodder', 'fodderName':'Green Fodder'}, {'fodderId':'Dry Fodder', 'fodderName':'Dry Fodder'}];
+var globeAdeq = [{'adeqId':'Adequate', 'adeqName':'Adequate'}, {'adeqId':'Inadequate', 'adeqName':'Inadequate'}];
+
+var globeFodval =''; 
+$.each(globeFod,function(j,itm){
+					
+				globeFodval +='<option value="'+ itm.fodderId+'" >'+itm.fodderName+'</option>';
+			});
+$('#fodderType').html(globeFodval).trigger('liszt:updated');
+
+// back process
+
+		var cur_fodderType_val = localStorage.getItem('fodderType');
+		var cur_txtGreenFdAvailQty_val = localStorage.getItem('txtGreenFdAvailQty');
+		var cur_txtFdAvailDur_val = localStorage.getItem('txtFdAvailDur');
+		var cur_selFdAdequacy_val = localStorage.getItem('selFdAdequacy');
+		
+		
+if(cur_fodderType_val.length > 0)
+{
+	$('#addingTree').html('');
+	var curFoddertyval = cur_fodderType_val.split(',');
+	var curGreenFdval = cur_txtGreenFdAvailQty_val.split(',');
+	var curFdAvailDur = cur_txtFdAvailDur_val.split(',');
+	var curFdAdequacy = cur_selFdAdequacy_val.split(',');
+	var fhtml ='';
+
+	for (var i = 0; i < curFoddertyval.length; i++) {
+		
+		fhtml += '<tr id="addedFamily">';						
+		fhtml += '<td><select id="fodderType" class="form-control" name="fodderType[]">';
+		fhtml += '		<option value="">Select</option>';
+		$.each(globeFod,function(j,itm){
+				var selgen ='';
+				if(curFoddertyval[i]==itm.fodderId)
+				{
+					selgen="selected='selected'";	
+				}
+				
+				fhtml +='<option value="'+ itm.fodderId+'" '+selgen+'>'+itm.fodderName+'</option>';
+			});
+		fhtml += '</select></td>';
+		fhtml += '<td><input type="text" id="" min="0" placeholder="" name="txtGreenFdAvailQty[]" value="'+curGreenFdval[i]+'" class="form-control" /></td>';
+		fhtml += '<td><input type="text" id="" min="0" placeholder="" name="txtFdAvailDur[]" value="'+curFdAvailDur[i]+'" class="form-control" /></td>';
+		fhtml += '<td><select id="selFdAdequacy" class="form-control" name="selFdAdequacy[]">';
+		fhtml += '		<option value="">Select</option>';
+		$.each(globeAdeq,function(k,itm){
+				var seladq ='';
+				if(curFdAdequacy[i]==itm.adeqId)
+				{
+					seladq="selected='selected'";	
+				}
+				
+				fhtml +='<option value="'+ itm.adeqId+'" '+seladq+'>'+itm.adeqName+'</option>';
+			});
+		fhtml += '</select></td>';
+		fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+		fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+	}
+
+	$('#addingTree').append(fhtml);
+}
 
 </script>
 </body>

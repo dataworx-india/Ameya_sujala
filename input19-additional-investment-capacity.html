@@ -219,6 +219,7 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -246,7 +247,10 @@
     <!--LOADING SCRIPTS FOR PAGE-->
     <script src="js/table-action.js"></script>
         <script type="text/javascript" >
-		/* add rows */
+
+
+
+	/* add rows */
 
 function childRecursive(element, func){
     // Applies that function to the given element.
@@ -298,7 +302,7 @@ function clearCloneValues(element){
 //$(document).ready(function(){
     $('#btnfamilyAdd').click(function(){
         //increment the value of our counter
-        $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
+       $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
         //clone the first .item element
         var newItem = $('tr#addedFamily').first().clone();
         //recursively set our id, name, and for attributes properly
@@ -310,12 +314,17 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTree'));
+		//$('#addingTree').append(fetch_data());
+		
     });
+
 
 
 function deleteTable(btndel) {
@@ -326,9 +335,10 @@ function deleteTable(btndel) {
     }
 }
 
+
 //fetch JSON data 
 
-$(function(){
+
 	var additioninvestment_val = JSON.parse(localStorage.getItem('additioninvestment_det'));
 	
 	var additioninvestment_html='';
@@ -348,7 +358,7 @@ $(function(){
 	$('.txtLandDevFundSrc').html(additionalinvestmentsource_html).trigger('liszt:updated');
 	
 	
-});
+
 
 
 
@@ -483,6 +493,59 @@ function set_storage_item(itm,val)
 {
 	window.localStorage.setItem(itm,val);
 }
+
+
+// back process
+
+		var cur_LandDevInvest_val = localStorage.getItem('txtLandDevInvest');
+		var cur_LandDevFundSrc_val = localStorage.getItem('txtLandDevFundSrc');
+		var cur_addInvPurp_val = localStorage.getItem('additionalInvestmentPurpose');
+
+
+if(cur_LandDevInvest_val.length > 0)
+{
+	$('#addingTree').html('');
+	var curLDIval = cur_LandDevInvest_val.split(',');
+	var curLDFval = cur_LandDevFundSrc_val.split(',');
+	var curDIPval = cur_addInvPurp_val.split(',');
+	var fhtml ='';
+	 for (var i = 0; i < curDIPval.length; i++) {
+			
+			fhtml += '<tr id="addedFamily">';
+			fhtml += '<td><select id="additionalInvestmentPurpose" name="additionalInvestmentPurpose[]" class="form-control additionalInvestmentPurpose">';
+			fhtml += '<option value="">Select</option>';
+					
+					$.each(additioninvestment_val,function(k,itm){
+						var seledug ='';
+						if(curDIPval[i]==itm.additionalInvestmentId)
+						{
+							seledug="selected='selected'";
+								
+						}
+						fhtml +='<option value="'+ itm.additionalInvestmentId+'" '+seledug+'>'+itm.additionInvestmentPurpose+'</option>';
+				});
+			fhtml += '</select></td>';
+			fhtml += '<td><input type="text" id="" min="0" placeholder="" name="txtLandDevInvest[]" value="'+curLDIval[i]+'" class="form-control" /></td>';			
+			fhtml += '<td><select id="txtLandDevFundSrc" name="txtLandDevFundSrc[]" class="form-control txtLandDevFundSrc">';
+			fhtml += '		<option value="">Select</option>';
+					$.each(additionalinvestmentsource_val,function(k,itm){
+						var selISrc ='';
+						if(curLDFval[i]==itm.additionalInvestmentSourceId)
+						{
+							selISrc="selected='selected'";
+								
+						}
+						fhtml +='<option value="'+ itm.additionalInvestmentSourceId+'" '+selISrc+'>'+itm.additionalInvestmentSource+'</option>';
+				});
+			fhtml += '</select></td>';
+			fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+			fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+	 }
+
+	 $('#addingTree').append(fhtml);
+}
+
+
 
 
 </script>

@@ -232,6 +232,8 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
+
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -515,7 +517,7 @@ function saveOnly(){
 
 function prevPage(){
 	saveOnly();
-	location.href='input9-land-holding-survey-numbers.html';
+	location.href = 'input9-land-holding-survey-numbers.html';
 	}
 
 
@@ -523,7 +525,7 @@ function save_current_form()
 {
 
 	saveOnly();
-	location.href='input12-cropping-pattern-intensity.html';
+	location.href = 'input12-cropping-pattern-intensity.html';
 }
 
 function set_storage_item(itm,val)
@@ -577,7 +579,7 @@ function fetch_data()
 		
 		
 
-			var globleSrc = [{'iriSrcId':'oWell','irriSrc':'Open Well'},{'iriSrcId':'bwell','irriSrc':'BoreWell'},{'iriSrcId':'Tank','irriSrc':'Tank'}, {'iriSrcId':'Canal','irriSrc':'Canal'}];
+			var globleSrc = [{'iriSrcId':'Open Well','irriSrc':'Open Well'},{'iriSrcId':'BoreWell','irriSrc':'BoreWell'},{'iriSrcId':'Tank','irriSrc':'Tank'}, {'iriSrcId':'Canal','irriSrc':'Canal'}];
 			var globeWaterQlt = [{'waterQtId':'Salt', 'waterQlt':'Salt'}, {'waterQtId':'Sweet', 'waterQlt':'Sweet'}];
 			if(cur_SelIrrSource_val.length > 0)
 			{
@@ -598,6 +600,7 @@ function fetch_data()
 						
 						
 						fhtml += '<tr id="addedFamily">';
+						fhtml += '<td><select id="SelIrrSource" class="form-control" name="SelIrrSource[]">';
 						fhtml += '		<option value="">Select Source</option>';
 						$.each(globleSrc,function(j,itm){
 									var selgen ='';
@@ -611,23 +614,23 @@ function fetch_data()
 						fhtml += '</select></td>';
 						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrDefunct[]" value="'+curselIrrDefunctval[i]+'" class="form-control" /></td>';
 						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrWorking[]" value="'+curselIrrWorkingval[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrDefunct[]" value="'+curselIrrWaterDepthval[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrWaterDepth[]" value="'+curselIrrYeldval[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrYeld[]" value="'+curselIrrAreaKharifval[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrAreaKharif[]" value="'+curselIrrAreaRabival[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrAreaRabi[]" value="'+curIrrAreaSummerval[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrAreaSummer[]" value="'+curIrrAreaHortCropsval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrWaterDepth[]" value="'+curselIrrWaterDepthval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrYeld[]" value="'+curselIrrYeldval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrAreaKharif[]" value="'+curselIrrAreaKharifval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrAreaRabi[]" value="'+curselIrrAreaRabival[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrAreaSummer[]" value="'+curIrrAreaSummerval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selIrrAreaHortCrops[]" value="'+curIrrAreaHortCropsval[i]+'" class="form-control" /></td>';
 						fhtml += '<td><select id="selIrrWaterQlty" class="form-control" name="selIrrWaterQlty[]">';
 						
 						fhtml += '		<option value="">Select Source</option>';
 						$.each(globeWaterQlt,function(j,itm){
-									var wtrQlt ='';
+									var selgen ='';
 									if(curIrrWaterQltyval[i]==itm.waterQtId)
 									{
 										selgen="selected='selected'";	
 									}
 									
-									fhtml +='<option value="'+ itm.waterQtId+'" '+wtrQlt+'>'+itm.waterQlt+'</option>';
+									fhtml +='<option value="'+ itm.waterQtId+'" '+selgen+'>'+itm.waterQlt+'</option>';
 							});
 						fhtml += '</select></td></tr>';
 						

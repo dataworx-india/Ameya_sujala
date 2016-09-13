@@ -159,63 +159,41 @@
                                             <tr>
                                                 <td>Bank account </td>
                                                 <td>
-                                                    <div class="radio">
-                                                        <label class="radio-inline">
-                                                            <input id="txtComponentsYes" type="radio" name="optionsBkAccountYes" value="Yes" checked="checked" />&nbsp; Yes
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                            <input id="txtComponentsNo" type="radio" name="optionsBkAccountNo" value="No" />&nbsp; No
-                                                        </label>
-                                                    </div>
+
+                                                    <select id="bankAccAvail" class="form-control">
+                                                    	<option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
 
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Do you have any savings?</td>
                                                 <td>
-                                                    <div class="radio">
-                                                        <label class="radio-inline">
-                                                            <input id="txtCmpYes" type="radio" name="optionsSavingsYes" value="Yes" checked="checked" />&nbsp; Yes
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                            <input id="txtCmpNo" type="radio" name="optionsSavingsNo" value="No" />&nbsp; No
-                                                        </label>
-                                                    </div>
+                                                    <select id="savingsAvail" class="form-control">
+                                                    	<option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Credit Availed</td>
                                                 <td>
-                                                    <div class="radio">
-                                                        <label class="radio-inline">
-                                                            <input id="txtCreditY" type="radio" name="optionsCAYes" value="Yes" checked="checked" />&nbsp; Yes
-                                                        </label>
-                                                        <label class="radio-inline">
-                                                            <input id="txtCreditN" type="radio" name="optionsCANo" value="No" />&nbsp; No
-                                                        </label>
+                                                	<select id="creditAvail" class="form-control">
+                                                    	<option value="No">No</option>
+                                                        <option value="Yes">Yes</option>
+                                                        
+                                                    </select>
                                                     </div><br />
                                                     <div>
-                                                        <div class="col-md-4">
-                                                            <label for="" class="control-label">Amount</label>
-                                                            <input type="number" id="txtAmount" min="0" placeholder="" class="form-control" />
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label for="" class="control-label">Adequate/Inadequate</label>
-                                                            <div class="radio">
-                                                                <label class="radio-inline">
-                                                                    <input id="txtAdequate" type="radio" name="optionsAdequate" value="Adequate" checked="checked" />&nbsp; Adequate
-                                                                </label>
-                                                                <label class="radio-inline">
-                                                                    <input id="txtInadequate" type="radio" name="optionsInadequate" value="Inadequate" />&nbsp; Inadequate
-                                                                </label>
-                                                            </div>
-                                                        </div>
+
+                                                        
                                                     </div>
                                                 </td>
                                             </tr>
                                     </table>
                                 </div>
-
+								<div id="enablediv" style="display:none;">
                                 <div class="table-responsive">
                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                         <thead>
@@ -235,9 +213,7 @@
                                                 <td>
                                                     <select id="txtInstSource" class="form-control" name="txtInstSource[]">
                                                         <option value="">Select</option>
-                                                        <option value="Commercial Bank">Commercial Bank</option>
-                                                        <option value="Grameen Bank">Grameen Bank</option>
-                                                        <option value="Cooperative Bank">Cooperative Bank</option>
+                                                   
                                                     </select>
                                                 </td>
                                                 <td><input id="txtInstSourceAmt" name="txtInstSourceAmt[]" type="number" min="0" placeholder="" class="form-control" /></td>
@@ -253,19 +229,13 @@
                                                 <td>
                                                     <select id="txtInstSourcePayStatus" name="txtInstSourcePayStatus[]" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option>Unpaid</option>
-                                                        <option>Partially Paid</option>
-                                                        <option>Fully Paid</option>
+                                                     
                                                     </select>
                                                 </td>
                                                 <td>
                                                     <select id="selInstSourceReactions" name="selInstSourceReactions[]" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option>Timely Agricultural operation</option>
-                                                        <option>Easy Access</option>
-                                                        <option>Amount as per requirement</option>
-                                                        <option>High rate of interest</option>
-                                                        <option>Sell the produce at low price</option>
+                                                     
                                                     </select>
                                                 </td>
                                                 <td>
@@ -275,6 +245,7 @@
                                                     </button>
                                                 </td>
                                             </tr>
+                                            </tbody>
                                     </table>
                                 </div>
                                 <!-- buttons starts -->
@@ -301,11 +272,7 @@
                                                 <td>
                                                     <select id="txtPvtSource" name="txtPvtSource[]" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option value="Friends/Relatives">Friends/Relatives</option>
-                                                        <option value="Money Lender">Money Lender</option>
-                                                        <option value="Traders">Traders</option>
-                                                        <option value="Input Dealers/Suppliers">Input Dealers/Suppliers</option>
-                                                        <option value="SHGs/CBOs">SHGs/CBOs</option>
+                                                       
                                                     </select>
                                                 </td>
                                                 <td><input id="txtPvtSourceAmt" name="txtPvtSourceAmt[]" type="number" min="0" placeholder="" class="form-control" /></td>
@@ -321,19 +288,12 @@
                                                 <td>
                                                     <select id="txtPvtSourcePayStatus" name="txtPvtSourcePayStatus[]" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option value="Unpaid">Unpaid</option>
-                                                        <option value="Partially Paid">Partially Paid</option>
-                                                        <option value="Fully Paid">Fully Paid</option>
+                                                       
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select id="selPvtSourceReactions" name="selPvtSourceReactions" class="form-control">
+                                                    <select id="selPvtSourceReactions" name="selPvtSourceReactions[]" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option value="Timely Agricultural operation">Timely Agricultural operation</option>
-                                                        <option value="Easy Access">Easy Access</option>
-                                                        <option value="Amount as per requirement">Amount as per requirement</option>
-                                                        <option value="High rate of interest">High rate of interest</option>
-                                                        <option value="Sell the produce at low price">Sell the produce at low price</option>
                                                     </select>
                                                 </td>
                                                 <td>
@@ -343,12 +303,16 @@
                                                     </button>
                                                 </td>
                                             </tr>
+                                          </tbody>
                                     </table>
                                 </div>
                                 <!-- buttons starts -->
                                 <div class="pull-left" style="margin-bottom:5px;">
                                     <button type="button" class="btn btn-violet" id="btnfamilyAddOne">Add New</button>
                                 </div>
+                                
+                                </div>
+                                
                                 <div class="pull-right">
                                     <button type="button" id="btnBackBorrowStatus" class="btn btn-blue" onclick="prevPage()">< Back</button> &nbsp;
                                     <button type="button" id="btnResetBorrowStatus" class="btn btn-primary">Reset</button> &nbsp;
@@ -373,6 +337,7 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -400,7 +365,12 @@
     <!--LOADING SCRIPTS FOR PAGE-->
     <script src="js/table-action.js"></script>
     <script type="text/javascript" >
-		/* add rows */
+
+
+
+
+
+	/* add rows */
 
 function childRecursive(element, func){
     // Applies that function to the given element.
@@ -452,7 +422,7 @@ function clearCloneValues(element){
 //$(document).ready(function(){
     $('#btnfamilyAdd').click(function(){
         //increment the value of our counter
-        $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
+       $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
         //clone the first .item element
         var newItem = $('tr#addedFamily').first().clone();
         //recursively set our id, name, and for attributes properly
@@ -464,12 +434,17 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTree'));
+		//$('#addingTree').append(fetch_data());
+		
     });
+
 
 
 function deleteTable(btndel) {
@@ -480,7 +455,7 @@ function deleteTable(btndel) {
     }
 }
 
-		/* add rows */
+	/* add rows */
 
 function childRecursive(element, func){
     // Applies that function to the given element.
@@ -532,7 +507,7 @@ function clearCloneValues(element){
 //$(document).ready(function(){
     $('#btnfamilyAddOne').click(function(){
         //increment the value of our counter
-        $('#treeCounterOne').val(Number($('#treeCounterOne').val()) + 1);
+       $('#treeCounterOne').val(Number($('#treeCounterOne').val()) + 1);
         //clone the first .item element
         var newItem = $('tr#addedFamilyOne').first().clone();
         //recursively set our id, name, and for attributes properly
@@ -544,18 +519,23 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTreeOne'));
+		//$('#addingTree').append(fetch_data());
+		
     });
 
 
 
 
+
     /* fetch json data */
-$(function(){
+
 	var borrowingtype_val = JSON.parse(localStorage.getItem('borrowingtype_det'));
 
 	var borrowingtype_html='';
@@ -566,7 +546,7 @@ $(function(){
 	$('#txtPvtSourcePurpose').html(borrowingtype_html).trigger('liszt:updated');
 
 
-});
+
 
 
 
@@ -646,136 +626,392 @@ function get_current_data(arrval,keyid,keyname,keyval)
 	
 }
 
+	
+	
+	
+	
+	// fetch JSON data
+	
+	var borrowing_val = JSON.parse(localStorage.getItem('borrowingtype_det'));
+	var globeInst = [{'instId':'1', 'instName':'Commercial Bank'}, {'instId':'2', 'instName':'Grameen Bank'}, {'instId':'3', 'instName':'Cooperative Bank'}];
+	var globePvt = [{'pvtId':'1', 'pvtName':'Friends/Relatives'}, {'pvtId':'2', 'pvtName':'Money Lenders'}, {'pvtId':'3', 'pvtName':'Traders'}, {'pvtId':'4', 'pvtName':'Input Dealers/Suppliers'}, {'pvtId':'5', 'pvtName':'SHGs CBOs'}];
+	var repayStaInst = [{'repayInId':'1', 'repayInName':'Unpaid'}, {'repayInId':'2', 'repayInName':'Partially Paid'}, {'repayInId':'3', 'repayInName':'Fully Paid'}];
+	var repayStaPvt = [{'repayPvtId':'1', 'repayPvtName':'Unpaid'}, {'repayPvtId':'2', 'repayPvtName':'Partially Paid'}, {'repayPvtId':'3', 'repayPvtName':'Fully Paid'}];
+	var reactInst = [{'inReacId':'1', 'inReacName':'Timely Agricultural Operation'}, {'inReacId':'2', 'inReacName':'Easy Access'}, {'inReacId':'3', 'inReacName':'Amount as per requirement'}, {'inReacId':'4', 'inReacName':'High rate of interest'}, {'inReacId':'5', 'inReacName':'Sell the Produce at Low price'},];
+	var reactPvt = [{'pvtReacId':'1', 'pvtReacName':'Timely Agricultural Operation'}, {'pvtReacId':'2', 'pvtReacName':'Easy Access'}, {'pvtReacId':'3', 'pvtReacName':'Amount as per requirement'}, {'pvtReacId':'4', 'pvtReacName':'High rate of interest'}, {'pvtReacId':'5', 'pvtReacName':'Sell the Produce at Low price'}];
+	var bankAccount = [{'bacId':'1', 'bacVal':'Yes'}, {'bacId':'2', 'bacVal':'No'}];
+	var savingAccount = [{'savId':'1', 'savVal':'Yes'}, {'savId':'2', 'savVal':'No'}];
+	var credAvail = [{'credId':'1', 'credVal':'Yes'}, {'credId':'2', 'credVal':'No'}];
 
 
-//Store data 
-function saveOnly(){
+	var bankvar ='';
+	bankvar += '<option value="">Select</option>';
+			$.each(globeInst,function(j,itm){
+						bankvar +='<option value="'+ itm.instId+'">'+itm.instName+'</option>';
+				});
+		$('#txtInstSource').html(bankvar).trigger('liszt:updated');
 
+	var PayStatusval ='';
+	PayStatusval += '<option value="">Select</option>';
+			$.each(repayStaPvt,function(j,itm){
+						PayStatusval +='<option value="'+ itm.repayPvtId+'">'+itm.repayPvtName+'</option>';
+				});
+	$('#txtInstSourcePayStatus').html(PayStatusval).trigger('liszt:updated');
 
-    var components_bankAccountYes = document.getElementById("txtComponentsYes").value;
-    var components_bankAccountNo = document.getElementById("txtComponentsNo").value;
-  var cmp_statusYes = document.getElementById("txtCmpYes").value;
-  var cmp_statusNo = document.getElementById("txtCmpNo").value;
-  var cmp_creditYes = document.getElementById("txtCreditY").value;
-  var cmp_creditNO = document.getElementById("txtCreditN").value;
-  var cmp_amount = document.getElementById("txtAmount").value;
-  var cmp_adequate = document.getElementById("txtAdequate").value;
-  var cmp_inadequate = document.getElementById("txtInadequate").value;
-  
-	var instiSource = [];
+	var inReacNameval ='';
+	inReacNameval += '<option value="">Select</option>';
+			$.each(reactInst,function(j,itm){
+						inReacNameval +='<option value="'+ itm.inReacId+'">'+itm.inReacName+'</option>';
+				});
+	$('#selInstSourceReactions').html(inReacNameval).trigger('liszt:updated');
+		
+
+	// Second table
+	var pvtval ='';
+	inReacNameval += '<option value="">Select</option>';
+			$.each(globePvt,function(j,itm){
+						pvtval +='<option value="'+ itm.pvtId+'">'+itm.pvtName+'</option>';
+				});
+	$('#txtPvtSource').html(pvtval).trigger('liszt:updated');
+		
+	
+	var PayStatusval ='';
+	PayStatusval += '<option value="">Select</option>';
+			$.each(repayStaPvt,function(j,itm){
+						PayStatusval +='<option value="'+ itm.repayPvtId+'">'+itm.repayPvtName+'</option>';
+				});
+	$('#txtPvtSourcePayStatus').html(PayStatusval).trigger('liszt:updated');
+
+	var inReacNameval ='';
+	inReacNameval += '<option value="">Select</option>';
+			$.each(reactInst,function(j,itm){
+						inReacNameval +='<option value="'+ itm.inReacId+'">'+itm.inReacName+'</option>';
+				});
+	$('#selPvtSourceReactions').html(inReacNameval).trigger('liszt:updated');
+		
+
+function saveOnly() {
+	
+	var bankAccAvail = document.getElementById("bankAccAvail").value;
+	var savingsAvail = document.getElementById("savingsAvail").value;
+	var creditAvail = document.getElementById("creditAvail").value;
+
+	
+	var txtInstSource = [];
   $('select[name="txtInstSource[]"]').map(function(index, val) {
 			 if($(val).val()!="")
-			 instiSource[index] = ($(val).val());
-			 });
-			 
-			 
-	var instiAmount = [];
+			 txtInstSource[index] = ($(val).val());
+	    });
+		
+	var txtInstSourceAmt = [];
   $('input[name="txtInstSourceAmt[]"]').each(function() {
 			 if($(this).val()!="")
-			 instiAmount.push($(this).val());
-			 });
-			 
-			 
-	var instiRoi = [];
+			 txtInstSourceAmt.push($(this).val());
+	    });	
+		
+	var txtInstSourceROI = [];
   $('input[name="txtInstSourceROI[]"]').each(function() {
 			 if($(this).val()!="")
-			 instiRoi.push($(this).val());
-			 });
-			 
-	var instiPurpose = [];
+			 txtInstSourceROI.push($(this).val());
+	    });
+		
+		
+	var txtInstSourcePurpose = [];
   $('select[name="txtInstSourcePurpose[]"]').map(function(index, val) {
 			 if($(val).val()!="")
-			 instiPurpose[index] = ($(val).val());
-			 });
-			 
-	var instiPayStatus = [];
+			 txtInstSourcePurpose[index] = ($(val).val());
+	    });
+		
+		
+	var txtInstSourcePayStatus = [];
   $('select[name="txtInstSourcePayStatus[]"]').map(function(index, val) {
 			 if($(val).val()!="")
-			 instiPayStatus[index] = ($(val).val());
-			 });
-			 
-	var instiReaction = [];
+			 txtInstSourcePayStatus[index] = ($(val).val());
+	    });
+		
+	var selInstSourceReactions = [];
   $('select[name="selInstSourceReactions[]"]').map(function(index, val) {
 			 if($(val).val()!="")
-			 instiReaction[index] = ($(val).val());
-			 });
-			 
-	var privateSource = [];
+			 selInstSourceReactions[index] = ($(val).val());
+	    });
+
+	var txtPvtSource = [];
   $('select[name="txtPvtSource[]"]').map(function(index, val) {
 			 if($(val).val()!="")
-			 privateSource[index] = ($(val).val());
-			 });
-			 
-	var privateAmount = [];
+			 txtPvtSource[index] = ($(val).val());
+	    });		
+		
+		
+	var txtPvtSourceAmt = [];
   $('input[name="txtPvtSourceAmt[]"]').each(function() {
 			 if($(this).val()!="")
-			 privateAmount.push($(this).val());
-			 });
-			 
-	var privateRoi = [];
+			 txtPvtSourceAmt.push($(this).val());
+	    });
+		
+		
+	var txtPvtSourceROI = [];
   $('input[name="txtPvtSourceROI[]"]').each(function() {
 			 if($(this).val()!="")
-			 privateRoi.push($(this).val());
-			 });
-			 
-	var privatePurpose = [];
+			 txtPvtSourceROI.push($(this).val());
+	    });
+	
+	
+	var txtPvtSourcePurpose = [];
   $('select[name="txtPvtSourcePurpose[]"]').map(function(index, val) {
 			 if($(val).val()!="")
-			 privatePurpose[index] = ($(val).val());
-			 });
-			 
-	var privateStatus = [];
-  $('select[name="txtPvtSourcePayStatus[]"]').map(function(index, val) {
+			 txtPvtSourcePurpose[index] = ($(val).val());
+	    });	
+		
+		
+		
+	var txtInstSourcePayStatus = [];
+  $('select[name="txtInstSourcePayStatus[]"]').map(function(index, val) {
 			 if($(val).val()!="")
-			 privateStatus[index] = ($(val).val());
-			 });
-			 
-	var privateReaction = [];
+			 txtInstSourcePayStatus[index] = ($(val).val());
+	    });	
+		
+	var selPvtSourceReactions = [];
   $('select[name="selPvtSourceReactions[]"]').map(function(index, val) {
 			 if($(val).val()!="")
-			 privateReaction[index] = ($(val).val());
-			 });			 			 			 			 			 			 			 			 			 			 			 
-  
-  
+			 selPvtSourceReactions[index] = ($(val).val());
+	    });	
+		
+		
+		
+	set_storage_item('bankAccAvail',bankAccAvail);
+	set_storage_item('savingsAvail',savingsAvail);
+	set_storage_item('creditAvail',creditAvail);
+	set_storage_item('txtInstSource',txtInstSource);
+	set_storage_item('txtInstSourceAmt',txtInstSourceAmt);
+	set_storage_item('txtInstSourceROI',txtInstSourceROI);
+	set_storage_item('txtInstSourcePurpose',txtInstSourcePurpose);
+	set_storage_item('selInstSourceReactions',selInstSourceReactions);
+	set_storage_item('txtInstSourcePayStatus',txtInstSourcePayStatus);
+	set_storage_item('txtPvtSource',txtPvtSource);
+	set_storage_item('txtPvtSourceAmt',txtPvtSourceAmt);
+	set_storage_item('txtPvtSourceROI',txtPvtSourceROI);
+	set_storage_item('txtPvtSourcePurpose',txtPvtSourcePurpose);
+	set_storage_item('txtPvtSourcePayStatus',txtPvtSourcePayStatus);
+	set_storage_item('selPvtSourceReactions',selPvtSourceReactions);
 
-  set_storage_item('txtComponentsYes',components_bankAccountYes);
-  set_storage_item('txtComponentsNo',components_bankAccountNo);
-  set_storage_item('txtCmpYes',cmp_statusYes);
-  set_storage_item('txtCmpNo',cmp_statusNo);
-  set_storage_item('txtAmount',cmp_amount);
-  set_storage_item('txtAdequate',cmp_adequate);
-  set_storage_item('txtInadequate',cmp_inadequate);
-  set_storage_item('txtInstSource',instiSource);
-  set_storage_item('txtInstSourceAmt',instiAmount);
-  set_storage_item('txtInstSourceROI',instiRoi);
-  set_storage_item('txtInstSourcePurpose',instiPurpose);
-  set_storage_item('txtInstSourcePayStatus',instiPayStatus);
-  set_storage_item('selInstSourceReactions',instiReaction);
-  set_storage_item('txtPvtSource',privateSource);
-  set_storage_item('txtPvtSourceAmt',privateAmount);
-  set_storage_item('txtPvtSourceROI',privateRoi);
-  set_storage_item('txtPvtSourcePurpose',privatePurpose);
-  set_storage_item('txtPvtSourcePayStatus',privateStatus);
-  set_storage_item('selPvtSourceReactions',privateReaction);	
+}
 	
-	}
-
 function save_current_form()
 {
 
+
+
   saveOnly();
-  location.href='input14-cost-of-production.html';
+
+  location.href= 'input14-cost-of-production.html';
+
 }
 
 function prevPage(){
-  saveOnly();
-  location.href='input12-cropping-pattern-intensity.html';	
-	}
 
+  saveOnly();
+
+  location.href= 'input12-cropping-pattern-intensity.html';	
+
+	}
+	
 function set_storage_item(itm,val)
 {
-    window.localStorage.setItem(itm,val);
+	window.localStorage.setItem(itm,val);
 }
+
+
+// back process
+
+	var cur_bankAccAvail_val = localStorage.getItem('bankAccAvail');
+	var cur_savingsAvail_val = localStorage.getItem('savingsAvail');
+	var cur_creditAvail_val = localStorage.getItem('creditAvail');
+	var cur_txtInstSource_val = localStorage.getItem('txtInstSource');
+	var cur_txtInstSourceAmt_val = localStorage.getItem('txtInstSourceAmt');
+	var cur_txtInstSourceROI_val = localStorage.getItem('txtInstSourceROI');
+	var cur_txtInstSourcePurpose_val = localStorage.getItem('txtInstSourcePurpose');
+	var cur_selInstSourceReactions_val = localStorage.getItem('selInstSourceReactions');
+	var cur_txtInstSourcePayStatus_val = localStorage.getItem('txtInstSourcePayStatus');
+	var cur_txtPvtSource_val = localStorage.getItem('txtPvtSource');
+	var cur_txtPvtSourceAmt_val = localStorage.getItem('txtPvtSourceAmt');
+	var cur_txtPvtSourceROI_val = localStorage.getItem('txtPvtSourceROI');
+	var cur_txtPvtSourcePurpose_val = localStorage.getItem('txtPvtSourcePurpose');
+	var cur_txtPvtSourcePayStatus_val = localStorage.getItem('txtPvtSourcePayStatus');
+	var cur_selPvtSourceReactions_val = localStorage.getItem('selPvtSourceReactions');
+	
+	
+	if(cur_txtInstSource_val.length > 0)
+			{
+				$('#addingTree').html('');
+				var curInsSrcval = cur_txtInstSource_val.split(',');
+				var curInsAmtval = cur_txtInstSourceAmt_val.split(',');
+				var curInsROIval = cur_txtInstSourceROI_val.split(',');
+				var curInsPurval = cur_txtInstSourcePurpose_val.split(',');
+				var curInsSrcRecval = cur_selInstSourceReactions_val.split(',');
+				var curinsPayStval = cur_txtInstSourcePayStatus_val.split(',');
+				var fhtml ='';
+				
+				 for (var i = 0; i < curInsSrcval.length; i++) {
+						
+						
+						fhtml += '<tr id="addedFamily">';
+						fhtml += '<td><select id="txtInstSource" class="form-control" name="txtInstSource[]">';
+						fhtml += '		<option value="">Select</option>';
+						$.each(globeInst,function(j,itm){
+									var selInst ='';
+									if(curInsSrcval[i]==itm.instId)
+									{
+										selInst="selected='selected'";	
+									}
+									
+									fhtml +='<option value="'+ itm.instId+'" '+selInst+'>'+itm.instName+'</option>';
+							});
+						fhtml += '</select></td>';
+						fhtml += '<td><input type="text" id="" min="0" id="txtInstSourceAmt" name="txtInstSourceAmt[]" value="'+curInsAmtval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" id="txtInstSourceROI" name="txtInstSourceROI[]" value="'+curInsROIval[i]+'" class="form-control" /></td>';						
+						fhtml += '<td><select id="txtInstSourcePurpose" name="txtInstSourcePurpose[]" class="form-control">';
+						fhtml += '		<option value="">Select</option>';
+								
+								$.each(borrowingtype_val,function(k,itm){
+									var selpurp ='';
+									if(curInsPurval[i]==itm.borrowingPurposeId)
+									{
+										selpurp="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.borrowingPurposeId+'" '+selpurp+'>'+itm.borrowingPurpose+'</option>';
+							});
+						fhtml += '</select></td>';
+						fhtml += '<td><select id="txtInstSourcePayStatus" class="form-control" name="txtInstSourcePayStatus[]">';
+						fhtml += '		<option value="">Select</option>';
+						$.each(repayStaInst,function(j,itm){
+									var selInRep ='';
+									if(curinsPayStval[i]==itm.repayInId)
+									{
+										selInRep="selected='selected'";	
+									}
+									
+									fhtml +='<option value="'+ itm.repayInId+'" '+selInRep+'>'+itm.repayInName+'</option>';
+							});
+						fhtml += '</select></td>';
+						fhtml += '<td><select id="selInstSourceReactions" class="form-control" name="selInstSourceReactions[]">';
+						fhtml += '		<option value="">Select</option>';
+						$.each(reactInst,function(j,itm){
+									var selInReq ='';
+									if(curInsSrcRecval[i]==itm.inReacId)
+									{
+										selInReq="selected='selected'";	
+									}
+									
+									fhtml +='<option value="'+ itm.inReacId+'" '+selInReq+'>'+itm.inReacName+'</option>';
+							});
+						fhtml += '</select></td>';
+						fhtml += '<td><button type="button" class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i>&nbsp;Delete</button></td></tr>';
+				 }
+
+				 $('#addingTree').append(fhtml);
+			}
+			
+	
+	if(cur_txtPvtSource_val.length > 0)
+	{
+		$('#addingTreeOne').html('');
+		var curPvtSrcval = cur_txtPvtSource_val.split(',');
+		var curPvtAmtval = cur_txtPvtSourceAmt_val.split(',');
+		var curPvtROIval = cur_txtPvtSourceROI_val.split(',');
+		var curPvtPurval = cur_txtPvtSourcePurpose_val.split(',');
+		var curPvtSrcRecval = cur_txtPvtSourcePayStatus_val.split(',');
+		var curPvtPayStval = cur_selPvtSourceReactions_val.split(',');
+		var fhtml ='';
+		
+		 for (var i = 0; i < curPvtSrcval.length; i++) {
+			
+				fhtml += '<tr id="addedFamilyOne">';
+				fhtml += '<td><select id="txtPvtSource" class="form-control" name="txtPvtSource[]">';
+				fhtml += '		<option value="">Select</option>';
+				$.each(globePvt,function(j,itm){
+							var selPvt ='';
+							if(curPvtSrcval[i]==itm.pvtId)
+							{
+								selPvt="selected='selected'";	
+							}
+							
+							fhtml +='<option value="'+ itm.pvtId+'" '+selPvt+'>'+itm.pvtName+'</option>';
+					});
+				fhtml += '</select></td>';
+				fhtml += '<td><input type="text" id="" min="0" id="txtPvtSourceAmt" name="txtPvtSourceAmt[]" value="'+curInsAmtval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" id="txtPvtSourceROI" name="txtPvtSourceROI[]" value="'+curInsROIval[i]+'" class="form-control" /></td>';						
+				fhtml += '<td><select id="txtPvtSourcePurpose" name="txtPvtSourcePurpose[]" class="form-control">';
+				fhtml += '		<option value="">Select</option>';
+						
+						$.each(borrowingtype_val,function(k,itm){
+							var selpurpvt ='';
+							if(curPvtPurval[i]==itm.borrowingPurposeId)
+							{
+								selpurpvt="selected='selected'";
+									
+							}
+							fhtml +='<option value="'+ itm.borrowingPurposeId+'" '+selpurpvt+'>'+itm.borrowingPurpose+'</option>';
+					});
+				fhtml += '</select></td>';
+				fhtml += '<td><select id="txtPvtSourcePayStatus" class="form-control" name="txtPvtSourcePayStatus[]">';
+				fhtml += '		<option value="">Select</option>';
+				$.each(repayStaPvt,function(j,itm){
+							var selpvtRep ='';
+							if(curInsSrcRecval[i]==itm.repayPvtId)
+							{
+								selpvtRep="selected='selected'";	
+							}
+							
+							fhtml +='<option value="'+ itm.repayPvtId+'" '+selpvtRep+'>'+itm.repayPvtName+'</option>';
+					});
+				fhtml += '</select></td>';
+				fhtml += '<td><select id="selPvtSourceReactions" class="form-control" name="selPvtSourceReactions[]">';
+				fhtml += '		<option value="">Select</option>';
+				$.each(reactPvt,function(j,itm){
+							var selpvtReq ='';
+							if(curInsSrcRecval[i]==itm.pvtReacId)
+							{
+								selpvtReq="selected='selected'";	
+							}
+							
+							fhtml +='<option value="'+ itm.pvtReacId+'" '+selpvtReq+'>'+itm.pvtReacName+'</option>';
+					});
+				fhtml += '</select></td>';
+				fhtml += '<td><button type="button" class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i>&nbsp;Delete</button></td></tr>';
+				
+		 }
+
+		 $('#addingTreeOne').append(fhtml);
+	}			
+			
+	//hide show process
+	if(cur_creditAvail_val)
+	{
+		if(cur_creditAvail_val=='Yes')
+		{
+			 $("#creditAvail").val('Yes').attr('selected', true);
+			$("#enablediv").css("display", "");
+			
+		}
+		else if(cur_creditAvail_val=='No')
+		{
+			 $("#creditAvail").val('No').attr('selected', true);
+			$("#enablediv").css("display", "none");
+		}
+	}
+
+	$('#creditAvail').change(function(){	
+		var selVal = $(this).val();
+		if(selVal=='Yes')
+		{
+			$("#enablediv").css("display", "");
+		}
+		else if(selVal=='No')
+		{
+			$("#enablediv").css("display", "none");
+		}
+	});
 </script>
 </body>
 </html>

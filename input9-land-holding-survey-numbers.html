@@ -257,6 +257,8 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
+
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -526,7 +528,7 @@ var soilQuality = [];
 
 function prevPage(){
 	saveOnly();
-    location.href = 'input8-labour-availability-and-migration-details.html';	
+	location.href = 'input8-labour-availability-and-migration-details.html';
 
 	}
 
@@ -535,7 +537,7 @@ function save_current_form()
 {
 	
 	saveOnly();
-    location.href = 'input10-irrigation-source-water-quality.html';	
+	location.href = 'input10-irrigation-source-water-quality.html';
 	
 }
 
@@ -547,7 +549,7 @@ function set_storage_item(itm,val)
 
 function fetch_data()
 {
-	var fhtml ='';
+						var fhtml ='';
 						fhtml += '<tr id="addedFamily">';
 						fhtml += '<td><select id="selSurveyNumber" class="form-control selSurvey" name="selSurvey[]">';
 						fhtml += '<option value="">Select Survey No</option></select></td>';
@@ -603,77 +605,64 @@ function fetch_data()
 				var fhtml ='';
 				
 				 for (var i = 0; i < selSurveyval.length; i++) {
+					
 						
-						
-											
 						fhtml += '<tr id="addedFamily">';
-						fhtml += '</select></td>';
 						fhtml += '<td><select id="selSurveyNumber" class="form-control selSurvey" name="selSurvey[]">';
-						fhtml += '<option value="">Select Survey No</option></select></td>';
-						fhtml += '		<option value="">Select</option>';
-						$.each(globleLandTy,function(j,itm){
-									var selLan ='';
-									if(selLandtypeval[i]==itm.genId)
+						fhtml += '<option value="">Select Survey No</option>';
+							$.each(updatedSurveyNo_arr,function(j,itm){
+									var seleland ='';
+									if(selSurveyval[i]==itm)
 									{
-										selgen="selected='selected'";	
+										seleland="selected='selected'";
+											
 									}
-									
-									fhtml +='<option value="'+ itm.landId+'" '+selLan+'>'+itm.landName+'</option>';
+									fhtml +='<option value="'+ itm+'" '+seleland+'>'+itm+'</option>';
 							});
 						fhtml += '</select></td>';
-						
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="txtHoldingArea[]" value="'+holdingAreaval[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="landValue[]" value="'+landValueval[i]+'" class="form-control" /></td>';
-						
-						
-						/*fhtml += '<td><select id="selSoilType" class="form-control" name="selSoilType[]">';
-						fhtml += '		<option value="">Select</option>';
-						$.each(globleSoilty,function(j,itm){
-									var selLan ='';
-									if(soilTypeval[i]==itm.soilId)
+
+						fhtml += '<td><select id="selLandType" class="form-control" name="selLandType[]">';
+						fhtml += '<option value="">Select</option>';
+								
+								$.each(globleLandTy,function(k,itm){
+									var seleland ='';
+									if(selLandtypeval[i]==itm.landId)
 									{
-										selgen="selected='selected'";	
+										seleland="selected='selected'";
+											
 									}
-									
-									fhtml +='<option value="'+ itm.soilId+'" '+selgen+'>'+itm.genName+'</option>';
-							});
-						fhtml += '</select></td>';*/
-						
-						
-						
-						fhtml += '<td><select id="" class="form-control" name="selSoilType[]">';						
-						fhtml += '		<option value="">Select</option>';
-						$.each(globleSoilty,function(j,itm){
-									var selSoil ='';
-									if(soilTypeval[i]==itm.soilId)
-									{
-										selSoil="selected='selected'";	
-									}
-									
-									fhtml +='<option value="'+ itm.soilId+'" '+selSoil+'>'+itm.SoilType+'</option>';
+									fhtml +='<option value="'+ itm.landId+'" '+seleland+'>'+itm.landName+'</option>';
 							});
 						fhtml += '</select></td>';
-						
-						
-						fhtml += '		<option value="">Select</option>';
-						$.each(landQuality,function(j,itm){
-									var selsQly ='';
+						fhtml += '<td><input id="txtHoldingArea" type="number" min="0" value="'+holdingAreaval[i]+'" name="txtHoldingArea[]" class="form-control" /></td>';
+						fhtml += '<td><input id="landValue" type="number" min="0" value="'+landValueval[i]+'" name="landValue[]" class="form-control" /></td>';
+						fhtml += '<td><select id="selSoilType" class="form-control" name="selSoilType[]">';
+						fhtml += '<option value="">Select</option>';
+						  $.each(globleSoilty,function(h,itm){
+									var seleland ='';
+									if(soilTypeval[i]==itm.soilId)
+									{
+										seleland="selected='selected'";	
+									}
+									fhtml +='<option value="'+ itm.soilId+'" '+seleland+'>'+itm.SoilType+'</option>';
+							});
+						fhtml += '</select></td>';
+						fhtml += '<td><select id="selLandQuality" class="form-control" name="selLandQuality[]">';
+                        fhtml += '<option value="">Select</option>';
+                        $.each(landQuality,function(l,itm){
+									var seleland ='';
 									if(landQualityval[i]==itm.landQlId)
 									{
-										selSoil="selected='selected'";	
+										seleland="selected='selected'";
+											
 									}
-									
-									fhtml +='<option value="'+ itm.landQlId+'" '+selsQly+'>'+itm.landQlType+'</option>';
+									fhtml +='<option value="'+ itm.landQlId+'" '+seleland+'>'+itm.landQlType+'</option>';
 							});
 						fhtml += '</select></td>';
-						
-						
-						
-						
 						fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
 						fhtml += '</i>&nbsp;Delete	</button></td></tr>';
 						
-
+				
 				 }
 
 				 $('#addingTree').append(fhtml);

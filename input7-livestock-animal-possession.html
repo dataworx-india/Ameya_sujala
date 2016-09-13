@@ -210,6 +210,7 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -470,7 +471,7 @@ function fetch_data()
 	var fhtml ='';
 	
 	fhtml += '<tr id="addedFamily">';
-	fhtml += '<td><select id="selAnimals" class="form-control selAnimals" name="liveStock[]"><option value="Select Asset">Select Asset</option></select></td>';
+	fhtml += '<td><select id="selAnimals" class="form-control selAnimals" name="liveStock[]"><option value="Select Asset">Select Machinary/Implement</option></select></td>';
 	fhtml += '=<td><input type="number" id="selAnimalNumber" min="0" value="" class="form-control" name="liveStockNo[]" /></td>';
     fhtml += '<td><input type="number" id="selAnimalValue" min="0" value="" class="form-control" name="liveStockValue[]" /></td>';
     fthml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o"></i>&nbsp;Delete</button></td></tr>';
@@ -480,32 +481,33 @@ function fetch_data()
 	
 }
 
+
 //back process
 
-	var cur_durAsst_val = localStorage.getItem('liveStock');
-	var cur_asstQty_val = localStorage.getItem('liveStockNo');
-	var cur_asstVal_val = localStorage.getItem('liveStockValue');
+	var cur_livSto_val = localStorage.getItem('liveStock');
+	var cur_livStNo_val = localStorage.getItem('liveStockNo');
+	var cur_livStVal_val = localStorage.getItem('liveStockValue');
 
-	if(cur_durAsst_val.length > 0)
+if(cur_livSto_val.length > 0)
 			{
 				$('#addingTree').html('');
-				var curMNAval = cur_durAsst_val.split(',');
-				var curFARloopval = cur_asstQty_val.split(',');
-				var curmemFamMemLOMval = cur_asstVal_val.split(',');
+				var curlivSto = cur_livSto_val.split(',');
+				var curlivStNoval = cur_livStNo_val.split(',');
+				var curlivStVval = cur_livStVal_val.split(',');
 				var fhtml ='';
 				
-				 for (var i = 0; i < curMNAval.length; i++) {
+				 for (var i = 0; i < curlivSto.length; i++) {
 						
 						
 						
 							
 						fhtml += '<tr id="addedFamily">';
 						
-						fhtml += '<td><select id="selAnimals" class="form-control selAnimals" name="liveStock[]">';
-						fhtml += '		<option value="">Select Asset</option>';
+						fhtml += '<td><select id="selAnimals" class="form-control" name="liveStock[]">';
+						fhtml += '		<option value="">Choose</option>';
 						$.each(liveStock_val,function(j,itm){
 									var selgen ='';
-									if(curMNAval[i]==itm.animalId)
+									if(curlivSto[i]==itm.animalId)
 									{
 										selgen="selected='selected'";	
 									}
@@ -513,8 +515,8 @@ function fetch_data()
 									fhtml +='<option value="'+ itm.animalId+'" '+selgen+'>'+itm.animalName+'</option>';
 							});
 						fhtml += '</select></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="liveStockNo[]" value="'+curFARloopval[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" name="liveStockValue[]" value="'+curmemFamMemLOMval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="liveStockNo[]" value="'+curlivStNoval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="liveStockValue[]" value="'+curlivStVval[i]+'" class="form-control" /></td>';
 						fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
 						fhtml += '</i>&nbsp;Delete	</button></td></tr>';
 
@@ -522,6 +524,7 @@ function fetch_data()
 
 				 $('#addingTree').append(fhtml);
 			}
+
 
 
 </script>

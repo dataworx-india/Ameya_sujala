@@ -169,9 +169,9 @@
                                                 <td>
                                                     <select id="selBasicNeedsSource" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option value="Own">Own</option>
-                                                        <option value="CPR/Public">CPR/Public</option>
-                                                        <option value="Private">Private</option>
+                                                        <option value="1">Own</option>
+                                                        <option value="2">CPR/Public</option>
+                                                        <option value="3">Private</option>
                                                     </select>
                                                 </td>
                                                 <td><input type="number" min="0" id="selDistance" value="" class="form-control" /></td>
@@ -186,9 +186,9 @@
                                                 <td>
                                                     <select id="selBasicNeedsDrinkWaterSource" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option value="Own">Own</option>
-                                                        <option value="CPR/Public">CPR/Public</option>
-                                                        <option value="Private">Private</option>
+                                                        <option value="1">Own</option>
+                                                        <option value="2">CPR/Public</option>
+                                                        <option value="3">Private</option>
                                                     </select>
                                                 </td>
                                                 <td><input type="number" min="0" id="selWaterDis" value="" class="form-control" /></td>
@@ -356,7 +356,6 @@
 	
 //fetch JSON data 
 
-$(function(){
 	var fuel_val = JSON.parse(localStorage.getItem('fuel_det'));
 	
 	var fuel_html='';
@@ -390,7 +389,7 @@ $(function(){
 	
 
 	
-});
+
 
 
 
@@ -487,8 +486,11 @@ function saveOnly(){
   var toilet_val = document.getElementById("selBasicNeedstoiletFaclty").value;
   var healthCard_val = document.getElementById("selBasicNeedsYashHlthCard").value;
   var bplCard_val = document.getElementById("selBasicNeedsBPLCard").value;
-  var reqNrega_val = document.getElementById("selBasicNeedsWrkUnderNREGA").value;
-  var nedNrega_val = document.getElementById("txtBasicNeedsWrkUnderNREGADays").value;
+  var reqNrega_val = document.getElementById("selBasicNeedsWrkUnderNREGA").value;  
+  var nedNrega_val = document.getElementById("txtBasicNeedsWrkUnderNREGANum").value;
+  var dayNrega_val = document.getElementById("txtBasicNeedsWrkUnderNREGADays").value;
+  
+  
 		
 	set_storage_item('fuelVal',fuel_val);
 	set_storage_item('fuelSource',fuelSource_val);
@@ -504,7 +506,8 @@ function saveOnly(){
   	set_storage_item('healthCard',healthCard_val);
   	set_storage_item('bplCard',bplCard_val);
   	set_storage_item('NREGArequired',reqNrega_val);
-  	set_storage_item('NREGAdone',nedNrega_val);	
+  	set_storage_item('NREGANum',nedNrega_val);
+	set_storage_item('NREGAdone',dayNrega_val);	
 	
 	}
 
@@ -526,6 +529,221 @@ function set_storage_item(itm,val)
 {
 	window.localStorage.setItem(itm,val);
 }
+
+
+//back process
+	var cur_fuelVal_val = localStorage.getItem('fuelVal');
+	var cur_fuelSource_val = localStorage.getItem('fuelSource');
+	var cur_fuelDistance_val = localStorage.getItem('fuelDistance');
+	var cur_waterVal_val = localStorage.getItem('waterVal');
+	var cur_waterSource_val = localStorage.getItem('waterSource');
+	var cur_waterDistance_val = localStorage.getItem('waterDistance');
+	var cur_fodderVal_val = localStorage.getItem('fodderVal');
+	var cur_fodderSource_val = localStorage.getItem('fodderSource');
+	var cur_fodderDistance_val = localStorage.getItem('fodderDistance');
+	var cur_lightSource_val = localStorage.getItem('lightSource');
+	var cur_toiletVal_val = localStorage.getItem('toiletVal');
+	var cur_healthCard_val = localStorage.getItem('healthCard');
+	var cur_bplCard_val = localStorage.getItem('bplCard');
+	var cur_NREGArequired_val = localStorage.getItem('NREGArequired');
+	var cur_NREGAnum_val = localStorage.getItem('NREGANum');
+	var cur_NREGAdone_val = localStorage.getItem('NREGAdone');
+
+
+
+var fuelVal_html='';
+		fuelVal_html +='<option value="" >Choose Caste</option>';
+		$.each(fuel_val,function(i,itm){
+			var  selectval ='';
+					if(cur_fuelVal_val==itm.fuelResponseId)
+					{
+						selectval="selected='selected'";
+					}
+			fuelVal_html +='<option value="'+ itm.fuelResponseId+'" '+selectval+'>'+itm.fuelResponseName+'</option>';
+		});
+		$('#selBasicNeedsFuelType').html(fuelVal_html).trigger('liszt:updated');
+		
+		
+		
+		
+		
+var waterVal_html='';
+		waterVal_html +='<option value="" >Choose Caste</option>';
+		$.each(dWater_val,function(i,itm){
+			var  selectval ='';
+					if(cur_waterVal_val==itm.drinkingWaterId)
+					{
+						selectval="selected='selected'";
+					}
+			waterVal_html +='<option value="'+ itm.drinkingWaterId+'" '+selectval+'>'+itm.drinkingwaterSource+'</option>';
+		});
+		$('#selBasicNeedsDrinkWaterType').html(waterVal_html).trigger('liszt:updated');
+		
+		
+
+
+var fodderVal_html='';
+		fodderVal_html +='<option value="" >Choose Caste</option>';
+		$.each(selBasicNeedsFodderType,function(i,itm){
+			var  selectval ='';
+					if(cur_fodderVal_val==itm.fodderSourceId)
+					{
+						selectval="selected='selected'";
+					}
+			fodderVal_html +='<option value="'+ itm.fodderSourceId+'" '+selectval+'>'+itm.fodderSource+'</option>';
+		});
+		$('#selBasicNeedsFodderType').html(fodderVal_html).trigger('liszt:updated');
+		
+		
+		
+		
+
+
+
+
+var globeFuel = [{ 'fuelSrcId': '1', 'fuelSrcName': 'Own' }, { 'fuelSrcId': '2', 'fuelSrcName': 'CPR/Public' }, { 'fuelSrcId': '3', 'fuelSrcName': 'Private' }];
+var fuelGlb_html='';
+		fuelGlb_html +='<option value="" >Choose Caste</option>';
+		$.each(globeFuel,function(i,itm){
+			var  selectval ='';
+					if(cur_fuelSource_val==itm.fuelSrcId)
+					{
+						selectval="selected='selected'";
+					}
+			fuelGlb_html +='<option value="'+ itm.fuelSrcId+'" '+selectval+'>'+itm.fuelSrcName+'</option>';
+		});
+		$('#selBasicNeedsSource').html(fuelGlb_html).trigger('liszt:updated');
+		
+		
+		if(cur_fuelDistance_val)
+			$('#selDistance').val(cur_fuelDistance_val);
+			
+
+var globeFodder = [{ 'fodderSrcId': '1', 'fodderSrcName': 'Own' }, { 'fodderSrcId': '2', 'fodderSrcName': 'CPR/Public' }, { 'fodderSrcId': '3', 'fodderSrcName': 'Private' }];
+var fodGlb_html='';
+		fodGlb_html +='<option value="" >Choose Caste</option>';
+		$.each(globeFodder,function(i,itm){
+			var  selectval ='';
+					if(cur_fodderSource_val==itm.fodderSrcId)
+					{
+						selectval="selected='selected'";
+					}
+			fodGlb_html +='<option value="'+ itm.fodderSrcId+'" '+selectval+'>'+itm.fodderSrcName+'</option>';
+		});
+		$('#basic_fodderResponse').html(fodGlb_html).trigger('liszt:updated');
+		
+
+if(cur_fodderDistance_val)
+			$('#selFodderDis').val(cur_fodderDistance_val);
+
+			
+var globeDrinkWater = [{ 'DrinkWaterSrcId': '1', 'DrinkWaterSrcName': 'Own' }, { 'DrinkWaterSrcId': '2', 'DrinkWaterSrcName': 'CPR/Public' }, { 'DrinkWaterSrcId': '3', 'DrinkWaterSrcName': 'Private' }];
+
+var waterGlb_html='';
+		waterGlb_html +='<option value="" >Choose Caste</option>';
+		$.each(globeDrinkWater,function(i,itm){
+			var  selectval ='';
+					if(cur_waterSource_val==itm.DrinkWaterSrcId)
+					{
+						selectval="selected='selected'";
+					}
+			waterGlb_html +='<option value="'+ itm.DrinkWaterSrcId+'" '+selectval+'>'+itm.DrinkWaterSrcName+'</option>';
+		});
+		$('#selBasicNeedsDrinkWaterSource').html(waterGlb_html).trigger('liszt:updated');
+		
+		
+		if(cur_waterDistance_val)
+			$('#selWaterDis').val(cur_waterDistance_val);
+
+
+var globeLight = [{ 'lightRespId': '1', 'lightRespName': 'Kerosene Lamp' }, { 'lightRespId': '2', 'lightRespName': 'Solar Lamp' }, { 'lightRespId': '3', 'lightRespName': 'Electricity' }, { 'lightRespId': '4', 'lightRespName': 'Petromax' }];
+
+var lightGlb_html='';
+		lightGlb_html +='<option value="" >Choose Caste</option>';
+		$.each(globeLight,function(i,itm){
+			var  selectval ='';
+					if(cur_lightSource_val==itm.lightRespId)
+					{
+						selectval="selected='selected'";
+					}
+			lightGlb_html +='<option value="'+ itm.lightRespId+'" '+selectval+'>'+itm.lightRespName+'</option>';
+		});
+		$('#selBasicNeedsLight').html(lightGlb_html).trigger('liszt:updated');
+
+
+
+
+var globeToilet = [{ 'ToiletResId': '1', 'ToiletResName': 'Yes' }, { 'ToiletResId': '2', 'ToiletResName': 'No' }];
+var toiletGlb_html='';
+		toiletGlb_html +='<option value="" >Choose Caste</option>';
+		$.each(globeToilet,function(i,itm){
+			var  selectval ='';
+					if(cur_toiletVal_val==itm.ToiletResId)
+					{
+						selectval="selected='selected'";
+					}
+			toiletGlb_html +='<option value="'+ itm.ToiletResId+'" '+selectval+'>'+itm.ToiletResName+'</option>';
+		});
+		$('#selBasicNeedstoiletFaclty').html(toiletGlb_html).trigger('liszt:updated');
+
+
+
+var globeHealthCard = [{ 'healthCardResId': '1', 'healthCardResName': 'Yes' }, { 'healthCardResId': '2', 'healthCardResName': 'No' }];
+var HealthCardGlb_html='';
+		HealthCardGlb_html +='<option value="" >Choose Caste</option>';
+		$.each(globeHealthCard,function(i,itm){
+			var  selectval ='';
+					if(cur_healthCard_val==itm.healthCardResId)
+					{
+						selectval="selected='selected'";
+					}
+			HealthCardGlb_html +='<option value="'+ itm.healthCardResId+'" '+selectval+'>'+itm.healthCardResName+'</option>';
+		});
+		$('#selBasicNeedsYashHlthCard').html(HealthCardGlb_html).trigger('liszt:updated');
+
+
+
+var globePdsCard = [{ 'PdsCardResId': '1', 'PdsCardResName': 'APL' }, { 'PdsCardResId': '2', 'PdsCardResName': 'BPL' }, { 'PdsCardResId': '3', 'PdsCardResName': 'BPL' }];
+var PdsCardGlb_html='';
+		PdsCardGlb_html +='<option value="" >Choose Caste</option>';
+		$.each(globePdsCard,function(i,itm){
+			var  selectval ='';
+					if(cur_bplCard_val==itm.PdsCardResId)
+					{
+						selectval="selected='selected'";
+					}
+			PdsCardGlb_html +='<option value="'+ itm.PdsCardResId+'" '+selectval+'>'+itm.PdsCardResName+'</option>';
+		});
+		$('#selBasicNeedsBPLCard').html(PdsCardGlb_html).trigger('liszt:updated');
+
+
+
+var globeNrega = [{ 'nregaResId': '1', 'nregaResName': 'Yes' }, { 'nregaResId': '2', 'nregaResName': 'No' }];
+var NregaGlb_html='';
+		NregaGlb_html +='<option value="" >Choose Caste</option>';
+		$.each(globeNrega,function(i,itm){
+			var  selectval ='';
+					if(cur_NREGArequired_val==itm.nregaResId)
+					{
+						selectval="selected='selected'";
+					}
+			Nregalb_html +='<option value="'+ itm.nregaResId+'" '+selectval+'>'+itm.nregaResName+'</option>';
+		});
+		$('#selBasicNeedsWrkUnderNREGA').html(NregaGlb_html).trigger('liszt:updated');
+		
+		
+		
+		if(cur_NREGAnum_val)
+			$('#txtBasicNeedsWrkUnderNREGANum').val(cur_NREGAnum_val);
+			
+			
+			if(cur_NREGAdone_val)
+			$('#txtBasicNeedsWrkUnderNREGADays').val(cur_NREGAdone_val);
+
+
+// back button
+
+
 
 
 </script>

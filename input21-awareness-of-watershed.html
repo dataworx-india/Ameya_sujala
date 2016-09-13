@@ -192,7 +192,7 @@
                                     <button type="button" id="btnBackWSAwareness" class="btn btn-blue" onclick="prevPage()">< Back</button> &nbsp;
                                     <button type="button" id="btnResetWSAwareness" class="btn btn-primary">Reset</button> &nbsp;
                                     <button type="submit" id="btnSaveWSAwareness" class="btn btn-green" onclick="saveOnly()">Save</button> &nbsp;
-                                    <button type="button" id="btnNextWSAwareness" class=" btn btn-blue" onclick="location.href = 'input22-soil-water-conservation-practices.html'">Next ></button>
+                                    <button type="button" id="btnNextWSAwareness" class=" btn btn-blue" onclick="save_current_form()">Next ></button>
                                 </div>
                                 <!-- buttons ends -->
                             </div>
@@ -243,7 +243,7 @@
     <script src="js/table-action.js"></script>
         <script type="text/javascript" >
 		
-				/* add rows */
+	/* add rows */
 
 function childRecursive(element, func){
     // Applies that function to the given element.
@@ -295,7 +295,7 @@ function clearCloneValues(element){
 //$(document).ready(function(){
     $('#btnfamilyAdd').click(function(){
         //increment the value of our counter
-        $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
+       $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
         //clone the first .item element
         var newItem = $('tr#addedFamily').first().clone();
         //recursively set our id, name, and for attributes properly
@@ -307,12 +307,17 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTree'));
+		//$('#addingTree').append(fetch_data());
+		
     });
+
 
 
 function deleteTable(btndel) {
@@ -326,7 +331,7 @@ function deleteTable(btndel) {
 
 //fetch JSON data 
 
-$(function(){
+
 	var awareness_val = JSON.parse(localStorage.getItem('watershedawareness_det'));
 	
 	var awareness_html='';
@@ -337,7 +342,6 @@ $(function(){
 	$('.watershedAwarness').html(awareness_html).trigger('liszt:updated');
 	
 	
-});
 
 
 
@@ -462,10 +466,56 @@ function set_storage_item(itm,val)
 	window.localStorage.setItem(itm,val);
 }
 
+// back process
 
+		var cur_watershedAwarness_val = localStorage.getItem('watershedAwarness');
+		var cur_selWSAwareSWErosion_val = localStorage.getItem('selWSAwareSWErosion');
+		
+	var globalAwarness = [{'awarId':'Yes','awarName':'Yes'}, {'awarId':'No','awarName':'No'}];
+	
+	if(cur_watershedAwarness_val.length > 0)
+			{
+			
+			$('#addingTree').html('');
+				var curwatershedAwarnessval = cur_watershedAwarness_val.split(',');
+				var curAwareSWErosionval = cur_selWSAwareSWErosion_val.split(',');
+				var fhtml ='';
+				
+				 for (var i = 0; i < curwatershedAwarnessval.length; i++) {
+			
+				fhtml += '<tr id="addedFamily">';
+				fhtml += '<td><select id="watershedAwarness" name="watershedAwarness[]" class="form-control watershedAwarness">';
+				fhtml += '		<option value="">Select</option>';
+						$.each(awareness_val,function(j,itm){
+									var selgen ='';
+									if(curwatershedAwarnessval[i]==itm.watershedAwarenessId)
+									{
+										selgen="selected='selected'";	
+									}
+									
+									fhtml +='<option value="'+ itm.watershedAwarenessId+'" '+selgen+'>'+itm.watershedAwarenessName+'</option>';
+							});
+						fhtml += '</select></td>';
+				
+				fhtml += '<td><select id="selWSAwareSWErosion" name="selWSAwareSWErosion[]" class="form-control selWSAwareSWErosion">';
+				fhtml += '		<option value="">Select</option>';
+						$.each(globalAwarness,function(j,itm){
+									var selgen ='';
+									if(curAwareSWErosionval[i]==itm.awarId)
+									{
+										selgen="selected='selected'";	
+									}
+									
+									fhtml +='<option value="'+ itm.awarId+'" '+selgen+'>'+itm.awarName+'</option>';
+							});
+						fhtml += '</select></td>';
+						fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+						fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+				
+			}
 
-
-
+				$('#addingTree').append(fhtml);
+			}
 
 </script>
 </body>

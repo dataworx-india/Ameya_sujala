@@ -210,6 +210,7 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -466,12 +467,14 @@ function set_storage_item(itm,val)
 
 
 
+//back button
+
 function fetch_data()
 {
 	var fhtml ='';
 	
 	fhtml += '<tr id="addedFamily">';
-	fhtml += '<td><select id="selImplements" class="form-control selImplements" name="selImplements[]"><option value="Select Asset">Select Asset</option></select></td>';
+	fhtml += '<td><select id="selImplements" class="form-control selImplements" name="selImplements[]"><option value="Select Asset">Select Machinary/Implement</option></select></td>';
 	fhtml += '=<td><input type="number" id="selNumber" min="0" value="" class="form-control" name="machnieNo[]" /></td>';
     fhtml += '<td><input type="number" id="selPresentVal" min="0" value="" class="form-control" name="machineValue[]" /></td>';
     fthml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o"></i>&nbsp;Delete</button></td></tr>';
@@ -481,32 +484,33 @@ function fetch_data()
 	
 }
 
+
 //back process
 
-	var cur_durAsst_val = localStorage.getItem('selImplements');
-	var cur_asstQty_val = localStorage.getItem('machnieNo');
-	var cur_asstVal_val = localStorage.getItem('machineValue');
+	var cur_selImp_val = localStorage.getItem('selImplements');
+	var cur_macNo_val = localStorage.getItem('machnieNo');
+	var cur_macVal_val = localStorage.getItem('machineValue');
 
-	if(cur_durAsst_val.length > 0)
+if(cur_selImp_val.length > 0)
 			{
 				$('#addingTree').html('');
-				var curMNAval = cur_durAsst_val.split(',');
-				var curFARloopval = cur_asstQty_val.split(',');
-				var curmemFamMemLOMval = cur_asstVal_val.split(',');
+				var curSelImp = cur_selImp_val.split(',');
+				var curmacNoval = cur_macNo_val.split(',');
+				var curmemmacval = cur_macVal_val.split(',');
 				var fhtml ='';
 				
-				 for (var i = 0; i < curMNAval.length; i++) {
+				 for (var i = 0; i < curSelImp.length; i++) {
 						
 						
 						
 							
 						fhtml += '<tr id="addedFamily">';
 						
-						fhtml += '<td><select id="selImplements" class="form-control selImplements" name="selImplements[]">';
+						fhtml += '<td><select id="selImplements" class="form-control" name="selImplements[]">';
 						fhtml += '		<option value="">Choose</option>';
 						$.each(farmMachine_val,function(j,itm){
 									var selgen ='';
-									if(curMNAval[i]==itm.farmMachineId)
+									if(curSelImp[i]==itm.farmMachineId)
 									{
 										selgen="selected='selected'";	
 									}
@@ -514,8 +518,8 @@ function fetch_data()
 									fhtml +='<option value="'+ itm.farmMachineId+'" '+selgen+'>'+itm.farmMachineType+'</option>';
 							});
 						fhtml += '</select></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="machnieNo[]" value="'+curFARloopval[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="machineValue[]" value="'+curmemFamMemLOMval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="machnieNo[]" value="'+curmacNoval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="machineValue[]" value="'+curmemmacval[i]+'" class="form-control" /></td>';
 						fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
 						fhtml += '</i>&nbsp;Delete	</button></td></tr>';
 

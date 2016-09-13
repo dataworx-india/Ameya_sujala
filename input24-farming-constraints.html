@@ -169,8 +169,8 @@
                                                 <td>
                                                     <select id="selFarmConstrFertStatus" name="selFarmConstrFertStatus[]" class="form-control selFarmConstrFertStatus">
                                                         <option value="">Select</option>
-                                                        <option>Experienced</option>
-                                                        <option>Not Experienced</option>
+                                                        <option value="1">Experienced</option>
+                                                        <option value="2">Not Experienced</option>
                                                     </select>
                                                 </td>
                                                 <td>
@@ -243,7 +243,7 @@
     <script type="text/javascript" >
 
 
-		/* add rows */
+	/* add rows */
 
 function childRecursive(element, func){
     // Applies that function to the given element.
@@ -295,7 +295,7 @@ function clearCloneValues(element){
 //$(document).ready(function(){
     $('#btnfamilyAdd').click(function(){
         //increment the value of our counter
-        $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
+       $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
         //clone the first .item element
         var newItem = $('tr#addedFamily').first().clone();
         //recursively set our id, name, and for attributes properly
@@ -307,12 +307,17 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTree'));
+		//$('#addingTree').append(fetch_data());
+		
     });
+
 
 
 function deleteTable(btndel) {
@@ -326,7 +331,6 @@ function deleteTable(btndel) {
 
 //fetch JSON data 
 
-$(function(){
 	var fConstrain_val = JSON.parse(localStorage.getItem('farmingconstraints_det'));
 	
 	var fConstrain_html='';
@@ -336,8 +340,7 @@ $(function(){
 	});
 	$('.selFarmingConstrains').html(fConstrain_html).trigger('liszt:updated');
 	
-	
-});
+
 
 
 
@@ -463,9 +466,64 @@ function set_storage_item(itm,val)
 }
 
 
+// Back button
 
+		var cur_FarmingConstrains_val = localStorage.getItem('selFarmingConstrains');
+		var cur_FarmConstrstat_val = localStorage.getItem('selFarmConstrFertStatus');
+		
+		var globalStat = [{'statusId':'1','statusName':'Experienced'}, {'statusId':'2','statusName':'Not Experienced'}];
 
+		if(cur_FarmingConstrains_val.length > 0)
+			{
+				$('#addingTree').html('');
+				var curFarmConstrainsval = cur_FarmingConstrains_val.split(',');
+				var curFarmConstrstatval = cur_FarmConstrstat_val.split(',');
+				var fhtml ='';
+				
+				
+				for (var i = 0; i < curFarmConstrainsval.length; i++) {
+					
+					
+					fhtml += '<tr id="addedFamily">';
+					fhtml += '<td><select id="selFarmingConstrains" name="selFarmingConstrains[]" class="form-control selFarmingConstrains">';
+						fhtml += '		<option value="">Select Education</option>';
+								
+								$.each(fConstrain_val,function(k,itm){
+									var seledug ='';
+									if(curFarmConstrainsval[i]==itm.farmingConstraintsId)
+									{
+										seledug="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.farmingConstraintsId+'" '+seledug+'>'+itm.farmingConstraintsName+'</option>';
+							});
+						fhtml += '</select></td>';
+						
+						fhtml += '<td><select id="selFarmConstrFertStatus" name="selFarmConstrFertStatus[]" class="form-control selFarmConstrFertStatus">';
+						fhtml += '		<option value="">Select Education</option>';
+								
+								$.each(globalStat,function(k,itm){
+									var seledug ='';
+									if(curFarmConstrstatval[i]==itm.statusId)
+									{
+										seledug="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.statusId+'" '+seledug+'>'+itm.statusName+'</option>';
+							});
+						fhtml += '</select></td>';
+						
+						
+						fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+						fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+					
+				}
+				
+				$('#addingTree').append(fhtml);
+			}
+				
 
+			
 </script>
 </body>
 </html>

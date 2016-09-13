@@ -240,6 +240,8 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
+
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -356,11 +358,9 @@ function deleteTable(btndel) {
 
 
 
-
-
 // fetch external data 
 
-$(function(){
+
 	var crops_val = JSON.parse(localStorage.getItem('crop_det'));
 	
 	var crops_html='';
@@ -372,7 +372,7 @@ $(function(){
 	$('.selIntCropPat').html(crops_html).trigger('liszt:updated');
 
 	
-});
+
 
 
 var updatedSurveyNo = localStorage.getItem('surveyNo');
@@ -543,7 +543,7 @@ function prevPage(){
 function save_current_form()
 {
 	saveOnly();
-	location.href='input13-borrowing-status.html';	
+	location.href = 'input13-borrowing-status.html';
 	
 }
 
@@ -553,122 +553,123 @@ function set_storage_item(itm,val)
 }
 
 
+
+
 function fetch_data()
 {
 	var fhtml ='';
 						fhtml += '<tr id="addedFamily">';
 						fhtml += '<td><select id="selSurveyNumber" class="form-control selSurveyNumber" name="selSurveyNumber[]">';
-                        fhtml += '<option value="">Prepopulated from form 1</option></select></td>';
-                        fhtml += '<td><input type="number" id="selCropIntensityTotalLand" name="selCropIntensityTotalLand[]" class="form-control" /></td>';
-                        fhtml += '<td><select id="selCropPat" class="form-control selCropPat" name="selCropPat[]">';
+						fhtml += '<option value="">Prepopulated from form 1</option></select></td>';
+						fhtml += '<td><input type="number" id="selCropIntensityTotalLand" name="selCropIntensityTotalLand[]" class="form-control" /></td>';
+						fhtml += '<td><select id="selCropPat" class="form-control selCropPat" name="selCropPat[]">';
                         fhtml += '<option value="">Select the crop</option></select></td>';
-                        fhtml += '<td><select id="selIntCropPat" class="form-control selIntCropPat" name="selIntCropPat[]">';
+						fhtml += '<td><select id="selIntCropPat" class="form-control selIntCropPat" name="selIntCropPat[]">';
                         fhtml += '<option value="">Select the intercrop</option></select></td>';
-                        fhtml += '<td><select id="selCropIntensityCropType" class="form-control" name="selCropIntensityCropType[]">';
+						fhtml += '<td><select id="selCropIntensityCropType" class="form-control" name="selCropIntensityCropType[]">';
                         fhtml += '<option value="">Select Croping Type</option>';
                         fhtml += '<option value="Single">Single</option>';
                         fhtml += '<option value="Double">Double</option>';
                         fhtml += '<option value="Triple/Mixed">Triple/Mixed</option></select></td>';
 						fhtml += '<td><input type="number" id="selCropIntAreaKharif" name="selCropIntAreaKharif[]" min="0" value="" class="form-control" /></td>';
-                        fhtml += '<td><input type="number" id="selCropIntAreaRabi" name="selCropIntAreaRabi[]" min="0" value="" class="form-control" /></td>';
-                        fhtml += '<td><input type="number" id="selCropIntAreaSummer" name="selCropIntAreaSummer[]" min="0" value="" class="form-control" /></td>';
-                        fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o"></i>&nbsp;';
-                        fhtml += 'Delete</button></td></tr>';
+						fhtml += '<td><input type="number" id="selCropIntAreaRabi" name="selCropIntAreaRabi[]" min="0" value="" class="form-control" /></td>';
+						fhtml += '<td><input type="number" id="selCropIntAreaSummer" name="selCropIntAreaSummer[]" min="0" value="" class="form-control" /></td>';
+						fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+						fhtml += '</i>&nbsp;Delete	</button></td></tr>';
 						return fhtml;
 
 
 }
 
-
 // back process
 
-		var cur_cpSurveyNo_val = localStorage.getItem('selSurveyNumber');
-		var cur_cpLand_val = localStorage.getItem('selCropIntensityTotalLand');
-		var cur_cpMainCp_val = localStorage.getItem('selCropPat');
-		var cur_cpInterCp_val = localStorage.getItem('selIntCropPat');
-		var cur_cpCropTy_val = localStorage.getItem('selCropIntensityCropType');
-		var cur_cpKharif_val =localStorage.getItem('selCropIntAreaKharif');
-		var cur_cpRabi_val =localStorage.getItem('selCropIntAreaRabi');
-		var cur_cpSummer_val =localStorage.getItem('selCropIntAreaSummer');
+		var cur_SurveyNumber_val = localStorage.getItem('selSurveyNumber');
+		var cur_CropIntensityTL_val = localStorage.getItem('selCropIntensityTotalLand');
+		var cur_CropPat_val = localStorage.getItem('selCropPat');
+		var cur_IntCropPat_val = localStorage.getItem('selIntCropPat');
+		var cur_CropIntensityCT_val = localStorage.getItem('selCropIntensityCropType');
+		var cur_CropIntKharif_val =localStorage.getItem('selCropIntAreaKharif');
+		var cur_CropIntRabi_val =localStorage.getItem('selCropIntAreaRabi');
+		var cur_CropIntSummer_val =localStorage.getItem('selCropIntAreaSummer');
 
-			var globleCropType = [{'ctId':'Single','ctName':'Single'},{'ctId':'Double','ctName':'Double'},{'ctId':'Triple','ctName':'Triple/Mixed'}];
-			if(cur_membername_val.length > 0)
+			var globleCType = [{'cTypeId':'Single','cTypeName':'Single'},{'cTypeId':'Double','cTypeName':'Double'},{'cTypeId':'Triple/Mixed','cTypeName':'Triple/Mixed'}];
+			if(cur_SurveyNumber_val.length > 0)
 			{
 				$('#addingTree').html('');
-				var curCpSurval = cur_cpSurveyNo_val.split(',');
-				var curCpLandval = cur_cpLand_val.split(',');
-				var curCpmainval = cur_cpMainCp_val.split(',');
-				var curCpInterval = cur_cpInterCp_val.split(',');
-				var curCpCroptyval = cur_cpCropTy_val.split(',');
-				var curCpRabival = cur_cpRabi_val.split(',');
-				var curCpKharifval = cur_cpKharif_val.split(',');
-				var curCpSummerval = cur_cpSummer_val.split(',');
+				var curSurveyval = cur_SurveyNumber_val.split(',');
+				var curCropIntensityval = cur_CropIntensityTL_val.split(',');
+				var curCropval = cur_CropPat_val.split(',');
+				var curIntCropval = cur_IntCropPat_val.split(',');
+				var curCropTypeval = cur_CropIntensityCT_val.split(',');
+				var curKharifval = cur_CropIntKharif_val.split(',');
+				var curRabival = cur_CropIntRabi_val.split(',');
+				var curSummerval = cur_CropIntSummer_val.split(',');
 				var fhtml ='';
 				
-				 for (var i = 0; i < curCpSurval.length; i++) {
+				 for (var i = 0; i < curSurveyval.length; i++) {
 						
 						
 						
 							
 						fhtml += '<tr id="addedFamily">';
 						fhtml += '<td><select id="selSurveyNumber" class="form-control selSurveyNumber" name="selSurveyNumber[]">';
-						fhtml += '<option value="">Prepopulated from form 1</option></select></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selCropIntensityTotalLand[]" value="'+curCpSurval[i]+'" class="form-control" /></td>';
-						fhtml += '<td><select id="" name="selCropPat[]" class="form-control selEducation">';
-						fhtml += '		<option value="">Select Crop</option>';
-								
-								$.each(crops_val,function(k,itm){
-									var seledug ='';
-									if(curCpmainval[i]==itm.cropId)
+						fhtml += '		<option value="">Select Survey</option>';
+						$.each(updatedSurveyNo_arr,function(j,itm){
+									var selSur ='';
+									if(curSurveyval[i]==itm)
 									{
-										seledug="selected='selected'";
-											
-									}
-									fhtml +='<option value="'+ itm.cropId+'" '+seledug+'>'+itm.cropName+'</option>';
-							});
-						fhtml += '</select></td>';
-						
-						
-						
-						
-						fhtml += '<td><select id="" name="selIntCropPat[]" class="form-control selEducation">';
-						fhtml += '		<option value="">Select Crop</option>';
-								
-								$.each(crops_val,function(k,itm){
-									var seledug ='';
-									if(curCpInterval[i]==itm.cropId)
-									{
-										intcp="selected='selected'";
-											
-									}
-									fhtml +='<option value="'+ itm.cropId+'" '+intcp+'>'+itm.cropName+'</option>';
-							});
-						fhtml += '</select></td>';
-						
-						
-						
-						
-						fhtml += '		<option value="">Select</option>';
-						$.each(globleCropType,function(j,itm){
-									var selgen ='';
-									if(curCpCroptyval[i]==itm.ctId)
-									{
-										selgen="selected='selected'";	
+										selSur="selected='selected'";	
 									}
 									
-									fhtml +='<option value="'+ itm.ctId+'" '+selgen+'>'+itm.ctName+'</option>';
+									fhtml +='<option value="'+ itm+'" '+selSur+'>'+itm+'</option>';
 							});
 						fhtml += '</select></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selCropIntAreaKharif[]" value="'+selCropIntAreaKharif[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selCropIntAreaRabi[]" value="'+curCpKharifval[i]+'" class="form-control" /></td>';
-						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="selCropIntAreaSummer[]" value="'+curCpSummerval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="number" id="selCropIntensityTotalLand" name="selCropIntensityTotalLand[]" value="'+curCropIntensityval[i]+'" class="form-control" /></td>';
 						
 						
 						
-						
-						
-						
-						
+						fhtml += '<td><select id="selCropPat" name="selCropPat[]" class="form-control selCropPat">';
+						fhtml += '		<option value="">Select Crop</option>';
+								
+								$.each(crops_val,function(k,itm){
+									var selcrp ='';
+									if(curCropval[i]==itm.cropId)
+									{
+										selcrp="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.cropId+'" '+selcrp+'>'+itm.cropName+'</option>';
+							});
+						fhtml += '</select></td>';
+						fhtml += '<td><select id="selIntCropPat" name="selIntCropPat[]" class="form-control selIntCropPat">';
+						fhtml += '		<option value="">Select Intercrop</option>';
+								
+								$.each(crops_val,function(k,itm){
+									var selintcrp ='';
+									if(curIntCropval[i]==itm.cropId)
+									{
+										selintcrp="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.cropId+'" '+selintcrp+'>'+itm.cropName+'</option>';
+							});
+						fhtml += '</select></td>';
+						fhtml += '<td><select id="selCropIntensityCropType" class="form-control" name="selCropIntensityCropType[]">';
+						fhtml += '		<option value="">Select Gender</option>';
+						$.each(globleCType,function(j,itm){
+									var selcType ='';
+									if(curCropTypeval[i]==itm.cTypeId)
+									{
+										selcType="selected='selected'";	
+									}
+									
+									fhtml +='<option value="'+ itm.cTypeId+'" '+selcType+'>'+itm.cTypeName+'</option>';
+							});
+						fhtml += '</select></td>';
+						fhtml += '<td><input type="number" id="selCropIntAreaKharif" name="selCropIntAreaKharif[]" value="'+curKharifval[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="number" id="selCropIntAreaRabi" name="selCropIntAreaRabi[]" value="'+curRabival[i]+'" class="form-control" /></td>';
+						fhtml += '<td><input type="number" id="selCropIntAreaSummer" name="selCropIntAreaSummer[]" value="'+curSummerval[i]+'" class="form-control" /></td>';
+
 						fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
 						fhtml += '</i>&nbsp;Delete	</button></td></tr>';
 						

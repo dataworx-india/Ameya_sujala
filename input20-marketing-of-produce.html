@@ -206,7 +206,7 @@
                                     <button type="button" id="btnBackProduceUtil" class="btn btn-blue" onclick="prevPage()">< Back</button> &nbsp;
                                     <button type="button" id="btnResetProduceUtil" class="btn btn-primary">Reset</button> &nbsp;
                                     <button type="submit" id="btnSaveProduceUtil" class="btn btn-green" onclick="saveOnly()">Save</button> &nbsp;
-                                    <button type="button" id="btnNextProduceUtil" class=" btn btn-blue" onclick="location.href = 'input21-awareness-of-watershed.html'">Next ></button>
+                                    <button type="button" id="btnNextProduceUtil" class=" btn btn-blue" onclick="save_current_form()">Next ></button>
                                 </div>
                                 <!-- buttons ends -->
                             </div>
@@ -229,6 +229,7 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -256,9 +257,7 @@
     <!--LOADING SCRIPTS FOR PAGE-->
     <script src="js/table-action.js"></script>
         <script type="text/javascript" >
-
-		
-		/* add rows */
+	/* add rows */
 
 function childRecursive(element, func){
     // Applies that function to the given element.
@@ -310,7 +309,7 @@ function clearCloneValues(element){
 //$(document).ready(function(){
     $('#btnfamilyAdd').click(function(){
         //increment the value of our counter
-        $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
+       $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
         //clone the first .item element
         var newItem = $('tr#addedFamily').first().clone();
         //recursively set our id, name, and for attributes properly
@@ -322,12 +321,17 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTree'));
+		//$('#addingTree').append(fetch_data());
+		
     });
+
 
 
 function deleteTable(btndel) {
@@ -341,7 +345,6 @@ function deleteTable(btndel) {
 
 //fetch JSON data 
 
-$(function(){
 	var crop_val = JSON.parse(localStorage.getItem('crop_det'));
 	
 	var crop_html='';
@@ -377,7 +380,6 @@ $(function(){
 
 	
 	
-});
 
 
 
@@ -499,8 +501,7 @@ var outputRetained = [];
 			 outputRetained.push($(this).val());
 	    });
 		
-		
-		
+
 var outputSold = [];
   $('input[name="outputSold[]"]').each(function() {
 			 if($(this).val()!="")
@@ -514,9 +515,7 @@ var priceObtainer = [];
 			 if($(this).val()!="")
 			 priceObtainer.push($(this).val());
 	    });		
-		
-				
-		
+	
 		set_storage_item('selCropNameMarket',selCropNameMarket);
 		set_storage_item('marketingMarketType',marketingMarketType);
 		set_storage_item('marketingTransportation',marketingTransportation);
@@ -532,15 +531,12 @@ function prevPage(){
 	
 		saveOnly();
 		location.href='input19-additional-investment-capacity.html';
-	
-	
 	}
 
 function save_current_form()
 {
 		saveOnly();
-		location.href='input20-marketing-of-produce.html';
-	
+		location.href='input21-awareness-of-watershed.html';	
 }
 
 function set_storage_item(itm,val)
@@ -550,6 +546,82 @@ function set_storage_item(itm,val)
 
 
 
+
+// back process
+
+		var cur_CropNameMarket_val = localStorage.getItem('selCropNameMarket');
+		var cur_marketingMarket_val = localStorage.getItem('marketingMarketType');
+		var cur_marketingTransportatione_val = localStorage.getItem('marketingTransportation');
+		var cur_outputObtained_val = localStorage.getItem('outputObtained');
+		var cur_outputRetained_val = localStorage.getItem('outputRetained');
+		var cur_outputSold_val = localStorage.getItem('outputSold');
+		var cur_priceObtainer_val = localStorage.getItem('priceObtainer');
+
+
+if(cur_CropNameMarket_val.length > 0)
+	{
+		$('#addingTree').html('');
+		var curCropNameval = cur_CropNameMarket_val.split(',');
+		var curMarketingMarketval = cur_marketingMarket_val.split(',');
+		var curMarketTranspval = cur_marketingTransportatione_val.split(',');
+		var curOutputObtval = cur_outputObtained_val.split(',');
+		var curOutputRetainval = cur_outputRetained_val.split(',');
+		var curoutputSoldval = cur_outputSold_val.split(',');
+		var curPriceObtval = cur_priceObtainer_val.split(',');
+		var fhtml ='';
+		
+		 for (var i = 0; i < curCropNameval.length; i++) {
+				
+				fhtml += '<tr id="addedFamily">';
+				fhtml += '<td><select id="selCropNameMarket" name="selCropNameMarket[]" class="form-control selCropNameMarket">';
+				fhtml += '		<option value="">Select </option>';
+						
+						$.each(crop_val,function(k,itm){
+							var selCrop ='';
+							if(curCropNameval[i]==itm.cropId)
+							{
+								selCrop="selected='selected'";
+									
+							}
+							fhtml +='<option value="'+ itm.cropId+'" '+selCrop+'>'+itm.cropName+'</option>';
+					});
+				fhtml += '</select></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="outputObtained[]" value="'+curOutputObtval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="outputRetained[]" value="'+curOutputRetainval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="outputSold[]" value="'+curoutputSoldval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><select id="marketingMarketType" name="marketingMarketType[]" class="form-control marketingMarketType">';
+				fhtml += '		<option value="">Select </option>';
+						
+						$.each(market_val,function(k,itm){
+							var selMarket ='';
+							if(curMarketingMarketval[i]==itm.marketTypeId)
+							{
+								selMarket="selected='selected'";
+									
+							}
+							fhtml +='<option value="'+ itm.marketTypeId+'" '+selMarket+'>'+itm.marketTypeName+'</option>';
+					});
+				fhtml += '</select></td>';
+				fhtml += '<td><select id="marketingTransportation" name="marketingTransportation[]" class="form-control marketingTransportation">';
+				fhtml += '		<option value="">Select </option>';
+						
+						$.each(transport_val,function(k,itm){
+							var selTransp ='';
+							if(curMarketTranspval[i]==itm.transportModeId)
+							{
+								selTransp="selected='selected'";
+									
+							}
+							fhtml +='<option value="'+ itm.transportModeId+'" '+selTransp+'>'+itm.transportModeName+'</option>';
+					});
+				fhtml += '</select></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="priceObtainer[]" value="'+curPriceObtval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+				fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+		 }
+
+		 $('#addingTree').append(fhtml);
+	}
 
 </script>
 </body>

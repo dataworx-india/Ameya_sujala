@@ -186,7 +186,7 @@
                                 </div>
                                 <!-- buttons starts -->
                                 <div class="pull-left" style="margin-bottom:5px;">
-                                    <button type="button" class="btn btn-violet" id="item">Add New</button>
+                                    <button type="button" class="btn btn-violet" id="btnfamilyAdd">Add New</button>
                                 </div>
                                 <div class="pull-right">
                                     <button type="button" id="btnBackAdequacyFoodMaterls" class="btn btn-blue" onclick="prevPage()">< Back</button> &nbsp;
@@ -244,7 +244,7 @@
     <script type="text/javascript" >
 
 
-		/* add rows */
+	/* add rows */
 
 function childRecursive(element, func){
     // Applies that function to the given element.
@@ -296,7 +296,7 @@ function clearCloneValues(element){
 //$(document).ready(function(){
     $('#btnfamilyAdd').click(function(){
         //increment the value of our counter
-        $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
+       $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
         //clone the first .item element
         var newItem = $('tr#addedFamily').first().clone();
         //recursively set our id, name, and for attributes properly
@@ -308,12 +308,17 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTree'));
+		//$('#addingTree').append(fetch_data());
+		
     });
+
 
 
 function deleteTable(btndel) {
@@ -324,10 +329,8 @@ function deleteTable(btndel) {
     }
 }
 
-
 //fetch JSON data 
 
-$(function(){
 	var adequacy_val = JSON.parse(localStorage.getItem('adequcyselfsuffciency_det'));
 	
 	var adequacy_html='';
@@ -335,10 +338,8 @@ $(function(){
 	$.each(adequacy_val,function(i,itm){
 		adequacy_html +='<option value="'+ itm.adequcySelfSuffciencyId +'">'+itm.adequcySelfSuffciencyName+'</option>';
 	});
-	$('.selFoodMateriall').html(adequacy_html).trigger('liszt:updated');
-	
-	
-});
+	$('.selFoodMaterial').html(adequacy_html).trigger('liszt:updated');
+
 
 
 
@@ -459,6 +460,61 @@ function set_storage_item(itm,val)
 	window.localStorage.setItem(itm,val);
 }
 
+
+
+// back process
+
+		var cur_FoodMateria_val = localStorage.getItem('selFoodMaterial');
+		var cur_foodAdeuqacy_val = localStorage.getItem('foodAdeuqacy');
+		
+		var AdqGlob = [{'respId':'1','respName':'Experienced'},{'respId':'2','respName':'Not Experienced'} ];
+		
+		if(cur_FoodMateria_val.length > 0)
+			{
+				$('#addingTree').html('');
+				var curFoodMateriaval = cur_FoodMateria_val.split(',');
+				var curfoodAdeuqacyval = cur_foodAdeuqacy_val.split(',');
+				var fhtml ='';
+				
+				for (var i = 0; i < curFoodMateriaval.length; i++) {
+					
+					fhtml += '<td><select id="selFoodMaterial" name="selFoodMaterial[]" class="form-control selFoodMaterial">';
+					fhtml += '		<option value="">Select</option>';
+								
+								$.each(adequacy_val,function(k,itm){
+									var seledug ='';
+									if(curFoodMateriaval[i]==itm.adequcySelfSuffciencyId)
+									{
+										seledug="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.adequcySelfSuffciencyId+'" '+seledug+'>'+itm.adequcySelfSuffciencyName+'</option>';
+							});
+					fhtml += '</select></td>';
+					
+					
+					fhtml += '<td><select id="foodAdeuqacy" name="foodAdeuqacy[]" class="form-control foodAdeuqacy">';
+					fhtml += '		<option value="">Select</option>';
+								
+								$.each(AdqGlob,function(k,itm){
+									var seledug ='';
+									if(cur_foodAdeuqacy_val[i]==itm.respId)
+									{
+										seledug="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.respId+'" '+seledug+'>'+itm.respName+'</option>';
+							});
+					fhtml += '</select></td>';					
+					
+					fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+					fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+					
+					
+				}
+				
+				$('#addingTree').append(fhtml);
+			}
 
 
 </script>

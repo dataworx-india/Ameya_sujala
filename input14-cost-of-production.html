@@ -72,6 +72,7 @@
         <div id="page-wrapper">
             <!--TITLE & NAVIGATION AREA STARTS -->
             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+
                 <div class="col-md-4 page-header pull-left">
                     <div class="page-title"><a href="index.html"><i class="fa fa-home"></i></a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i> Cost of Production</div>
                 </div>
@@ -175,21 +176,22 @@
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <select id="mainCrop" class="form-control mainCrop">
+                                                    <select id="copMainCrp" class="form-control copMainCrp">
                                                         <option value="">Select the Crop</option>
                                                         
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select id="interCrop" class="form-control interCrop">
+                                                    <select id="copInterCrp" class="form-control copInterCrp">
                                                         <option value="">Select the intercrop</option>
+                                                        
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <input type="number" id="landArea" min="0" placeholder="" class="form-control" />
+                                                    <input type="number" id="copAreaExt" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <select id="cropSeason" class="form-control">
+                                                    <select id="copSeason" class="form-control">
                                                         <option value="">Select the Season</option>
                                                         <option value="Kharif">Kharif</option>
                                                         <option value="Rabi">Rabi</option>
@@ -197,24 +199,24 @@
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select id="landType" class="form-control">
+                                                    <select id="copLandType" class="form-control">
                                                         <option value="">Select</option>
                                                         <option value="Dry">Dry</option>
                                                         <option value="Irrigated">Irrigated</option>
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select id="irrigationMethod" class="form-control">
+                                                    <select id="copIrriMeth" class="form-control">
                                                         <option value="">Select</option>
                                                         <option value="Sprinkler">Sprinkler</option>
                                                         <option value="Drip">Drip</option>
                                                         <option value="Flooding">Flooding</option>
                                                     </select>
                                                 </td>
-                                                <td><input type="number" id="estAcer" min="0" placeholder="" class="form-control" /></td>
-                                                <td><input type="number" id="maintAnnual" min="0" placeholder="" class="form-control" /></td>
-                                                <td><input type="number" id="gardenAge" min="0" placeholder="" class="form-control" /></td>
-                                                <td><input type="number" id="gardenLife" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input type="number" id="copEstAcer" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input type="number" id="copAnuManit" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input type="number" id="copGardenAge" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input type="number" id="copGardenSpan" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
                                     </table>
                                 </div>
@@ -226,321 +228,269 @@
                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                         <thead>
                                             <tr>
-                                                <th rowspan="2" colspan="2" style="vertical-align: middle; width: 150px;">Details of Operation</th>
-                                                <th colspan="5">Labour Use</th>
-                                                <th rowspan="2">Input (Qty.)</th>
-                                                <th rowspan="2">Amount (&#8377;)</th>
+                                                <th rowspan="3" style="vertical-align: middle; width: 150px;">Details of Operation</th>
+                                                <th colspan="10">Labour Use</th>
+                                                <th rowspan="3">Input (Qty.)</th>
+                                                <th rowspan="3">Amount (&#8377;)</th>
                                             </tr>
                                             <tr>
-                                                <th>Men (mandays)</th>
-                                                <th>Women (mandays)</th>
-                                                <th>Bullock (Pairdays)</th>
-                                                <th>Tractor (hrs)</th>
-                                                <th>Machinery (hrs)</th>
+                                                <th colspan="2">Men (mandays)</th>
+                                                <th colspan="2">Women (mandays)</th>
+                                                <th colspan="2">Bullock (Pairdays)</th>
+                                                <th colspan="2">Tractor (hrs)</th>
+                                                <th colspan="2">Machinery (hrs)</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Own</th>
+                                                <th>Hired</th>
+                                                <th>Own</th>
+                                                <th>Hired</th>
+                                                <th>Own</th>
+                                                <th>Hired</th>
+                                                <th>Own</th>
+                                                <th>Hired</th>
+                                                <th>Own</th>
+                                                <th>Hired</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td rowspan="2" style="background-color: #ffffff">Land preparation</td>
-                                                <td>Own</td>
+                                                <td style="background-color: #ffffff">Land preparation</td>
+
                                                 <td>
-                                                    <input id="ownMenLP" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="coplpOwMen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownWomenLp" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="coplpHiMen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownBullockLp" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="coplpOwWom" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownTractoeLp" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="coplpHiWom" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownMachineLp" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="coplpOwBul" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                     
+                                                    <input id="coplpHiBul" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
+                                                    <input id="coplpOwTra" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="coplpHiTra" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="coplpOwMac" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="coplpHiMac" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>&nbsp;
                                                     
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hired</td>
-                                                <td>
-                                                    <input id="hireMenLp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireWomenLp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireBullockLp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireTractorLp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireMachineLp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    
-                                                </td>
-                                                <td>
-                                                   
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td rowspan="2" style="background-color: #ffffff">Sowing / Planting</td>
-                                                <td>Own</td>
-                                                <td>
-                                                    <input id="ownMenSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownWomenSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownBullockSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownTractorSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownMachineSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownInputSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownAmountSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hired</td>
-                                                <td>
-                                                    <input id="hireMenSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireWomenSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireBullockSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireTractorSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireMachineSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireInputSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireAmountSp" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td rowspan="2">Irrigation</td>
-                                                <td>Own</td>
-                                                <td>
-                                                    <input id="ownMenIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownWomenIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownBullockIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownTractorIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownMachineIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownInputIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownAmountIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hired</td>
-                                                <td>
-                                                    <input id="hireMenIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireWomenIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireBullockIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireTractorIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireMachineIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireInputIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireAmountIrri" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td rowspan="2">Intercultural Operations</td>
-                                                <td>Own</td>
-                                                <td>
-                                                    <input id="ownMenIo" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownWomenIo" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownBullockIo" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownTractorIo" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ownMachineIo" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                     
-                                                </td>
-                                                <td>
-                                                    
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hired</td>
-                                                <td>
-                                                    <input id="hireMenIo" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireWomenIo" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireBullockIo" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireTractorIo" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="hireMachineIo" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                     
-                                                </td>
-                                                <td>
+                                                <td>&nbsp;
                                                     
                                                 </td>
                                             </tr>
 
                                             <tr>
-                                                <td rowspan="2">Weeding</td>
-                                                <td>Own</td>
+                                                <td style="background-color: #ffffff">Sowing / Planting</td>
+
                                                 <td>
-                                                    <input id="ownMenWed" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copSpOwMen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownWomenWed" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copSpHiMen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownBullockWed" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copSpOwWomen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownTractorWed" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copSpHiWomen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownMachineWed" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copSpOwBul" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                     
+                                                    <input id="copSpHiBul" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                     
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Hired</td>
-                                                <td>
-                                                    <input id="hireMenWed" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copSpOwTrac" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="hireWomenWed" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copSpHiTrac" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="hireBullockWed" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copSpOwMach" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="hireTractorWed" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copSpHiMach" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="hireMachineWed" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copSpInput" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    
-                                                </td>
-                                                <td>
-                                                     
+                                                    <input id="copSpAmount" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                             </tr>
 
-                                          
 
                                             <tr>
-                                                <td rowspan="2">Harvesting</td>
-                                                <td>Own</td>
+                                                <td>Irrigation</td>
+
                                                 <td>
-                                                    <input id="ownMenHar" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copIrriOwMen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownWomenHar" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copIrriHiMen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownBullockHar" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copIrriOwWomen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownTractorHar" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copIrriHiWomen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ownMachineHar" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copIrriOwBull" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                     
+                                                    <input id="copIrriHiBull" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                     
+                                                    <input id="copIrriOwTrac" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copIrriHiTrac" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copIrriOwMach" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copIrriHiMach" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copIrriInput" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copIrriAmount" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                             </tr>
+
+
                                             <tr>
-                                                <td>Hired</td>
+                                                <td>Intercultural Operations</td>
+
                                                 <td>
-                                                    <input id="hireMenHar" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copIOOwMen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="hireWomenHar" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copIOHiMen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="hireBullockHar" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copIOOwWomen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="hireTractorHar" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copIOHiWomen" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="hireMachineHar" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copIOOwBul" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                     
+                                                    <input id="copIOHiBul" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    
+                                                    <input id="copIOOwTrac" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
+                                                <td>
+                                                    <input id="copIOHiTrac" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copIOOwMach" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copIOHiMach" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
+
+                                            <tr>
+                                                <td>Weeding</td>
+
+                                                <td>
+                                                    <input id="copWDOwMen" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copWDHiMen" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copWDOwWomen" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copWDHiWomen" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copWDOwBull" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copWDHiBull" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copWDOwTrac" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copWDHiTrac" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copWDOwMach" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copWDHiMach" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+
+                                            <tr>
+                                                <td>Harvesting</td>
+
+                                                <td>
+                                                    <input id="copHarOwMen" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copHarHiMen" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copHarOwWomen" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copHarHiWomen" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copHarOwBull" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copHarHiBull" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copHarOwTrac" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copHarHiTrac" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copHarOwMach" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copHarHiMach" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
                                     </table>
                                 </div>
 
@@ -551,77 +501,73 @@
                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                         <thead>
                                             <tr>
-                                                <th rowspan="2" colspan="2" style="vertical-align: middle; width: 150px;">Details of PPC Application</th>
-                                                <th colspan="4">Labour Use</th>
-                                                <th rowspan="2">Input (Qty.)</th>
-                                                <th rowspan="2">Amount (&#8377;)</th>
-                                                <th rowspan="2" style="width:75px;">Delete</th>
+                                                <th rowspan="3" style="vertical-align: middle; width: 150px;">Details of PPC Application</th>
+                                                <th colspan="8">Labour Use</th>
+                                                <th rowspan="3">Input (Qty.)</th>
+                                                <th rowspan="3">Amount (&#8377;)</th>
+                                                <th rowspan="3" style="width:75px;">Delete</th>
                                             </tr>
                                             <tr>
-                                                <th>Men (mandays)</th>
-                                                <th>Women (mandays)</th>
-                                                <th>Bullock (Pairdays)</th>
-                                                <th>Tractor (hrs)</th>
+                                                <th colspan="2">Men (mandays)</th>
+                                                <th colspan="2">Women (mandays)</th>
+                                                <th colspan="2">Bullock (Pairdays)</th>
+                                                <th colspan="2">Tractor (hrs)</th> 
+                                            </tr>
+                                            <tr>
+                                                <th>Own</th>
+                                                <th>Hired</th>
+                                                <th>Own</th>
+                                                <th>Hired</th>
+                                                <th>Own</th>
+                                                <th>Hired</th>
+                                                <th>Own</th>
+                                                <th>Hired</th> 
                                             </tr>
                                         </thead>
-                                        <div id="addingTree">
+                                        <tbody id="addingTree">
                                         <input type="hidden" id="treeCounter" name="itemCounter" value="0">
-                                        <tbody id="addedFamily">
-                                        
-                                            <tr>
-                                                <td rowspan="2" style="background-color: #ffffff">
-                                                    <input id="ppcName" name="ppcName[]" type="text" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>Own</td>
+                                            <tr id="addedFamily">
+                                                <td style="background-color: #ffffff">
+                                                    <input id="copPPCName" name="copPPCName[]" type="text" placeholder="" class="form-control" />
+                                                </td> 
                                                 <td>
-                                                    <input id="ppcOwnMen" name="ppcOwnMen[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copPPCOwMen" name="copPPCOwMen[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ppcOwnWomen" name="ppcOwnMen[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copPPCHiMen" name="copPPCHiMen[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ppcOwnBullock" name="ppcOwnBullock[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copPPCOwWomen" name="copPPCOwWomen[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ppcOwnTractor" name="ppcOwnTractor[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copPPCHiWomen" name="copPPCHiWomen[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ppcOwnInput" name="ppcOwnInput[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copPPCOwBull" name="copPPCOwBull[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="ppcOwnAmount" name="ppcOwnAmount[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copPPCHiBull" name="copPPCHiBull[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
-                                                <td rowspan="2">
+                                                <td>
+                                                    <input id="copPPCOwTrac" name="copPPCOwTrac[]" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copPPCHiTrac" name="copPPCHiTrac[]" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copPPCInput" name="copPPCInput[]" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copPPCAmount" name="copPPCAmount[]" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
                                                     <button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)">
                                                         <i class="fa fa-trash-o"></i>&nbsp;
                                                         Delete
                                                     </button>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Hired</td>
-                                                <td>
-                                                    <input id="ppcHireMen" name="ppcHireMen[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ppcHireWomen" name="ppcHireWomen[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ppcHireBullock" name="ppcHireBullock[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ppcHireTractor" name="ppcHireTractor[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ppcHireInput" name="ppcHireInput[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="ppcHireAmount" name="ppcHireAmount[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
 
-                                            </tr>
-                                            </tbody>
-                                            </div>
                                     </table>
                                 </div>
                                 <div class="pull-left" style="margin-bottom:20px;">
@@ -636,97 +582,78 @@
                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                         <thead>
                                             <tr>
-                                                <th rowspan="2" colspan="2" style="vertical-align: middle; width: 150px;">Details of Fertilizer Application</th>
-                                                <th colspan="4">Labour Use</th>
-                                                <th rowspan="2">Input (Qty.)</th>
-                                                <th rowspan="2">Amount (&#8377;)</th>
-                                                <th rowspan="2" style="width:75px;">Delete</th>
+                                                <th rowspan="3" style="vertical-align: middle; width: 150px;">Details of Fertilizer Application</th>
+                                                <th colspan="8">Labour Use</th>
+                                                <th rowspan="3">Input (Qty.)</th>
+                                                <th rowspan="3">Amount (&#8377;)</th>
+                                                <th rowspan="3" style="width:75px;">Delete</th>
                                             </tr>
                                             <tr>
-                                                <th>Men (mandays)</th>
-                                                <th>Women (mandays)</th>
-                                                <th>Bullock (Pairdays)</th>
-                                                <th>Tractor (hrs)</th>
+                                                <th colspan="2">Men (mandays)</th>
+                                                <th colspan="2">Women (mandays)</th>
+                                                <th colspan="2">Bullock (Pairdays)</th>
+                                                <th colspan="2">Tractor (hrs)</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Own</th>
+                                                <th>Hired</th>
+                                                <th>Own</th>
+                                                <th>Hired</th>
+                                                <th>Own</th>
+                                                <th>Hired</th>
+                                                <th>Own</th>
+                                                <th>Hired</th>
                                             </tr>
                                         </thead>
-                                        <div id="addingTreeOne">
-                                        <input type="hidden" id="treeCounterOne" name="itemCounter" value="0">
-                                        <tbody id="addedFamilyOne">
-                                            <tr>
-                                                <td rowspan="2" style="background-color: #ffffff">
-                                                    <select id="FertilizerName" name="FertilizerName[]" class="form-control">
+                                        <tbody id="addingTreeOne">
+                                        <input type="hidden" id="treeCounterOne" name="itemCounterOne" value="0">
+                                            <tr id="addedFamilyOne">
+                                                <td style="background-color: #ffffff">
+                                                    <select id="copFertName" name="copFertName[]" class="form-control">
                                                         <option value="">Select Fertlizer/Bio-Fertilizer</option>
-                                                        <option value="Organic Manures(FYM/Compost/Vermicompost)">Organic Manures(FYM/Compost/Vermicompost)</option>
-                                                        <option value="Bio-fertilizers">Bio-fertilizers</option>
-                                                        <option value="Urea">Urea</option>
-                                                        <option value="CAN">CAN</option>
-                                                        <option value="10:26:0">10:26:0</option>
-                                                        <option value="15:15:15">15:15:15</option>
-                                                        <option value="16:20:0">16:20:0</option>
-                                                        <option value="17:17:17">17:17:17</option>
-                                                        <option value="19:19:19">19:19:19</option>
-                                                        <option value="20:20:20">20:20:20</option>
-                                                        <option value="DAP">DAP</option>
-                                                        <option value="MOP">MOP</option>
-                                                        <option value="SOP">SOP</option>
-                                                        <option value="SSP">SSP</option>
-                                                        <option value="TSP">TSP</option>
-                                                        <option value="Ammonium Sulphate">Ammonium Sulphate</option>
-                                                        <option value="Micro-nutrients">Micro-nutrients</option>
-                                                        <option value="Soil Amendments">Soil Amendments</option> 
-
+                                                        <option>Organic Manures(FYM/Compost/Vermicompost)</option>
+                                                        <option>Bio-fertilizers</option>
                                                     </select>
                                                 </td>
-                                                <td>Own</td>
+                                               
                                                 <td>
-                                                    <input id="fertMenOwn" name="fertMenOwn[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copFertOwMen" name="copFertOwMen[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="fertWomenOwn" name="fertWomenOwn[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copFertHiMen" name="copFertHiMen[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="fertBullockOwn" name="fertBullockOwn[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copFertOwWomen" name="copFertOwWomen[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="fertTractorOwn" name="fertTractorOwn[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copFertHiWomen" name="copFertHiWomen[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="fertInputOwn" name="fertInputOwn[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copFertOwBull" name="copFertOwBull[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="fertAmountOwn" name="fertAmountOwn[]" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copFertHiBull" name="copFertHiBull[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
-                                                <td rowspan="2">
+                                                <td>
+                                                    <input id="copFertOwTrac" name="copFertOwTrac[]" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copFertHiTrac" name="copFertHiTrac[]" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copFerthInput" name="copFerthInput[]" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input id="copFerthAmount" name="copFerthAmount[]" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                                <td>
                                                     <button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)">
                                                         <i class="fa fa-trash-o"></i>&nbsp;
                                                         Delete
                                                     </button>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Hired</td>
-                                                <td>
-                                                    <input id="fertMenHire" name="fertMenHire[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="fertWomenHire" name="fertWomenHire[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="fertBullockHire" name="fertBullockHire[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="fertTractorHire" name="fertTractorHire[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="fertInputHire" name="fertInputHire[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-                                                <td>
-                                                    <input id="fertAmountHire" name="fertAmountHire[]" type="number" min="0" placeholder="" class="form-control" />
-                                                </td>
-
-                                            </tr>
-                                            </tbody>
-                                            </div>
+                                           
                                     </table>
                                 </div>
                                 <div class="pull-left" style="margin-bottom:20px;">
@@ -748,49 +675,49 @@
                                         <tbody>
                                             <tr>
                                                 <td colspan="2">Electricity charges</td>
-                                                <td><input id="eleCharges" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copElectCha" type="number" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="2">Insurance expenses</td>
-                                                <td><input id="insExp" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copInsurExp" type="number" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="2">Rental Value (&#8377;/acre/year) - Irrigated</td>
-                                                <td><input id="rentVal" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copRentValIrri" type="number" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="2">Rental Value (&#8377;/acre/year) - Dryland</td>
-                                                <td><input id="rentDry" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copRentValDry" type="number" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="2">Managerial Cost</td>
-                                                <td><input id="manaCost" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copManagCost" type="number" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="2">Land Revenue</td>
-                                                <td><input id="landRevenue" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copLandRev" type="number" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
 
 
                                             <tr>
                                                 <td colspan="2">Interest on Variable Cost @ 8%</td>
-                                                <td><input id="intVarCs" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copIntVar" type="number" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="2">Interest on Fixed Cost @ 12%</td>
-                                                <td><input id="IntFixCo" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copIntFix" type="number" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="2">Miscellaneous expenses</td>
-                                                <td><input id="misExp" type="number" min="0" placeholder="" class="form-control" /></td>
-                                            </tr> 
+                                                <td><input id="copMiscExp" type="number" min="0" placeholder="" class="form-control" /></td>
+                                            </tr>
                                     </table>
                                 </div>
                                 <br />
@@ -805,32 +732,37 @@
                                                 <th colspan="2">By Product</th>
                                             </tr>
                                             <tr>
-                                                <th>Yield (Qtl.)</th>
-                                                <th>Price (&#8377;/Qtl.)</th>
-                                                <th>Yield (Qtl.)</th>
-                                                <th>Price (&#8377;/Qtl.)</th>
+                                                <th>Yield (Q)</th>
+                                                <th>Price (&#8377;/Q)</th>
+                                                <th>Yield (Q)</th>
+                                                <th>Price (&#8377;/Q)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>Crop</td>
-                                                <td><input id="cropYld" type="number" min="0" placeholder="" class="form-control" /></td>
-                                                <td><input id="cropPrice" type="number" min="0" placeholder="" class="form-control" /></td>
-                                                <td><input id="cropByYld" type="number" min="0" placeholder="" class="form-control" /></td>
-                                                <td><input id="cropByPrice" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copCrYiMP" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copCrPrMP" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copCrYiBP" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copCrPrBP" type="number" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
 
 
                                             <tr>
                                                 <td>Intercrop</td>
-                                                <td><input id="intYld" type="number" min="0" placeholder="" class="form-control" /></td>
-                                                <td><input id="intPrice" type="number" min="0" placeholder="" class="form-control" /></td>
-                                                <td><input id="intByYld" type="number" min="0" placeholder="" class="form-control" /></td>
-                                                <td><input id="intByPrice" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copICrYiMP" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copICrPrMP" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copICrYiBP" type="number" min="0" placeholder="" class="form-control" /></td>
+                                                <td><input id="copICrPrBP" type="number" min="0" placeholder="" class="form-control" /></td>
                                             </tr>
 
                                     </table>
                                 </div>
+                                <div class="col-md-4">
+                                    <h5><strong>Potential Yield (Q)</strong></h5>
+                                    <input id="copPotYei" type="number" min="0" placeholder="" class="form-control" />
+                                </div>
+                                <div class="clearfix"></div>
                                 <hr />
                                 <br />
                                 <h4>Wage Rate</h4>
@@ -848,28 +780,35 @@
                                             <tr>
                                                 <td colspan="2">Male (&#8377;/day)</td>
                                                 <td>
-                                                    <input id="maleRate" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copMalWag" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="2">Female (&#8377;/day)</td>
                                                 <td>
-                                                    <input id="femRate" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copFemWag" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="2">Bullock Pair (&#8377;/day)</td>
                                                 <td>
-                                                    <input id="bullockRate" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copBulWag" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                             </tr>
 
                                             <tr>
                                                 <td colspan="2">Tractor (&#8377;/hour)</td>
                                                 <td>
-                                                    <input id="tractorRate" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="copTracWag" type="number" min="0" placeholder="" class="form-control" />
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td colspan="2">Machinery (&#8377;/hour)</td>
+                                                <td>
+                                                    <input id="copMachWag" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                             </tr>
                                     </table>
@@ -894,8 +833,8 @@
                         </div>
                         <!-- buttons starts -->
                         <div class="pull-right" style="margin-right: 20px">
-                            <button type="button" id="btnBackProdCost" class="btn btn-blue" onclick="prevPage()">< Back</button>&nbsp;
-                            <button type="submit" id="btnResetProdCost" class="btn btn-primary" >Reset</button>&nbsp;
+                            <button type="button" id="btnBackProdCost" class="btn btn-blue" onclick="previousPage()">< Back</button>&nbsp;
+                            <button type="submit" id="btnResetProdCost" class="btn btn-primary">Reset</button>&nbsp;
                             <button type="button" id="btnSaveProdCost" class="btn btn-green" onclick="saveOnly()">Save</button>&nbsp;
                             <button type="button" id="btnNextProdCost" class=" btn btn-blue" onclick="save_current_form()">Next ></button>
                         </div>
@@ -944,178 +883,9 @@
 
     <!--LOADING SCRIPTS FOR PAGE-->
     <script src="js/table-action.js"></script>
-     <script type="text/javascript" >  
-	 
-		/* add rows */
-
-function childRecursive(element, func){
-    // Applies that function to the given element.
-    func(element);
-    var children = element.children();
-    if (children.length > 0) {
-        children.each(function (){
-            // Applies that function to all children recursively
-            childRecursive($(this), func);
-        });
-    }
-}
-
-// Expects format to be xxx-#[-xxxx] (e.g. item-1 or item-1-name)
-function getNewAttr(str, newNum){
-    // Split on -
-    var arr = str.split('');
-    // Change the 1 to wherever the incremented value is in your id
-    arr[1] = newNum;
-    // Smash it back together and return
-    return arr.join('');
-}
-
-// Written with Twitter Bootstrap form field structure in mind
-// Checks for id, name, and for attributes.
-function setCloneAttr(element, value){
-    // Check to see if the element has an id attribute
-    if (element.attr('id') !== undefined){
-        // If so, increment it
-        element.attr('id', getNewAttr(element.attr('id'),value));
-    } else { /*If for some reason you want to handle an else, here you go */}
-    // Do the same with name...
-    if(element.attr('name') !== undefined){
-       // element.attr('name', getNewAttr(element.attr('name'),value));
-    } else {}
-    // And don't forget to show some love to your labels.
-    if (element.attr('for') !== undefined){
-        element.attr('for', getNewAttr(element.attr('for'),value));
-    } else {}
-}
-
-// Sets an element's value to ''
-function clearCloneValues(element){
-    if (element.attr('value') !== undefined){
-        element.val('');
-    }
-}
-
-//$(document).ready(function(){
-    $('#btnfamilyAdd').click(function(){
-        //increment the value of our counter
-        $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
-        //clone the first .item element
-        var newItem = $('tr#addedFamily').first().clone();
-        //recursively set our id, name, and for attributes properly
-        childRecursive(newItem,
-            // Remember, the recursive function expects to be able to pass in
-            // one parameter, the element.
-            function(e){
-                setCloneAttr(e, $('#treeCounter').val());
-        });
-        // Clear the values recursively
-        childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
-        // Finally, add the new div.item to the end
-        newItem.appendTo($('#addingTree'));
-    });
-
-
-function deleteTable(btndel) {
-    if (typeof(btndel) == "object") {
-        $(btndel).closest("tr").remove();
-    } else {
-        return false;
-    }
-}
-
-		/* add rows */
-
-function childRecursive(element, func){
-    // Applies that function to the given element.
-    func(element);
-    var children = element.children();
-    if (children.length > 0) {
-        children.each(function (){
-            // Applies that function to all children recursively
-            childRecursive($(this), func);
-        });
-    }
-}
-
-// Expects format to be xxx-#[-xxxx] (e.g. item-1 or item-1-name)
-function getNewAttr(str, newNum){
-    // Split on -
-    var arr = str.split('');
-    // Change the 1 to wherever the incremented value is in your id
-    arr[1] = newNum;
-    // Smash it back together and return
-    return arr.join('');
-}
-
-// Written with Twitter Bootstrap form field structure in mind
-// Checks for id, name, and for attributes.
-function setCloneAttr(element, value){
-    // Check to see if the element has an id attribute
-    if (element.attr('id') !== undefined){
-        // If so, increment it
-        element.attr('id', getNewAttr(element.attr('id'),value));
-    } else { /*If for some reason you want to handle an else, here you go */}
-    // Do the same with name...
-    if(element.attr('name') !== undefined){
-       // element.attr('name', getNewAttr(element.attr('name'),value));
-    } else {}
-    // And don't forget to show some love to your labels.
-    if (element.attr('for') !== undefined){
-        element.attr('for', getNewAttr(element.attr('for'),value));
-    } else {}
-}
-
-// Sets an element's value to ''
-function clearCloneValues(element){
-    if (element.attr('value') !== undefined){
-        element.val('');
-    }
-}
-
-//$(document).ready(function(){
-    $('#btnfamilyAddOne').click(function(){
-        //increment the value of our counter
-        $('#treeCounterOne').val(Number($('#treeCounterOne').val()) + 1);
-        //clone the first .item element
-        var newItem = $('tr#addedFamilyOne').first().clone();
-        //recursively set our id, name, and for attributes properly
-        childRecursive(newItem,
-            // Remember, the recursive function expects to be able to pass in
-            // one parameter, the element.
-            function(e){
-                setCloneAttr(e, $('#treeCounterOne').val());
-        });
-        // Clear the values recursively
-        childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
-        // Finally, add the new div.item to the end
-        newItem.appendTo($('#addingTreeOne'));
-    });	 
-	 
-
-//Fetch Data
-	 
-$(function(){
-	var crops_cop = JSON.parse(localStorage.getItem('crop_det'));
-	
-	var crops_html='';
-	crops_html+='<option value="" >Choose</option>';
-	$.each(crops_cop,function(i,itm){
-		crops_html +='<option value="'+ itm.cropId +'">'+itm.cropName+'</option>';
-	});
-	$('#mainCrop').html(crops_html).trigger('liszt:updated');
-	$('#interCrop').html(crops_html).trigger('liszt:updated');
-
-	
-});
-
-
-//display name of the district
+    
+    <script>
+	//display name of the district
 
 var dist_val = JSON.parse(localStorage.getItem('dist_det'));
 var district_vue = JSON.parse(localStorage.getItem('selDistrict'));
@@ -1191,280 +961,607 @@ function get_current_data(arrval,keyid,keyname,keyval)
 	
 }
 
-//store data
+//fetch JSON Data
 
-function saveOnly(){
+var cropList_val = JSON.parse(localStorage.getItem('crop_det'));
+
+
+var cropList_html='';
+	cropList_html+='<option value="" >Choose</option>';
+	$.each(cropList_val,function(i,itm){
+		cropList_html +='<option value="'+ itm.cropId+'">'+itm.cropName+'</option>';
+	});
+	$('.copMainCrp').html(cropList_html).trigger('liszt:updated');
+	$('.copInterCrp').html(cropList_html).trigger('liszt:updated');
 	
-      var main_crop = document.getElementById("mainCrop").value;
-	  var inter_crop = document.getElementById("interCrop").value;
-	  var land_area = document.getElementById("landArea").value;
-	  var crop_season = document.getElementById("cropSeason").value;
-	  var land_Type = document.getElementById("landType").value;
-	  var irrigation_method = document.getElementById("irrigationMethod").value;
-	  var est_acer = document.getElementById("estAcer").value;
-	  var maint_annual = document.getElementById("maintAnnual").value;
-	  var garden_age = document.getElementById("gardenAge").value;
-	  var garden_life = document.getElementById("gardenLife").value;
-	  var ownMen_LP = document.getElementById("ownMenLP").value;
-	  var ownWomen_Lp = document.getElementById("ownWomenLp").value;
-	  var ownBullock_Lp = document.getElementById("ownBullockLp").value;
-	  var ownTractoe_Lp = document.getElementById("ownTractoeLp").value;
-	  var ownMachine_Lp = document.getElementById("ownMachineLp").value;
-	  var hireMen_Lp = document.getElementById("hireMenLp").value;
-	  var hireWomen_Lp = document.getElementById("hireWomenLp").value;
-	  var hireBullock_Lp = document.getElementById("hireBullockLp").value;
-	  var hireTractor_Lp = document.getElementById("hireTractorLp").value;
-	  var hireMachine_Lp = document.getElementById("hireMachineLp").value;
-	  var ownMen_Sp = document.getElementById("ownMenSp").value;
-	  var ownWomen_Sp = document.getElementById("ownWomenSp").value;
-	  var ownBullock_Sp = document.getElementById("ownBullockSp").value;
-	  var ownTractor_Sp = document.getElementById("ownTractorSp").value;
-	  var ownMachine_Sp = document.getElementById("ownMachineSp").value;
-	  var ownInput_Sp = document.getElementById("ownInputSp").value;
-	  var ownAmount_Sp = document.getElementById("ownAmountSp").value;
-	  var hireMen_Sp = document.getElementById("hireMenSp").value;
-	  var hireWomen_Sp = document.getElementById("hireWomenSp").value;
-	  var hireBullock_Sp = document.getElementById("hireBullockSp").value;
-	  var hireTractorSp = document.getElementById("hireTractorSp").value;
-	  var hireMachine_Sp = document.getElementById("hireMachineSp").value;
-	  var hireInput_Sp = document.getElementById("hireInputSp").value;
-	  var hireAmountSp = document.getElementById("hireAmountSp").value;
-	  var ownMen_Irri = document.getElementById("ownMenIrri").value;
-	  var ownWomen_Irri = document.getElementById("ownWomenIrri").value;
-	  var ownBullock_Irri = document.getElementById("ownBullockIrri").value;
-	  var ownTractor_Irri = document.getElementById("ownTractorIrri").value;
-	  var ownMachine_Irri = document.getElementById("ownMachineIrri").value;
-	  var ownInput_Irri = document.getElementById("ownInputIrri").value;
-	  var ownAmount_Irri = document.getElementById("ownAmountIrri").value;
-	  var hireMen_Irri = document.getElementById("hireMenIrri").value;
-	  var hireWomen_Irri = document.getElementById("hireWomenIrri").value;
-	  var hireBullock_Irri = document.getElementById("hireBullockIrri").value;
-	  var hireTractor_Irri = document.getElementById("hireTractorIrri").value;
-	  var hireMachine_Irri = document.getElementById("hireMachineIrri").value;
-	  var hireInput_Irri = document.getElementById("hireInputIrri").value;
-	  var hireAmount_Irri = document.getElementById("hireAmountIrri").value;
-	  var ownMen_Io = document.getElementById("ownMenIo").value;
-	  var ownWomen_Io = document.getElementById("ownWomenIo").value;
-	  var ownBullock_Io = document.getElementById("ownBullockIo").value;
-	  var ownTractor_Io = document.getElementById("ownTractorIo").value;
-	  var ownMachine_Io = document.getElementById("ownMachineIo").value;
-	  var hireMen_Io = document.getElementById("hireMenIo").value;
-	  var hireWomen_Io = document.getElementById("hireWomenIo").value;
-	  var hireBullock_Io = document.getElementById("hireBullockIo").value;
-	  var hireTractor_Io = document.getElementById("hireTractorIo").value;
-	  var hireMachine_Io = document.getElementById("hireMachineIo").value;
-	  var ownMen_Wed = document.getElementById("ownMenWed").value;
-	  var ownWomen_Wed = document.getElementById("ownWomenWed").value;
-	  var ownBullock_Wed = document.getElementById("ownBullockWed").value;
-	  var ownTractor_Wed = document.getElementById("ownTractorWed").value;
-	  var ownMachine_Wed = document.getElementById("ownMachineWed").value;
-	  var hireMen_Wed = document.getElementById("hireMenWed").value;
-	  var hireWomen_Wed = document.getElementById("hireWomenWed").value;
-	  var hireBullock_Wed = document.getElementById("hireBullockWed").value;
-	  var hireTractor_Wed = document.getElementById("hireTractorWed").value;
-	  var hireMachine_Wed = document.getElementById("hireMachineWed").value;
-	  var ownMen_Har = document.getElementById("ownMenHar").value;
-	  var ownWomen_Har = document.getElementById("ownWomenHar").value;
-	  var ownBullock_Har = document.getElementById("ownBullockHar").value;
-	  var ownTractor_Har = document.getElementById("ownTractorHar").value;
-	  var ownMachine_Har = document.getElementById("ownMachineHar").value;
-	  var hireMen_Har = document.getElementById("hireMenHar").value;
-	  var hireWomen_Har = document.getElementById("hireWomenHar").value;
-	  var hireBullock_Har = document.getElementById("hireBullockHar").value;
-	  var hireTractor_Har = document.getElementById("hireTractorHar").value;
-	  var hireMachine_Har = document.getElementById("hireMachineHar").value;
-	  var ppc_Name = document.getElementById("ppcName").value;
-	  var ppcOwn_Men = document.getElementById("ppcOwnMen").value;
-	  var ppcOwn_Women = document.getElementById("ppcOwnWomen").value;
-	  var ppcOwn_Bullock = document.getElementById("ppcOwnBullock").value;
-	  var ppcOwn_Tractor = document.getElementById("ppcOwnTractor").value;
-	  var ppcOwn_Input = document.getElementById("ppcOwnInput").value;
-	  var ppcOwn_Amount = document.getElementById("ppcOwnAmount").value;
-	  var ppcHire_Men = document.getElementById("ppcHireMen").value;
-	  var ppcHire_Women = document.getElementById("ppcHireWomen").value;
-	  var ppcHire_Bullock = document.getElementById("ppcHireBullock").value;
-	  var ppcHire_Tractor = document.getElementById("ppcHireTractor").value;
-	  var ppcHire_Input = document.getElementById("ppcHireInput").value;
-	  var ppcHire_Amount = document.getElementById("ppcHireAmount").value;
-	  var fertMen_Own = document.getElementById("fertMenOwn").value;
-	  var fertWomen_Own = document.getElementById("fertWomenOwn").value;
-	  var fertBullock_Own = document.getElementById("fertBullockOwn").value;
-	  var fertTractor_Own = document.getElementById("fertTractorOwn").value;
-	  var fertInput_Own = document.getElementById("fertInputOwn").value;
-	  var fertAmount_Own = document.getElementById("fertAmountOwn").value;
-	  var fertMen_Hire = document.getElementById("fertMenHire").value;
-	  var fertWomen_Hire = document.getElementById("fertWomenHire").value;
-	  var fertBullock_Hire = document.getElementById("fertBullockHire").value;
-	  var fertTractor_Hire = document.getElementById("fertTractorHire").value;
-	  var fertInput_Hire = document.getElementById("fertInputHire").value;
-	  var fertAmount_Hire = document.getElementById("fertAmountHire").value;
-	  var ele_Charges = document.getElementById("eleCharges").value;
-	  var ins_Exp = document.getElementById("insExp").value;
-	  var rent_Val = document.getElementById("rentVal").value;
-	  var rent_Dry = document.getElementById("rentDry").value;
-	  var mana_Cost = document.getElementById("manaCost").value;
-	  var land_Revenue = document.getElementById("landRevenue").value;
-	  var intVar_Cs = document.getElementById("intVarCs").value;
-	  var IntFix_Co = document.getElementById("IntFixCo").value;
-	  var mis_Exp = document.getElementById("misExp").value;
-	  var crop_Yld = document.getElementById("cropYld").value;
-	  var crop_Price = document.getElementById("cropPrice").value;
-	  var cropBy_Yld = document.getElementById("cropByYld").value;
-	  var cropBy_Price = document.getElementById("cropByPrice").value;
-	  var int_Yld = document.getElementById("intYld").value;
-	  var int_Price = document.getElementById("intPrice").value;
-	  var intBy_Yld = document.getElementById("intByYld").value;
-	  var intBy_Price = document.getElementById("intByPrice").value;
-	  var male_Rate = document.getElementById("maleRate").value;
-	  var fem_Rate = document.getElementById("femRate").value;
-	  var bullock_Rate = document.getElementById("bullockRate").value;
-	  var tractor_Rate = document.getElementById("tractorRate").value;
-	  
+	
 
-var FertilizerName = [];
-  $('select[name="FertilizerName[]"]').map(function(index,val) {
-			 if($(val).val()!="")
-			 FertilizerName[index] = ($(val).val());
+
+	/* add rows */
+
+function childRecursive(element, func){
+    // Applies that function to the given element.
+    func(element);
+    var children = element.children();
+    if (children.length > 0) {
+        children.each(function (){
+            // Applies that function to all children recursively
+            childRecursive($(this), func);
+        });
+    }
+}
+
+// Expects format to be xxx-#[-xxxx] (e.g. item-1 or item-1-name)
+function getNewAttr(str, newNum){
+    // Split on -
+    var arr = str.split('');
+    // Change the 1 to wherever the incremented value is in your id
+    arr[1] = newNum;
+    // Smash it back together and return
+    return arr.join('');
+}
+
+// Written with Twitter Bootstrap form field structure in mind
+// Checks for id, name, and for attributes.
+function setCloneAttr(element, value){
+    // Check to see if the element has an id attribute
+    if (element.attr('id') !== undefined){
+        // If so, increment it
+        element.attr('id', getNewAttr(element.attr('id'),value));
+    } else { /*If for some reason you want to handle an else, here you go */}
+    // Do the same with name...
+    if(element.attr('name') !== undefined){
+       // element.attr('name', getNewAttr(element.attr('name'),value));
+    } else {}
+    // And don't forget to show some love to your labels.
+    if (element.attr('for') !== undefined){
+        element.attr('for', getNewAttr(element.attr('for'),value));
+    } else {}
+}
+
+// Sets an element's value to ''
+function clearCloneValues(element){
+    if (element.attr('value') !== undefined){
+        element.val('');
+    }
+}
+
+//$(document).ready(function(){
+    $('#btnfamilyAdd').click(function(){
+        //increment the value of our counter
+       $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
+        //clone the first .item element
+        var newItem = $('tr#addedFamily').first().clone();
+        //recursively set our id, name, and for attributes properly
+        childRecursive(newItem,
+            // Remember, the recursive function expects to be able to pass in
+            // one parameter, the element.
+            function(e){
+                setCloneAttr(e, $('#treeCounter').val());
+        });
+        // Clear the values recursively
+        childRecursive(newItem,
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
+        // Finally, add the new div.item to the end
+        newItem.appendTo($('#addingTree'));
+		//$('#addingTree').append(fetch_data());
+		
+    });
+
+
+
+function deleteTable(btndel) {
+    if (typeof(btndel) == "object") {
+        $(btndel).closest("tr").remove();
+    } else {
+        return false;
+    }
+}
+
+
+
+	/* add rows two */
+
+function childRecursive(element, func){
+    // Applies that function to the given element.
+    func(element);
+    var children = element.children();
+    if (children.length > 0) {
+        children.each(function (){
+            // Applies that function to all children recursively
+            childRecursive($(this), func);
+        });
+    }
+}
+
+// Expects format to be xxx-#[-xxxx] (e.g. item-1 or item-1-name)
+function getNewAttr(str, newNum){
+    // Split on -
+    var arr = str.split('');
+    // Change the 1 to wherever the incremented value is in your id
+    arr[1] = newNum;
+    // Smash it back together and return
+    return arr.join('');
+}
+
+// Written with Twitter Bootstrap form field structure in mind
+// Checks for id, name, and for attributes.
+function setCloneAttr(element, value){
+    // Check to see if the element has an id attribute
+    if (element.attr('id') !== undefined){
+        // If so, increment it
+        element.attr('id', getNewAttr(element.attr('id'),value));
+    } else { /*If for some reason you want to handle an else, here you go */}
+    // Do the same with name...
+    if(element.attr('name') !== undefined){
+       // element.attr('name', getNewAttr(element.attr('name'),value));
+    } else {}
+    // And don't forget to show some love to your labels.
+    if (element.attr('for') !== undefined){
+        element.attr('for', getNewAttr(element.attr('for'),value));
+    } else {}
+}
+
+// Sets an element's value to ''
+function clearCloneValues(element){
+    if (element.attr('value') !== undefined){
+        element.val('');
+    }
+}
+
+//$(document).ready(function(){
+    $('#btnfamilyAddOne').click(function(){
+        //increment the value of our counter
+       $('#treeCounterOne').val(Number($('#treeCounterOne').val()) + 1);
+        //clone the first .item element
+        var newItem = $('tr#addedFamilyOne').first().clone();
+        //recursively set our id, name, and for attributes properly
+        childRecursive(newItem,
+            // Remember, the recursive function expects to be able to pass in
+            // one parameter, the element.
+            function(e){
+                setCloneAttr(e, $('#treeCounterOne').val());
+        });
+        // Clear the values recursively
+        childRecursive(newItem,
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
+        // Finally, add the new div.item to the end
+        newItem.appendTo($('#addingTreeOne'));
+		//$('#addingTree').append(fetch_data());
+		
+    });
+
+
+
+function deleteTable(btndel) {
+    if (typeof(btndel) == "object") {
+        $(btndel).closest("tr").remove();
+    } else {
+        return false;
+    }
+}
+
+//save data 
+
+function saveOnly() {
+	
+	
+	  var copPPCName = [];
+  $('input[name="copPPCName[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCName.push($(this).val());
 	    });
-	  
-	  
-	  set_storage_item('mainCrop',main_crop);
-	  set_storage_item('interCrop',inter_crop);
-	  set_storage_item('landArea',land_area);
-	  set_storage_item('cropSeason',crop_season);
-	  set_storage_item('landType',land_Type);
-	  set_storage_item('irrigationMethod',irrigation_method);
-	  set_storage_item('estAcer',est_acer);
-	  set_storage_item('maintAnnual',maint_annual);
-	  set_storage_item('gardenAge',garden_age);
-	  set_storage_item('gardenLife',garden_life);
-	  set_storage_item('ownMenLP',ownMen_LP);
-	  set_storage_item('ownWomenLp',ownWomen_Lp);
-	  set_storage_item('ownBullockLp',ownBullock_Lp);
-	  set_storage_item('ownTractoeLp',ownTractoe_Lp);
-	  set_storage_item('ownMachineLp',ownMachine_Lp);
-	  set_storage_item('hireMenLp',hireMen_Lp);
-	  set_storage_item('hireWomenLp',hireWomen_Lp);
-	  set_storage_item('hireBullockLp',hireBullock_Lp);
-	  set_storage_item('hireTractorLp',hireTractor_Lp);
-	  set_storage_item('hireMachineLp',hireMachine_Lp);
-	  set_storage_item('ownMenSp',ownMen_Sp);
-	  set_storage_item('ownWomenSp',ownWomen_Sp);
-	  set_storage_item('ownBullockSp',ownBullock_Sp);
-	  set_storage_item('ownTractorSp',ownTractor_Sp);
-	  set_storage_item('ownMachineSp',ownMachine_Sp);
-	  set_storage_item('ownInputSp',ownInput_Sp);
-	  set_storage_item('ownAmount_Sp',ownAmountSp);
-	  set_storage_item('hireMenSp',hireMen_Sp);
-	  set_storage_item('hireWomenSp',hireWomen_Sp);
-	  set_storage_item('hireBullockSp',hireBullock_Sp);
-	  set_storage_item('hireTractorSp',hireTractorSp);
-	  set_storage_item('hireMachineSp',hireMachine_Sp);
-	  set_storage_item('hireInputSp',hireInput_Sp);
-	  set_storage_item('hireAmountSp',hireAmountSp);
-	  set_storage_item('ownMenIrri',ownMen_Irri);
-	  set_storage_item('ownWomenIrri',ownWomen_Irri);
-	  set_storage_item('ownBullockIrri',ownBullock_Irri);
-	  set_storage_item('ownTractorIrri',ownTractor_Irri);
-	  set_storage_item('ownMachineIrri',ownMachine_Irri);
-	  set_storage_item('ownInputIrri',ownInput_Irri);
-	  set_storage_item('ownAmountIrri',ownAmount_Irri);
-	  set_storage_item('hireMenIrri',hireMen_Irri);
-	  set_storage_item('hireWomenIrri',hireWomen_Irri);
-	  set_storage_item('hireBullockIrri',hireBullock_Irri);
-	  set_storage_item('hireTractorIrri',hireTractor_Irri);
-	  set_storage_item('hireMachineIrri',hireMachine_Irri);
-	  set_storage_item('hireInputIrri',hireInput_Irri);
-	  set_storage_item('hireAmountIrri',hireAmount_Irri);
-	  set_storage_item('ownMenIo',ownMen_Io);
-	  set_storage_item('ownWomenIo',ownWomen_Io);
-	  set_storage_item('ownBullockIo',ownBullock_Io);
-	  set_storage_item('ownTractorIo',ownTractor_Io);
-	  set_storage_item('ownMachineIo',ownMachine_Io);
-	  set_storage_item('hireMenIo',hireMen_Io);
-	  set_storage_item('hireWomenIo',hireWomen_Io);
-	  set_storage_item('hireBullockIo',hireBullock_Io);
-	  set_storage_item('hireTractorIo',hireTractor_Io);
-	  set_storage_item('hireMachineIo',hireMachine_Io);
-	  set_storage_item('ownMenWed',ownMen_Wed);
-	  set_storage_item('ownWomenWed',ownWomen_Wed);
-	  set_storage_item('ownBullockWed',ownBullock_Wed);
-	  set_storage_item('ownTractorWed',ownTractor_Wed);
-	  set_storage_item('ownMachineWed',ownMachine_Wed);
-	  set_storage_item('hireMen_Wed',hireMen_Wed);
-	  set_storage_item('hireWomenWed',hireWomen_Wed);
-	  set_storage_item('hireBullockWed',hireBullock_Wed);
-	  set_storage_item('hireTractorWed',hireTractor_Wed);
-	  set_storage_item('hireMachineWed',hireMachine_Wed);
-	  set_storage_item('ownMenHar',ownMen_Har);
-	  set_storage_item('ownWomenHar',ownWomen_Har);
-	  set_storage_item('ownBullockHar',ownBullock_Har);
-	  set_storage_item('ownTractorHar',ownTractor_Har);
-	  set_storage_item('ownMachineHar',ownMachine_Har);
-	  set_storage_item('hireMenHar',hireMen_Har);
-	  set_storage_item('hireWomenHar',hireWomen_Har);
-	  set_storage_item('hireBullockHar',hireBullock_Har);
-	  set_storage_item('ppcName',ppc_Name);
-	  set_storage_item('ppcOwnMen',ppcOwn_Men);
-	  set_storage_item('ppcOwnWomen',ppcOwn_Women);
-	  set_storage_item('ppcOwnBullock',ppcOwn_Bullock);
-	  set_storage_item('ppcOwnTractor',ppcOwn_Tractor);
-	  set_storage_item('ppcOwnInput',ppcOwn_Input);
-	  set_storage_item('ppcOwnAmount',ppcOwn_Amount);
-	  set_storage_item('ppcHireMen',ppcHire_Men);
-	  set_storage_item('ppcHireWomen',ppcHire_Women);
-	  set_storage_item('ppcHireBullock',ppcHire_Bullock);
-	  set_storage_item('ppcHireTractor',ppcHire_Tractor);
-	  set_storage_item('ppcHireInput',ppcHire_Input);
-	  set_storage_item('ppcHireAmount',ppcHire_Amount);
-	  set_storage_item('FertilizerName',FertilizerName);
-	  set_storage_item('fertMenOwn',fertMen_Own);
-	  set_storage_item('fertWomenOwn',fertWomen_Own);
-	  set_storage_item('fertBullockOwn',fertBullock_Own);
-	  set_storage_item('fertTractorOwn',fertTractor_Own);
-	  set_storage_item('fertInputOwn',fertInput_Own);
-	  set_storage_item('fertAmountOwn',fertAmount_Own);
-	  set_storage_item('fertMenHire',fertMen_Hire);
-	  set_storage_item('fertWomenHire',fertWomen_Hire);
-	  set_storage_item('fertBullockHire',fertBullock_Hire);
-	  set_storage_item('fertTractorHire',fertTractor_Hire);
-	  set_storage_item('fertInputHire',fertInput_Hire);
-	  set_storage_item('fertAmountHire',fertAmount_Hire);
-	  set_storage_item('eleCharges',ele_Charges);
-	  set_storage_item('insExp',ins_Exp);
-	  set_storage_item('rentVal',rent_Val);
-	  set_storage_item('rentDry',rent_Dry);
-	  set_storage_item('manaCost',mana_Cost);
-	  set_storage_item('landRevenue',land_Revenue);
-	  set_storage_item('intVarCs',intVar_Cs);
-	  set_storage_item('IntFixCo',IntFix_Co);
-	  set_storage_item('misExp',mis_Exp);
-	  set_storage_item('cropYld',crop_Yld);
-	  set_storage_item('cropPrice',crop_Price);
-	  set_storage_item('cropByYld',cropBy_Yld);
-	  set_storage_item('cropByPrice',cropBy_Price);
-	  set_storage_item('intYld',int_Yld);
-	  set_storage_item('intPrice',intPrice);
-	  set_storage_item('intByYld',intBy_Yld);
-	  set_storage_item('intByPrice',intBy_Price);
-	  set_storage_item('maleRate',male_Rate);
-	  set_storage_item('femRate',fem_Rate);
-	  set_storage_item('bullockRate',bullock_Rate);
-	  set_storage_item('tractorRate',tractor_Rate);	
+		
+		
+		  var copPPCOwMen = [];
+  $('input[name="copPPCOwMen[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCOwMen.push($(this).val());
+	    });
+		
+			  var copPPCHiMen = [];
+  $('input[name="copPPCHiMen[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCHiMen.push($(this).val());
+	    });
+		
+			  var copPPCOwWomen = [];
+  $('input[name="copPPCOwWomen[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCOwWomen.push($(this).val());
+	    });
+		
+			  var copPPCHiWomen = [];
+  $('input[name="copPPCHiWomen[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCHiWomen.push($(this).val());
+	    });
+		
+			  var copPPCOwBull = [];
+  $('input[name="copPPCOwBull[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCOwBull.push($(this).val());
+	    });
+		
+			  var copPPCHiBull = [];
+  $('input[name="copPPCHiBull[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCHiBull.push($(this).val());
+	    });
+		
+			  var copPPCOwTrac = [];
+  $('input[name="copPPCOwTrac[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCOwTrac.push($(this).val());
+	    });
+		
+			  var copPPCHiTrac = [];
+  $('input[name="copPPCHiTrac[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCHiTrac.push($(this).val());
+	    });
+		
+			  var copPPCInput = [];
+  $('input[name="copPPCInput[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCInput.push($(this).val());
+	    });
+		
+			  var copPPCAmount = [];
+  $('input[name="copPPCAmount[]"]').each(function() {
+			 if($(this).val()!="")
+			 copPPCAmount.push($(this).val());
+	    });
+		
+		
+		
+		 var copFertName = [];
+  $('select[name="copFertName[]"]').map(function(index, val) {
+			 if($(val).val()!="")
+			 copFertName[index] = ($(val).val());
+	    });
+		
+		
+		
+		var copFertOwMen = [];
+  $('input[name="copFertOwMen[]"]').each(function() {
+			 if($(this).val()!="")
+			 copFertOwMen.push($(this).val());
+	    });
+		
+		
+		var copFertHiMen = [];
+  $('input[name="copFertHiMen[]"]').each(function() {
+			 if($(this).val()!="")
+			 copFertHiMen.push($(this).val());
+	    });
 	
-	}
+	
+	
+	var copFertOwWomen = [];
+  $('input[name="copFertOwWomen[]"]').each(function() {
+			 if($(this).val()!="")
+			 copFertOwWomen.push($(this).val());
+	    });
+		
+		
+		var copFertHiWomen = [];
+  $('input[name="copFertHiWomen[]"]').each(function() {
+			 if($(this).val()!="")
+			 copFertHiWomen.push($(this).val());
+	    });
+		
+		
+		
+		var copFertOwBull = [];
+  $('input[name="copFertOwBull[]"]').each(function() {
+			 if($(this).val()!="")
+			 copFertOwBull.push($(this).val());
+	    });
+		
+		
+		
+		var copFertHiBull = [];
+  $('input[name="copFertHiBull[]"]').each(function() {
+			 if($(this).val()!="")
+			 copFertHiBull.push($(this).val());
+	    });
+		
+		
+		
+		var copFertOwTrac = [];
+  $('input[name="copFertOwTrac[]"]').each(function() {
+			 if($(this).val()!="")
+			 copFertOwTrac.push($(this).val());
+	    });
+		
+		
+		
+		var copFertHiTrac = [];
+  $('input[name="copFertHiTrac[]"]').each(function() {
+			 if($(this).val()!="")
+			 copFertHiTrac.push($(this).val());
+	    });
+		
+		
+		
+		var copFerthInput = [];
+  $('input[name="copFerthInput[]"]').each(function() {
+			 if($(this).val()!="")
+			 copFerthInput.push($(this).val());
+	    });
+		
+		
+		
+		var copFerthAmount = [];
+  $('input[name="copFerthAmount[]"]').each(function() {
+			 if($(this).val()!="")
+			 copFerthAmount.push($(this).val());
+	    });
+		
+		
+		var CostcopMainCrp = document.getElementById("copMainCrp").value;
+		var CostcopInterCrp = document.getElementById("copInterCrp").value;
+		var CostcopAreaExt = document.getElementById("copAreaExt").value;
+		var CostcopSeason = document.getElementById("copSeason").value;
+		var CostcopLandType = document.getElementById("copLandType").value;
+		var CostcopIrriMeth = document.getElementById("copIrriMeth").value;
+		var CostcopEstAcer = document.getElementById("copEstAcer").value;
+		var CostcopAnuManit = document.getElementById("copAnuManit").value;
+		var CostcopGardenAge = document.getElementById("copGardenAge").value;
+		var CostcopGardenSpan = document.getElementById("copGardenSpan").value;
+		
+		
+		
+		
+		
+		var CostcoplpOwMen = document.getElementById("coplpOwMen").value;
+		var CostcoplpHiMen = document.getElementById("coplpHiMen").value;
+		var CostcoplpOwWom = document.getElementById("coplpOwWom").value;
+		var CostcoplpHiWom = document.getElementById("coplpHiWom").value;
+		var CostcoplpOwBul = document.getElementById("coplpOwBul").value;
+		var CostcoplpHiBul = document.getElementById("coplpHiBul").value;
+		var CostcoplpOwTra = document.getElementById("coplpOwTra").value;
+		var CostcoplpHiTra = document.getElementById("coplpHiTra").value;
+		var CostcoplpOwMac = document.getElementById("coplpOwMac").value;
+		var CostcoplpHiMac = document.getElementById("coplpHiMac").value;
+		var CostcopSpOwMen = document.getElementById("copSpOwMen").value;
+		var CostcopSpHiMen = document.getElementById("copSpHiMen").value;
+		var CostcopSpOwWomen = document.getElementById("copSpOwWomen").value;
+		var CostcopSpHiWomen = document.getElementById("copSpHiWomen").value;
+		var CostcopSpOwBul = document.getElementById("copSpOwBul").value;
+		var CostcopSpHiBul = document.getElementById("copSpHiBul").value;
+		var CostcopSpOwTrac = document.getElementById("copSpOwTrac").value;
+		var CostcopSpHiTrac = document.getElementById("copSpHiTrac").value;
+		var CostcopSpOwMach = document.getElementById("copSpOwMach").value;
+		var CostcopSpHiMach = document.getElementById("copSpHiMach").value;
+		var CostcopSpHiInput = document.getElementById("copSpInput").value;
+		var CostcopSpAmount = document.getElementById("copSpAmount").value;
+		var CostcopIrriOwMen = document.getElementById("copIrriOwMen").value;
+		var CostcopIrriHiMen = document.getElementById("copIrriHiMen").value;
+		var CostcopIrriOwWomen = document.getElementById("copIrriOwWomen").value;
+		var CostcopIrriHiWomen = document.getElementById("copIrriHiWomen").value;
+		var CostcopIrriOwBull = document.getElementById("copIrriOwBull").value;
+		var CostcopIrriHiBull = document.getElementById("copIrriHiBull").value;
+		var CostcopIrriOwTrac = document.getElementById("copIrriOwTrac").value;
+		var CostcopIrriHiTrac = document.getElementById("copIrriHiTrac").value;
+		var CostcopIrriOwMach = document.getElementById("copIrriOwMach").value;
+		var CostcopIrriHiMach = document.getElementById("copIrriHiMach").value;
+		var CostcopIrriInput = document.getElementById("copIrriInput").value;
+		var CostcopIrriAmount = document.getElementById("copIrriAmount").value;
+		var CostcopIOOwMen = document.getElementById("copIOOwMen").value;
+		var CostcopIOHiMen = document.getElementById("copIOHiMen").value;
+		var CostcopIOOwWomen = document.getElementById("copIOOwWomen").value;
+		var CostcopIOHiWomen = document.getElementById("copIOHiWomen").value;
+		var CostcopIOOwBul = document.getElementById("copIOOwBul").value;
+		var CostcopIOHiBul = document.getElementById("copIOHiBul").value;
+		var CostcopIOOwTrac = document.getElementById("copIOOwTrac").value;
+		var CostcopIOHiTrac = document.getElementById("copIOHiTrac").value;
+		var CostcopIOOwMach = document.getElementById("copIOOwMach").value;
+		var CostcopIOHiMach = document.getElementById("copIOHiMach").value;
+		var CostcopWDOwMen = document.getElementById("copWDOwMen").value;
+		var CostcopWDHiMen = document.getElementById("copWDHiMen").value;
+		var CostcopWDOwWomen = document.getElementById("copWDOwWomen").value;
+		var CostcopWDHiWomen = document.getElementById("copWDHiWomen").value;
+		var CostcopWDOwBull = document.getElementById("copWDOwBull").value;
+		var CostcopWDHiBull = document.getElementById("copWDHiBull").value;
+		var CostcopWDOwTrac = document.getElementById("copWDOwTrac").value;
+		var CostcopWDHiTrac = document.getElementById("copWDHiTrac").value;
+		var CostcopWDOwMach = document.getElementById("copWDOwMach").value;
+		var CostcopWDHiMach = document.getElementById("copWDHiMach").value;
+		var CostcopHarOwMen = document.getElementById("copHarOwMen").value;
+		var CostcopHarHiMen = document.getElementById("copHarHiMen").value;
+		var CostcopHarOwWomen = document.getElementById("copHarOwWomen").value;
+		var CostcopHarHiWomen = document.getElementById("copHarHiWomen").value;
+		var CostcopHarOwBull = document.getElementById("copHarOwBull").value;
+		var CostcopHarHiBull = document.getElementById("copHarHiBull").value;
+		var CostcopHarOwTrac = document.getElementById("copHarOwTrac").value;
+		var CostcopHarHiTrac = document.getElementById("copHarHiTrac").value;
+		var CostcopHarOwMach = document.getElementById("copHarOwMach").value;
+		var CostcopHarHiMach = document.getElementById("copHarHiMach").value;
+		
+		
+		
+		
+		
+		var CostcopElectCha = document.getElementById("copElectCha").value;
+		var CostcopInsurExp = document.getElementById("copInsurExp").value;
+		var CostcopRentValIrri = document.getElementById("copRentValIrri").value;
+		var CostcopRentValDry = document.getElementById("copRentValDry").value;
+		var CostcopManagCost = document.getElementById("copManagCost").value;
+		var CostcopLandRev = document.getElementById("copLandRev").value;
+		var CostcopIntVar = document.getElementById("copIntVar").value;
+		var CostcopIntFix = document.getElementById("copIntFix").value;
+		var CostcopMiscExp = document.getElementById("copMiscExp").value;
+		var CostcopCrYiMP = document.getElementById("copCrYiMP").value;
+		//var CostcopCrPRMP = document.getElementById("copCrPRMP").value;
+		var CostcopCrYiBP = document.getElementById("copCrYiBP").value;
+		var CostcopCrPrBP = document.getElementById("copCrPrBP").value;
+		var CostcopICrYiMP = document.getElementById("copICrYiMP").value;
+		var CostcopICrPrMP = document.getElementById("copICrPrMP").value;
+		var CostcopICrYiBP = document.getElementById("copICrYiBP").value;
+		var CostcopICrPrBP = document.getElementById("copICrPrBP").value;
+		var CostcopPotYei = document.getElementById("copPotYei").value;
+		var CostcopMalWag = document.getElementById("copMalWag").value;
+		var CostcopFemWag = document.getElementById("copFemWag").value;
+		var CostcopBulWag = document.getElementById("copBulWag").value;
+		var CostcopTracWag = document.getElementById("copTracWag").value;
+		var CostcopMachWag = document.getElementById("copMachWag").value;	
+		
+		
+		
+		
+		
+		
+		set_storage_item('copFerthAmount',copFerthAmount);
+		set_storage_item('copFerthInput',copFerthInput);
+		set_storage_item('copPPCName',copPPCName);
+		set_storage_item('copPPCOwMen',copPPCOwMen);
+		set_storage_item('copPPCHiMen',copPPCHiMen);
+		set_storage_item('copPPCOwWomen',copPPCOwWomen);
+		set_storage_item('copPPCHiWomen',copPPCHiWomen);
+		set_storage_item('copPPCOwBull',copPPCOwBull);
+		set_storage_item('copPPCHiBull',copPPCHiBull);
+		set_storage_item('copPPCOwTrac',copPPCOwTrac);
+		set_storage_item('copPPCHiTrac',copPPCHiTrac);
+		set_storage_item('copPPCInput',copPPCInput);
+		set_storage_item('copPPCAmount',copPPCAmount);
+		set_storage_item('copFertName',copFertName);
+		set_storage_item('copFertOwMen',copFertOwMen);
+		set_storage_item('copFertHiMen',copFertHiMen);
+		set_storage_item('copFertOwWomen',copFertOwWomen);
+		set_storage_item('copFertHiWomen',copFertHiWomen);
+		set_storage_item('copFertOwBull',copFertOwBull);
+		set_storage_item('copFertHiBull',copFertHiBull);
+		set_storage_item('copFertOwTrac',copFertOwTrac);
+		set_storage_item('copFertHiTrac',copFertHiTrac);
+		set_storage_item('copFertHiTrac',copFertHiTrac);
+		set_storage_item('copFertHiTrac',copFertHiTrac);
+		set_storage_item('copMainCrp',CostcopMainCrp);
+		set_storage_item('copInterCrp',CostcopInterCrp);
+		set_storage_item('copAreaExt',CostcopAreaExt);
+		set_storage_item('copSeason',CostcopSeason);
+		set_storage_item('copLandType',CostcopLandType);
+		set_storage_item('copIrriMeth',CostcopIrriMeth);
+		set_storage_item('copEstAcer',CostcopEstAcer);
+		set_storage_item('copAnuManit',CostcopAnuManit);
+		set_storage_item('copGardenAge',CostcopGardenAge);
+		set_storage_item('copGardenSpan',CostcopGardenSpan);
+		set_storage_item('coplpOwMen',CostcoplpOwMen);
+		set_storage_item('coplpHiMen',CostcoplpHiMen);
+		set_storage_item('coplpOwWom',CostcoplpOwWom);
+		set_storage_item('coplpHiWom',CostcoplpHiWom);
+		set_storage_item('coplpOwBul',CostcoplpOwBul);
+		set_storage_item('coplpHiBul',CostcoplpHiBul);
+		set_storage_item('coplpOwTra',CostcoplpOwTra);
+		set_storage_item('coplpHiTra',CostcoplpHiTra);
+		set_storage_item('coplpOwMac',CostcoplpOwMac);
+		set_storage_item('coplpHiMac',CostcoplpHiMac);
+		set_storage_item('copSpOwMen',CostcopSpOwMen);
+		set_storage_item('copSpHiMen',CostcopSpHiMen);
+		set_storage_item('copSpOwWomen',CostcopSpOwWomen);
+		set_storage_item('copSpHiWomen',CostcopSpHiWomen);
+		set_storage_item('copSpOwBul',CostcopSpOwBul);
+		set_storage_item('copSpHiBul',CostcopSpHiBul);
+		set_storage_item('copSpOwTrac',CostcopSpOwTrac);
+		set_storage_item('copSpHiTrac',CostcopSpHiTrac);
+		set_storage_item('copSpOwMach',CostcopSpOwMach);
+		set_storage_item('copSpHiMach',CostcopSpHiMach);
+		set_storage_item('copSpInput',CostcopSpHiInput);
+		set_storage_item('copSpAmount',CostcopSpAmount);
+		set_storage_item('copIrriOwMen',CostcopIrriOwMen);
+		set_storage_item('copIrriHiMen',CostcopIrriHiMen);
+		set_storage_item('copIrriOwWomen',CostcopIrriOwWomen);
+		set_storage_item('copIrriHiWomen',CostcopIrriHiWomen);
+		set_storage_item('copIrriOwBull',CostcopIrriOwBull);
+		set_storage_item('copIrriHiBull',CostcopIrriHiBull);
+		set_storage_item('copIrriOwTrac',CostcopIrriOwTrac);
+		set_storage_item('copIrriHiTrac',CostcopIrriHiTrac);
+		set_storage_item('copIrriOwMach',CostcopIrriOwMach);
+		set_storage_item('copIrriHiMach',CostcopIrriHiMach);
+		set_storage_item('copIrriInput',CostcopIrriInput);
+		set_storage_item('copIrriAmount',CostcopIrriAmount);
+		set_storage_item('copIOOwMen',CostcopIOOwMen);
+		set_storage_item('copIOHiMen',CostcopIOHiMen);
+		set_storage_item('copIOOwWomen',CostcopIOOwWomen);
+		set_storage_item('copIOHiWomen',CostcopIOHiWomen);
+		set_storage_item('copIOOwBul',CostcopIOOwBul);
+		set_storage_item('copIOHiBul',CostcopIOHiBul);
+		set_storage_item('copIOOwTrac',CostcopIOOwTrac);
+		set_storage_item('copIOHiTrac',CostcopIOHiTrac);
+		set_storage_item('copIOOwMach',CostcopIOOwMach);
+		set_storage_item('copIOHiMach',CostcopIOHiMach);
+		set_storage_item('copWDOwMen',CostcopWDOwMen);
+		set_storage_item('copWDHiMen',CostcopWDHiMen);
+		set_storage_item('copWDOwWomen',CostcopWDOwWomen);
+		set_storage_item('copWDHiWomen',CostcopWDHiWomen);
+		set_storage_item('copWDOwBull',CostcopWDOwBull);
+		set_storage_item('copWDHiBull',CostcopWDHiBull);
+		set_storage_item('copWDOwTrac',CostcopWDOwTrac);
+		set_storage_item('copWDHiTrac',CostcopWDHiTrac);
+		set_storage_item('copWDOwMach',CostcopWDOwMach);
+		set_storage_item('copWDHiMach',CostcopWDHiMach);
+		set_storage_item('copHarOwMen',CostcopHarOwMen);
+		set_storage_item('copHarHiMen',CostcopHarHiMen);
+		set_storage_item('copHarOwWomen',CostcopHarOwWomen);
+		set_storage_item('copHarOwWomen',CostcopHarHiWomen);
+		set_storage_item('copHarHiWomen',CostcopHarHiWomen);
+		set_storage_item('copHarOwBull',CostcopHarOwBull);
+		set_storage_item('copHarHiBull',CostcopHarHiBull);
+		set_storage_item('copHarOwTrac',CostcopHarOwTrac);
+		set_storage_item('copHarHiTrac',CostcopHarHiTrac);
+		set_storage_item('copHarOwMach',CostcopHarOwMach);
+		set_storage_item('copHarHiMach',CostcopHarHiMach);
+		set_storage_item('copElectCha',CostcopElectCha);
+		set_storage_item('copInsurExp',CostcopInsurExp);
+		set_storage_item('copRentValIrri',CostcopRentValIrri);
+		set_storage_item('copRentValDry',CostcopRentValDry);
+		set_storage_item('copManagCost',CostcopManagCost);
+		set_storage_item('copLandRev',CostcopLandRev);
+		set_storage_item('copIntVar',CostcopIntVar);
+		set_storage_item('copIntFix',CostcopIntFix);
+		set_storage_item('copMiscExp',CostcopMiscExp);
+		set_storage_item('copCrYiMP',CostcopCrYiMP);
+		//set_storage_item('copCrPRMP',CostcopCrPRMP);
+		set_storage_item('copCrYiBP',CostcopCrYiBP);
+		set_storage_item('copCrPrBP',CostcopCrPrBP);
+		set_storage_item('copICrYiMP',CostcopICrYiMP);
+		set_storage_item('copICrPrMP',CostcopICrPrMP);
+		set_storage_item('copICrYiBP',CostcopICrYiBP);
+		set_storage_item('copICrPrBP',CostcopICrPrBP);
+		set_storage_item('copPotYei',CostcopPotYei);
+		set_storage_item('copMalWag',CostcopMalWag);
+		set_storage_item('copFemWag',CostcopFemWag);
+		set_storage_item('copBulWag',CostcopBulWag);
+		set_storage_item('copTracWag',CostcopTracWag);
+		set_storage_item('copMachWag',CostcopMachWag);
+		
+		
+	
+}
 
-function prevPage(){
-	
-		saveOnly();   
-	   location.href='input13-borrowing-status.html';
-	
+
+function previousPage(){
+		saveOnly();
+		location.href = 'input13-borrowing-status.html';
+		
 	}
+	
 
 function save_current_form()
-    {
-		saveOnly();   
-	   location.href='input15-cost-of-production-on-subsidiary-enterprises.html';
+{
+
+	saveOnly();
+	
+	location.href='input15-cost-of-production-on-subsidiary-enterprises.html';
 }
 
 
@@ -1474,6 +1571,523 @@ function set_storage_item(itm,val)
 }
 
 
-</script>
+//back Function 
+
+var cur_copPPCName_val = localStorage.getItem('copPPCName');
+var cur_copPPCOwMen_val = localStorage.getItem('copPPCOwMen');
+var cur_copPPCHiMen_val = localStorage.getItem('copPPCHiMen');
+var cur_copPPCOwWomen_val = localStorage.getItem('copPPCOwWomen');
+var cur_copPPCHiWomen_val = localStorage.getItem('copPPCHiWomen');
+var cur_copPPCOwBull_val = localStorage.getItem('copPPCOwBull');
+var cur_copPPCHiBull_val = localStorage.getItem('copPPCHiBull');
+var cur_copPPCOwTrac_val = localStorage.getItem('copPPCOwTrac');
+var cur_copPPCHiTrac_val = localStorage.getItem('copPPCHiTrac');
+var cur_copPPCInput_val = localStorage.getItem('copPPCInput');
+var cur_copPPCAmount_val = localStorage.getItem('copPPCAmount');
+
+
+if(cur_copPPCName_val.length > 0)
+
+			{
+
+$('#addingTree').html('');
+				var curPPCNameval = cur_copPPCName_val.split(',');
+				var curPPCOwMenval = cur_copPPCOwMen_val.split(',');
+				var curPPCHiMenval = cur_copPPCHiMen_val.split(',');
+				var curPPCOwWomenval = cur_copPPCOwWomen_val.split(',');
+				var curPPCHiWomenval = cur_copPPCHiWomen_val.split(',');
+				var curPPCOwBullval = cur_copPPCOwBull_val.split(',');
+				var curPPCHiBullval = cur_copPPCHiBull_val.split(',');
+				var curPPCOwTracval = cur_copPPCOwTrac_val.split(',');
+				var curPPCHiTracval = cur_copPPCHiTrac_val.split(',');
+				var curPPCInpuval = cur_copPPCInput_val.split(',');
+				var curPPCAmountval = cur_copPPCAmount_val.split(',');
+				var fhtml ='';
+
+	for (var i = 0; i < curPPCNameval.length; i++) {
+		
+				fhtml += '<tr id="addedFamily">';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCName[]" value="'+curPPCNameval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCOwMen[]" value="'+curPPCOwMenval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCHiMen[]" value="'+curPPCHiMenval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCOwWomen[]" value="'+curPPCOwWomenval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCHiWomen[]" value="'+curPPCHiWomenval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCOwBull[]" value="'+curPPCOwBullval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCHiBull[]" value="'+curPPCHiBullval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCOwTrac[]" value="'+curPPCOwTracval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCHiTrac[]" value="'+curPPCHiTracval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCInput[]" value="'+curPPCInpuval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copPPCAmount[]" value="'+curPPCAmountval[i]+'" class="form-control" /></td>';
+				
+				
+				
+				
+				fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+				fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+	
+			}
+			$('#addingTree').append(fhtml);
+}
+
+
+
+
+
+var cur_copFertName_val = localStorage.getItem('copFertName');
+var cur_copFertOwMen_val = localStorage.getItem('copFertOwMen');
+var cur_copFertHiMen_val = localStorage.getItem('copFertHiMen');
+var cur_copFertOwWomen_val = localStorage.getItem('copFertOwWomen');
+var cur_copFertHiWomen_val = localStorage.getItem('copFertHiWomen');
+var cur_copFertOwBull_val = localStorage.getItem('copFertOwBull');
+var cur_copFertHiBull_val = localStorage.getItem('copFertHiBull');
+var cur_copFertOwTrac_val = localStorage.getItem('copFertOwTrac');
+var cur_copFertHiTrac_val = localStorage.getItem('copFertHiTrac');
+var cur_copFerthInput_val = localStorage.getItem('copFerthInput');
+var cur_copFerthAmount_val = localStorage.getItem('copFerthAmount');
+
+var globlefert = [{'fertId':'Organic Manures(FYM/Compost/Vermicompost)','fertName':'Organic Manures(FYM/Compost/Vermicompost)'}, {'fertId':'Bio-fertilizers','fertName':'Bio-fertilizers'}];
+if(cur_copFertName_val.length > 0)
+
+			{
+
+$('#addingTreeOne').html('');
+				var curFertNameval = cur_copFertName_val.split(',');
+				var curFertOwMenval = cur_copFertOwMen_val.split(',');
+				var curFertHiMenval = cur_copFertHiMen_val.split(',');
+				var curFertOwWomenval = cur_copFertOwWomen_val.split(',');
+				var curFertHiWomenval = cur_copFertHiWomen_val.split(',');
+				var curFertOwBullval = cur_copFertOwBull_val.split(',');
+				var curFertHiBullval = cur_copFertHiBull_val.split(',');
+				var curFertOwTracval = cur_copFertOwTrac_val.split(',');
+				var curFertHiTracval = cur_copFertHiTrac_val.split(',');
+				var curFerthInputval = cur_copFerthInput_val.split(',');
+				var curFerthAmountval = cur_copFerthAmount_val.split(',');
+				var fhtml ='';
+
+	for (var i = 0; i < curFertNameval.length; i++) {
+		
+				fhtml += '<tr id="addedFamily">';
+				fhtml += '<td><select id="copFertName" class="form-control" name="copFertName[]">';
+						fhtml += '		<option value="">Select</option>';
+						$.each(globlefert,function(j,itm){
+									var selgen ='';
+									if(curFertNameval[i]==itm.fertId)
+									{
+										selgen="selected='selected'";	
+									}
+									
+									fhtml +='<option value="'+ itm.fertId+'" '+selgen+'>'+itm.fertName+'</option>';
+							});
+						fhtml += '</select></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copFertOwMen[]" value="'+curFertOwMenval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copFertHiMen[]" value="'+curFertHiMenval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copFertOwWomen[]" value="'+curFertOwWomenval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copFertHiWomen[]" value="'+curFertHiWomenval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copFertOwBull[]" value="'+curFertOwBullval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copFertHiBull[]" value="'+curFertHiBullval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copFertOwTrac[]" value="'+curFertOwTracval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copFertHiTrac[]" value="'+curFertHiTracval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copFerthInput[]" value="'+curFerthInputval[i]+'" class="form-control" /></td>';
+				fhtml += '<td><input type="text" id="" min="0" placeholder="" name="copFerthAmount[]" value="'+curFerthAmountval[i]+'" class="form-control" /></td>';
+				
+				
+				
+				
+				fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+				fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+	
+			}
+			$('#addingTreeOne').append(fhtml);
+}
+
+
+
+var cur_copMainCrp_val = localStorage.getItem('copMainCrp');
+var cur_copInterCrp_val = localStorage.getItem('copInterCrp');
+var cur_copAreaExt_val = localStorage.getItem('copAreaExt');
+var cur_copSeason_val = localStorage.getItem('copSeason');
+var cur_copLandType_val = localStorage.getItem('copLandType');
+var cur_copIrriMeth_val = localStorage.getItem('copIrriMeth');
+var cur_copEstAcer_val = localStorage.getItem('copEstAcer');
+var cur_copAnuManit_val = localStorage.getItem('copAnuManit');
+var cur_copGardenAge_val = localStorage.getItem('copGardenAge');
+var cur_copGardenSpan_val = localStorage.getItem('copGardenSpan');
+
+
+var cur_coplpOwMen_val = localStorage.getItem('coplpOwMen');
+var cur_coplpHiMen_val = localStorage.getItem('coplpHiMen');
+var cur_coplpOwWom_val = localStorage.getItem('coplpOwWom');
+var cur_coplpHiWom_val = localStorage.getItem('coplpHiWom');
+var cur_coplpOwBul_val = localStorage.getItem('coplpOwBul');
+var cur_coplpHiBul_val = localStorage.getItem('coplpHiBul');
+var cur_coplpOwTra_val = localStorage.getItem('coplpOwTra');
+var cur_coplpHiTra_val = localStorage.getItem('coplpHiTra');
+var cur_coplpOwMac_val = localStorage.getItem('coplpOwMac');
+var cur_coplpHiMac_val = localStorage.getItem('coplpHiMac');
+var cur_copSpOwMen_val = localStorage.getItem('copSpOwMen');
+var cur_copSpHiMen_val = localStorage.getItem('copSpHiMen');
+var cur_copSpOwWomen_val = localStorage.getItem('copSpOwWomen');
+var cur_copSpHiWomen_val = localStorage.getItem('copSpHiWomen');
+var cur_copSpOwBul_val = localStorage.getItem('copSpOwBul');
+var cur_copSpHiBul_val = localStorage.getItem('copSpHiBul');
+var cur_copSpOwTrac_val = localStorage.getItem('copSpOwTrac');
+var cur_copSpHiTrac_val = localStorage.getItem('copSpHiTrac');
+var cur_copSpOwMach_val = localStorage.getItem('copSpOwMach');
+var cur_copSpHiMach_val = localStorage.getItem('copSpHiMach');
+var cur_copSpInput_val = localStorage.getItem('copSpInput');
+var cur_copSpAmount_val = localStorage.getItem('copSpAmount');
+var cur_copIrriOwMen_val = localStorage.getItem('copIrriOwMen');
+var cur_copIrriHiMen_val = localStorage.getItem('copIrriHiMen');
+var cur_copIrriOwWomen_val = localStorage.getItem('copIrriOwWomen');
+var cur_copIrriHiWomen_val = localStorage.getItem('copIrriHiWomen');
+var cur_copIrriOwBull_val = localStorage.getItem('copIrriOwBull');
+var cur_copIrriOwTrac_val = localStorage.getItem('copIrriOwTrac');
+var cur_copIrriHiTrac_val = localStorage.getItem('copIrriHiTrac');
+var cur_copIrriOwMach_val = localStorage.getItem('copIrriOwMach');
+var cur_copIrriHiMach_val = localStorage.getItem('copIrriHiMach');
+var cur_copIrriInput_val = localStorage.getItem('copIrriInput');
+var cur_copIrriAmount_val = localStorage.getItem('copIrriAmount');
+var cur_copIOOwMen_val = localStorage.getItem('copIOOwMen');
+var cur_copIOHiMen_val = localStorage.getItem('copIOHiMen');
+var cur_copIOOwWomen_val = localStorage.getItem('copIOOwWomen');
+var cur_copIOHiWomen_val = localStorage.getItem('copIOHiWomen');
+var cur_copIOOwBul_val = localStorage.getItem('copIOOwBul');
+var cur_copIOHiBul_val = localStorage.getItem('copIOHiBul');
+var cur_copIOOwTrac_val = localStorage.getItem('copIOOwTrac');
+var cur_copIOHiTrac_val = localStorage.getItem('copIOHiTrac');
+var cur_copIOOwMach_val = localStorage.getItem('copIOOwMach');
+var cur_copIOHiMachval = localStorage.getItem('copIOHiMach');
+var cur_copWDOwMen_val = localStorage.getItem('copWDOwMen');
+var cur_copWDHiMen_val = localStorage.getItem('copWDHiMen');
+var cur_copWDOwWomen_val = localStorage.getItem('copWDOwWomen');
+var cur_copWDHiWomen_val = localStorage.getItem('copWDHiWomen');
+var cur_copWDOwBull_val = localStorage.getItem('copWDOwBull');
+var cur_copWDHiBull_val = localStorage.getItem('copWDHiBull');
+var cur_copWDOwTrac_val = localStorage.getItem('copWDOwTrac');
+var cur_copWDHiTrac_val = localStorage.getItem('copWDHiTrac');
+var cur_copWDOwMach_val = localStorage.getItem('copWDOwMach');
+var cur_copWDHiMach_val = localStorage.getItem('copWDHiMach');
+var cur_copHarOwMen_val = localStorage.getItem('copHarOwMen');
+var cur_copHarHiMen_val = localStorage.getItem('copHarHiMen');
+var cur_copHarOwWomen_val = localStorage.getItem('copHarOwWomen');
+var cur_copHarHiWomen_val = localStorage.getItem('copHarHiWomen');
+var cur_copHarOwBull_val = localStorage.getItem('copHarOwBull');
+var cur_copHarHiBull_val = localStorage.getItem('copHarHiBull');
+var cur_copHarOwTrac_val = localStorage.getItem('copHarOwTrac');
+var cur_copHarHiTrac_val = localStorage.getItem('copHarHiTrac');
+var cur_copHarOwMach_val = localStorage.getItem('copHarOwMach');
+var cur_copHarHiMach_val = localStorage.getItem('copHarHiMach');
+
+
+
+var cur_copElectCha_val = localStorage.getItem('copElectCha');
+var cur_copInsurExp_val = localStorage.getItem('copInsurExp');
+var cur_copRentValIrri_val = localStorage.getItem('copRentValIrri');
+var cur_copRentValDry_val = localStorage.getItem('copRentValDry');
+var cur_copManagCost_val = localStorage.getItem('copManagCost');
+var cur_copLandRev_val = localStorage.getItem('copLandRev');
+var cur_copIntVar_val = localStorage.getItem('copIntVar');
+var cur_copIntFix_val = localStorage.getItem('copIntFix');
+var cur_copMiscExp_val = localStorage.getItem('copMiscExp');
+var cur_copCrYiMP_val = localStorage.getItem('copCrYiMP');
+var cur_copCrPRMP_val = localStorage.getItem('copCrPRMP');
+var cur_copCrYiBP_val = localStorage.getItem('copCrYiBP');
+var cur_copCrPrBP_val = localStorage.getItem('copCrPrBP');
+var cur_copICrYiMP_val = localStorage.getItem('copICrYiMP');
+var cur_copICrPrMP_val = localStorage.getItem('copICrPrMP');
+var cur_copICrYiBP_val = localStorage.getItem('copICrYiBP');
+var cur_copICrPrBP_val = localStorage.getItem('copICrPrBP');
+var cur_copPotYei_val = localStorage.getItem('copPotYei');
+var cur_copMalWag_val = localStorage.getItem('copMalWag');
+var cur_copFemWag_val = localStorage.getItem('copFemWag');
+var cur_copBulWag_val = localStorage.getItem('copBulWag');
+var cur_copTracWag_val = localStorage.getItem('copTracWag');
+var cur_copMachWag_val = localStorage.getItem('copMachWag');
+var cur_copIrriHiBull_val = localStorage.getItem('copIrriHiBull');
+
+
+
+
+
+
+
+
+var mCrop_html='';
+		mCrop_html +='<option value="" >Choose Caste</option>';
+		$.each(cropList_val,function(i,itm){
+			var  selMcrop ='';
+					if(cur_copMainCrp_val==itm.cropId)
+					{
+						selMcrop="selected='selected'";
+					}
+			mCrop_html +='<option value="'+ itm.cropId+'" '+selMcrop+'>'+itm.cropName+'</option>';
+		});
+		$('#copMainCrp').html(mCrop_html).trigger('liszt:updated');
+		
+		
+		var intCrop_html='';
+		intCrop_html +='<option value="" >Choose Caste</option>';
+		$.each(cropList_val,function(i,itm){
+			var  selIcrop ='';
+					if(cur_copInterCrp_val==itm.cropId)
+					{
+						selIcrop="selected='selected'";
+					}
+			intCrop_html +='<option value="'+ itm.cropId+'" '+selIcrop+'>'+itm.cropName+'</option>';
+		});
+		$('#copInterCrp').html(intCrop_html).trigger('liszt:updated');
+		
+		
+			//Store JSON Data
+	
+var copMSeason = [{'mSeasId':'Kharif', 'mSeasName':'Kharif'}, {'mSeasId':'Rabi', 'mSeasName':'Rabi'}, {'mSeasId':'Summer', 'mSeasName':'Summer'}];
+var mseasonCrop_html='';
+		mseasonCrop_html +='<option value="" >Choose Caste</option>';
+		$.each(copMSeason,function(i,itm){
+			var  seasMcrop ='';
+					if(cur_copSeason_val==itm.mSeasId)
+					{
+						seasMcrop="selected='selected'";
+					}
+			mseasonCrop_html +='<option value="'+ itm.mSeasId+'" '+seasMcrop+'>'+itm.mSeasName+'</option>';
+		});
+		$('#copSeason').html(mseasonCrop_html).trigger('liszt:updated');
+
+
+
+var copTOL = [{'copTOLID':'Dry', 'copTOLName':'Dry'}, {'copTOLID':'Irrigated', 'copTOLName':'Irrigated'}];
+var sesToL_html='';
+		sesToL_html +='<option value="" >Choose Caste</option>';
+		$.each(copTOL,function(i,itm){
+			var  TyOfcrop ='';
+					if(cur_copLandType_val==itm.copTOLID)
+					{
+						TyOfcrop="selected='selected'";
+					}
+			sesToL_html +='<option value="'+ itm.copTOLID+'" '+TyOfcrop+'>'+itm.copTOLName+'</option>';
+		});
+		$('#copLandType').html(sesToL_html).trigger('liszt:updated');
+
+
+
+
+var copIriMeth = [{'copIriMethId':'Sprinkler','copIriMethName':'Sprinkler'}, {'copIriMethId':'Drip','copIriMethName':'Drip'}, {'copIriMethId':'Flooding','copIriMethName':'Flooding'},];
+		
+
+var backIrrigmeth_html='';
+		backIrrigmeth_html +='<option value="" >Choose Caste</option>';
+		$.each(copIriMeth,function(i,itm){
+			var  backIriMet ='';
+					if(cur_copIrriMeth_val==itm.copIriMethId)
+					{
+						backIriMet="selected='selected'";
+					}
+			backIrrigmeth_html +='<option value="'+ itm.copIriMethId+'" '+backIriMet+'>'+itm.copIriMethName+'</option>';
+		});
+		$('#copIrriMeth').html(backIrrigmeth_html).trigger('liszt:updated');
+
+
+
+if(cur_coplpOwMen_val)
+			$('#coplpOwMen').val(cur_coplpOwMen_val);
+if(cur_coplpHiMen_val)
+			$('#coplpHiMen').val(cur_coplpHiMen_val);
+if(cur_coplpOwWom_val)
+			$('#coplpOwWom').val(cur_coplpOwWom_val);
+if(cur_coplpHiWom_val)
+			$('#coplpHiWom').val(cur_coplpHiWom_val);
+if(cur_coplpOwBul_val)
+			$('#coplpOwBul').val(cur_coplpOwBul_val);				
+if(cur_coplpHiBul_val)
+			$('#coplpHiBul').val(cur_coplpHiBul_val);	
+if(cur_coplpOwTra_val)
+			$('#coplpOwTra').val(cur_coplpOwTra_val);	
+if(cur_coplpHiTra_val)
+			$('#coplpHiTra').val(cur_coplpHiTra_val);	
+if(cur_coplpOwMac_val)
+			$('#coplpOwMac').val(cur_coplpOwMac_val);	
+if(cur_coplpHiMac_val)
+			$('#coplpHiMac').val(cur_coplpHiMac_val);	
+if(cur_copSpOwMen_val)
+			$('#copSpOwMen').val(cur_copSpOwMen_val);	
+if(cur_copSpHiMen_val)
+			$('#copSpHiMen').val(cur_copSpHiMen_val);	
+if(cur_copSpOwWomen_val)
+			$('#copSpOwWomen').val(cur_copSpOwWomen_val);	
+if(cur_copSpHiWomen_val)
+			$('#copSpHiWomen').val(cur_copSpHiWomen_val);	
+if(cur_copSpOwBul_val)
+			$('#copSpOwBul').val(cur_copSpOwBul_val);	
+if(cur_copSpHiBul_val)
+			$('#copSpHiBul').val(cur_copSpHiBul_val);	
+if(cur_copSpOwTrac_val)
+			$('#copSpOwTrac').val(cur_copSpOwTrac_val);	
+if(cur_copSpHiTrac_val)
+			$('#copSpHiTrac').val(cur_copSpHiTrac_val);	
+if(cur_copSpOwMach_val)
+			$('#copSpOwMach').val(cur_copSpOwMach_val);	
+if(cur_copSpHiMach_val)
+			$('#copSpHiMach').val(cur_copSpHiMach_val);	
+if(cur_copSpInput_val)
+			$('#copSpInput').val(cur_copSpInput_val);	
+if(cur_copSpAmount_val)
+			$('#copSpAmount').val(cur_copSpAmount_val);	
+if(cur_copIrriOwMen_val)
+			$('#copIrriOwMen').val(cur_copIrriOwMen_val);	
+if(cur_copIrriHiMen_val)
+			$('#copIrriHiMen').val(cur_copIrriHiMen_val);	
+if(cur_copIrriOwWomen_val)
+			$('#copIrriOwWomen').val(cur_copIrriOwWomen_val);	
+if(cur_copIrriHiWomen_val)
+			$('#copIrriHiWomen').val(cur_copIrriHiWomen_val);	
+if(cur_copIrriOwBull_val)
+			$('#copIrriOwBull').val(cur_copIrriOwBull_val);	
+if(cur_copIrriHiBull_val)
+			$('#copIrriHiBull').val(cur_copIrriHiBull_val);	
+if(cur_copIrriOwTrac_val)
+			$('#copIrriOwTrac').val(cur_copIrriOwTrac_val);	
+if(cur_copIrriHiTrac_val)
+			$('#copIrriHiTrac').val(cur_copIrriHiTrac_val);	
+if(cur_copIrriOwMach_val)
+			$('#copIrriOwMach').val(cur_copIrriOwMach_val);	
+if(cur_copIrriOwMach_val)
+			$('#copIrriHiMach').val(cur_copIrriOwMach_val);		
+if(cur_copIrriAmount_val)
+			$('#copIrriAmount').val(cur_copIrriAmount_val);	
+if(cur_copIOOwMen_val)
+			$('#copIOOwMen').val(cur_copIOOwMen_val);	
+if(cur_copIOHiMen_val)
+			$('#copIOHiMen').val(cur_copIOHiMen_val);	
+
+if(cur_copIOOwWomen_val)
+			$('#copIOOwWomen').val(cur_copIOOwWomen_val);	
+if(cur_copIOHiWomen_val)
+			$('#copIOHiWomen').val(cur_copIOHiWomen_val);	
+if(cur_copIOOwBul_val)
+			$('#copIOOwBul').val(cur_copIOOwBul_val);	
+if(cur_copIOHiBul_val)
+			$('#copIOHiBul').val(cur_copIOHiBul_val);	
+if(cur_copIOOwTrac_val)
+			$('#copIOOwTrac').val(cur_copIOOwTrac_val);	
+if(cur_copIOHiTrac_val)
+			$('#copIOHiTrac').val(cur_copIOHiTrac_val);	
+if(cur_copIOOwMach_val)
+			$('#copIOOwMach').val(cur_copIOOwMach_val);	
+if(cur_copIOHiMachval)
+			$('#copIOHiMach').val(cur_copIOHiMachval);	
+if(cur_copWDOwMen_val)
+			$('#copWDOwMen').val(cur_copWDOwMen_val);	
+if(cur_copWDHiMen_val)
+			$('#copWDHiMen').val(cur_copWDHiMen_val);	
+if(cur_copWDOwWomen_val)
+			$('#copWDOwWomen').val(cur_copWDOwWomen_val);	
+if(cur_copWDHiWomen_val)
+			$('#copWDHiWomen').val(cur_copWDHiWomen_val);	
+if(cur_copWDOwBull_val)
+			$('#copWDOwBull').val(cur_copWDOwBull_val);	
+if(cur_copWDHiBull_val)
+			$('#copWDHiBull').val(cur_copWDHiBull_val);	
+if(cur_copWDOwTrac_val)
+			$('#copWDOwTrac').val(cur_copWDOwTrac_val);	
+if(cur_copWDHiTrac_val)
+			$('#copWDHiTrac').val(cur_copWDHiTrac_val);	
+if(cur_copWDOwMach_val)
+			$('#copWDOwMach').val(cur_copWDOwMach_val);	
+if(cur_copWDHiMach_val)
+			$('#copWDHiMach').val(cur_copWDHiMach_val);	
+if(cur_copHarOwMen_val)
+			$('#copHarOwMen').val(cur_copHarOwMen_val);	
+if(cur_copHarHiMen_val)
+			$('#copHarHiMen').val(cur_copHarHiMen_val);	
+if(cur_copHarOwWomen_val)
+			$('#copHarOwWomen').val(cur_copHarOwWomen_val);	
+if(cur_copHarHiWomen_val)
+			$('#copHarHiWomen').val(cur_copHarHiWomen_val);	
+if(cur_copHarOwBull_val)
+			$('#copHarOwBull').val(cur_copHarOwBull_val);	
+if(cur_copHarHiBull_val)
+			$('#copHarHiBull').val(cur_copHarHiBull_val);	
+if(cur_copHarOwTrac_val)
+			$('#copHarOwTrac').val(cur_copHarOwTrac_val);	
+if(cur_copHarHiTrac_val)
+			$('#copHarHiTrac').val(cur_copHarHiTrac_val);	
+if(cur_copHarOwMach_val)
+			$('#copHarOwMach').val(cur_copHarOwMach_val);	
+if(cur_copHarHiMach_val)
+			$('#copHarHiMach').val(cur_copHarHiMach_val);	
+			
+			
+			
+if(cur_copElectCha_val)
+			$('#copElectCha').val(cur_copElectCha_val);			
+			
+if(cur_copInsurExp_val)
+			$('#copInsurExp').val(cur_copInsurExp_val);	
+if(cur_copRentValIrri_val)
+			$('#copRentValIrri').val(cur_copRentValIrri_val);	
+if(cur_copRentValDry_val)
+			$('#copRentValDry').val(cur_copRentValDry_val);	
+			
+			
+			
+			
+if(cur_copManagCost_val)
+			$('#copManagCost').val(cur_copManagCost_val);	
+if(cur_copLandRev_val)
+			$('#copLandRev').val(cur_copLandRev_val);	
+if(cur_copIntVar_val)
+			$('#copIntVar').val(cur_copIntVar_val);	
+if(cur_copIntFix_val)
+			$('#copIntFix').val(cur_copIntFix_val);	
+if(cur_copMiscExp_val)
+			$('#copMiscExp').val(cur_copMiscExp_val);	
+if(cur_copCrYiMP_val)
+			$('#copCrYiMP').val(cur_copCrYiMP_val);	
+if(cur_copCrPRMP_val)
+			$('#copCrPrMP').val(cur_copCrPRMP_val);	
+if(cur_copCrYiBP_val)
+			$('#copCrYiBP').val(cur_copCrYiBP_val);	
+if(cur_copCrPrBP_val)
+			$('#copCrPrBP').val(cur_copCrPrBP_val);	
+if(cur_copICrYiMP_val)
+			$('#copICrYiMP').val(cur_copICrYiMP_val);	
+if(cur_copICrPrMP_val)
+			$('#copICrPrMP').val(cur_copICrPrMP_val);	
+if(cur_copICrYiBP_val)
+			$('#copICrYiBP').val(cur_copICrYiBP_val);	
+if(cur_copICrPrBP_val)
+			$('#copICrPrBP').val(cur_copICrPrBP_val);	
+if(cur_copMalWag_val)
+			$('#copMalWag').val(cur_copMalWag_val);	
+if(cur_copFemWag_val)
+			$('#copFemWag').val(cur_copFemWag_val);	
+if(cur_copBulWag_val)
+			$('#copBulWag').val(cur_copBulWag_val);	
+if(cur_copTracWag_val)
+			$('#copTracWag').val(cur_copTracWag_val);	
+if(cur_copMachWag_val)
+			$('#copMachWag').val(cur_copMachWag_val);			
+if(cur_copPotYei_val)
+			$('#copPotYei').val(cur_copPotYei_val);	
+if(cur_copAreaExt_val)
+			$('#copAreaExt').val(cur_copAreaExt_val);		
+			
+
+			
+			
+if(cur_copIrriInput_val)
+			$('#copIrriInput').val(cur_copIrriInput_val);	
+if(cur_copGardenAge_val)
+			$('#copGardenAge').val(cur_copGardenAge_val);	
+if(cur_copGardenSpan_val)
+			$('#copGardenSpan').val(cur_copGardenSpan_val);	
+if(cur_copAnuManit_val)
+			$('#copAnuManit').val(cur_copAnuManit_val);				
+if(cur_copEstAcer_val)
+			$('#copEstAcer').val(cur_copEstAcer_val);					
+																																																																																																																																																																																																																																																									
+
+
+	</script>
 </body>
 </html>

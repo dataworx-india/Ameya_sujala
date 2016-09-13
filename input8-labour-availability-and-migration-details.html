@@ -173,8 +173,7 @@
                                                 <td>
                                                     <select id="txtLbrFamAdequacy" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option>Adequate</option>
-                                                        <option>Inadequate</option>
+                                                      
                                                     </select>
                                                 </td>
                                             </tr>
@@ -190,8 +189,7 @@
                                                 <td>
                                                     <select id="txtLbrHiredAdequacy" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option>Adequate</option>
-                                                        <option>Inadequate</option>
+                                                       
                                                     </select>
                                                 </td>
                                             </tr>
@@ -201,14 +199,15 @@
                                 <div>
                                     <div style="float:left">Has any member of the family migrated ? </div>
                                     <div style="float:left; padding-left:10px;">
-                                        <select id="" class="form-control">
-                                            <option value="">Select</option>
-                                            <option>Yes</option>
-                                            <option>No</option>
+                                        <select id="migratetype" class="form-control">
+                                       		 <option value="No">No</option>
+                                            <option value="Yes">Yes</option>
+                                            
                                         </select>
                                     </div>
                                     <div style="clear:both"></div>
                                 </div>
+                                <div id="enablediv" style="display:none">
                                 <h4>Migration Details</h4>
                                 <div class="table-responsive">
                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
@@ -224,38 +223,34 @@
                                                 <th style="width:75px;">Delete</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
+                                         <tbody id="addingTree">
+                                         <input type="hidden" id="treeCounter" name="itemCounter" value="0">
+                                            <tr id="addedFamily">
                                                 <td>
-                                                    <select id="txtFamMemName" class="form-control txtFamMemName" name="migratedMember[]">
+                                                    <select id="txtFamMemName"  onchange="getgenval(this)" class="form-control txtFamMemName" name="migratedMember[]">
                                                         <option value="">Select</option>
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <span id="memberGender"></span>
+                                                    <input id="memberGender" type="text" placeholder="" class="form-control" name="memberGender[]" />
                                                 </td>
                                                 <td>
-                                                    <input id="txtMigratedDuration" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="txtMigratedDuration" name="txtMigratedDuration[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="txtMigratedDistance" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="txtMigratedDistance" name="txtMigratedDistance[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <input id="txtMigratedPlace" type="text" placeholder="" class="form-control" />
+                                                    <input id="txtMigratedPlace" name="txtMigratedPlace[]" type="text" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
-                                                    <select id="txtMigratedPurpose" class="form-control">
+                                                    <select id="txtMigratedPurpose" name="txtMigratedPurpose[]" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option>Job/wage/work</option>
-                                                        <option>Business</option>
-                                                        <option>Education of the children</option>
-                                                        <option>Preference towards urban life</option>
-                                                        <option>For agriculture in other location</option>
-                                                        <option>Other</option>
+                                                       
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <input id="txtmigratedSavings" type="number" min="0" placeholder="" class="form-control" />
+                                                    <input id="txtmigratedSavings" name="txtmigratedSavings[]" type="number" min="0" placeholder="" class="form-control" />
                                                 </td>
                                                 <td>
                                                     <button type="button" class="btn btn-default btn-xs">
@@ -266,7 +261,9 @@
                                             </tr>
                                     </table>
                                 </div>
-
+								<div class="pull-left" style="margin-bottom:5px;">
+                                    <button type="button" class="btn btn-violet" id="btnfamilyAdd">Add New</button>
+                                </div>
                                 <div class="table-responsive">
                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                         <thead>
@@ -282,29 +279,18 @@
                                                 <td>
                                                     <select id="txtMigratedPosConseq" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option>Construction of house</option>
-                                                        <option>Purchase of land</option>
-                                                        <option>Purchase of household asset</option>
-                                                        <option>Improved quality of life</option>
-                                                        <option>Better children education </option>
-                                                        <option>Other</option>
-                                                        <option>None</option>
+                                                      
                                                     </select>
                                                 </td>
                                                 <td>
                                                     <select id="txtMigratedNegConseq" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option>Workload for households increased</option>
-                                                        <option>Parent felt neglect/ absence</option>
-                                                        <option>Health hazards</option>
-                                                        <option>Children education suffered</option>
-                                                        <option>Disturbance in family life</option>
-                                                        <option>Other</option>
-                                                        <option>None</option>
+                                                    
                                                     </select>
                                                 </td>
                                             </tr>
                                     </table>
+                                </div>
                                 </div>
                                 <!-- buttons starts -->
                                 <div class="pull-right">
@@ -335,6 +321,8 @@
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
+	<script src="js/config.js"></script>
+
 
     <!--BOOTSTRAP JS-->
     <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -363,6 +351,92 @@
     <script src="js/table-action.js"></script>
     <script>
 	
+/* add rows */
+
+function childRecursive(element, func){
+    // Applies that function to the given element.
+    func(element);
+    var children = element.children();
+    if (children.length > 0) {
+        children.each(function (){
+            // Applies that function to all children recursively
+            childRecursive($(this), func);
+        });
+    }
+}
+
+// Expects format to be xxx-#[-xxxx] (e.g. item-1 or item-1-name)
+function getNewAttr(str, newNum){
+    // Split on -
+    var arr = str.split('');
+    // Change the 1 to wherever the incremented value is in your id
+    arr[1] = newNum;
+    // Smash it back together and return
+    return arr.join('');
+}
+
+// Written with Twitter Bootstrap form field structure in mind
+// Checks for id, name, and for attributes.
+function setCloneAttr(element, value){
+    // Check to see if the element has an id attribute
+    if (element.attr('id') !== undefined){
+        // If so, increment it
+        element.attr('id', getNewAttr(element.attr('id'),value));
+    } else { /*If for some reason you want to handle an else, here you go */}
+    // Do the same with name...
+    if(element.attr('name') !== undefined){
+       // element.attr('name', getNewAttr(element.attr('name'),value));
+    } else {}
+    // And don't forget to show some love to your labels.
+    if (element.attr('for') !== undefined){
+        element.attr('for', getNewAttr(element.attr('for'),value));
+    } else {}
+}
+
+// Sets an element's value to ''
+function clearCloneValues(element){
+    if (element.attr('value') !== undefined){
+        element.val('');
+    }
+}
+
+//$(document).ready(function(){
+    $('#btnfamilyAdd').click(function(){
+        //increment the value of our counter
+       $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
+        //clone the first .item element
+        var newItem = $('tr#addedFamily').first().clone();
+        //recursively set our id, name, and for attributes properly
+        childRecursive(newItem,
+            // Remember, the recursive function expects to be able to pass in
+            // one parameter, the element.
+            function(e){
+                setCloneAttr(e, $('#treeCounter').val());
+        });
+        // Clear the values recursively
+        childRecursive(newItem,
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
+        // Finally, add the new div.item to the end
+        newItem.appendTo($('#addingTree'));
+		//$('#addingTree').append(fetch_data());
+		
+    });
+
+
+
+function deleteTable(btndel) {
+    if (typeof(btndel) == "object") {
+        $(btndel).closest("tr").remove();
+    } else {
+        return false;
+    }
+}
+
+
 	var familyMember = localStorage.getItem('membername');		
 
 	var familyMember_arr = familyMember.split(',');
@@ -372,7 +446,7 @@
 		familyMember_html +='<option value="'+ itm+'">'+itm+'</option>';
 	});
 	
-	$('.txtFamMemName').html(familyMember_html).trigger('liszt:updated');
+	$('#txtFamMemName').html(familyMember_html).trigger('liszt:updated');
 
 	
 //display name of the district
@@ -451,37 +525,8 @@ function get_current_data(arrval,keyid,keyname,keyval)
 	
 }
 	
-	
-	
 //Fetch user name to store in the migration details	
 	
-/*	
-	
-	var familyMember = localStorage.getItem('membername');	
-	var memberAge = localStorage.getItem('membergender');
-	
-	
-	var familyMember_arr = familyMember.split(',');
-var memberAge_arr = memberAge.split(',');
-	var familyMember_html='';
-	familyMember_html+='<option value="" >Choose</option>';
-	$.each(familyMember_arr,function(i,itm){
-		familyMember_html +='<option value="'+ itm+'">'+itm+'</option>';
-	});
-	
-	$('.txtFamMemName').html(familyMember_html).trigger('liszt:updated');
-	
-
-
-
-$('#txtFamMemName').change(function(){
-		$('#memberGender').html('');
-		var famName = $(this).val();
-		
-		var farm_age = get_current_data(familyMember_arr,famName,memberAge_arr);
-			$('#memberGender').html(farm_age);
-	});
-
 function get_current_data(arrval,keyid,arrval2)
 {
 	var valname = '';
@@ -497,9 +542,9 @@ function get_current_data(arrval,keyid,arrval2)
 }
 	
 	
-	*/
 	
 	
+		
 function saveOnly(){
 	
 	var migratedFamilyMem = [];
@@ -508,19 +553,52 @@ function saveOnly(){
 			 migratedFamilyMem[index] = ($(val).val());
 	    });
 
+	var migratedFamilygender = [];
+	$('input[name="memberGender[]"]').map(function(index, val) {
+			 if($(val).val()!="")
+			 migratedFamilygender[index] = ($(val).val());
+	    });
+
+	var migratedduration = [];
+	$('input[name="txtMigratedDuration[]"]').map(function(index, val) {
+			 if($(val).val()!="")
+			 migratedduration[index] = ($(val).val());
+	    });
+
+	var migratedDistance = [];
+	$('input[name="txtMigratedDistance[]"]').map(function(index, val) {
+			 if($(val).val()!="")
+			 migratedDistance[index] = ($(val).val());
+	    });
+
+	var migratedPlace = [];
+	$('input[name="txtMigratedPlace[]"]').map(function(index, val) {
+			 if($(val).val()!="")
+			 migratedPlace[index] = ($(val).val());
+	    });
+
+	var migratedPurpose = [];
+	$('select[name="txtMigratedPurpose[]"]').map(function(index, val) {
+			 if($(val).val()!="")
+			 migratedPurpose[index] = ($(val).val());
+	    });
+
+	var migratedSaving = [];
+	$('input[name="txtmigratedSavings[]"]').map(function(index, val) {
+			 if($(val).val()!="")
+			 migratedSaving[index] = ($(val).val());
+	    });
+
     var particulars_familyLabourMen = document.getElementById("txtLbrFamMen").value;
     var particulars_familyLabourWomen = document.getElementById("txtLbrFamWomen").value;
     var particulars_familyLabourAdequacy = document.getElementById("txtLbrFamAdequacy").value;
     var particulars_hiredLabouMen = document.getElementById("txtLbrHiredMen").value;
     var particulars_hiredLabouWomen = document.getElementById("txtLbrHiredWomen").value;
     var particulars_hiredLabouAdequacy = document.getElementById("txtLbrHiredAdequacy").value;
-    var particulars_duration = document.getElementById("txtMigratedDuration").value;	
-	var particulars_distance = document.getElementById("txtMigratedDistance").value;
-	var particulars_place = document.getElementById("txtMigratedPlace").value;
-	var particulars_purpose = document.getElementById("txtMigratedPurpose").value;
-	var particulars_savings = document.getElementById("txtmigratedSavings").value;
 	var particulars_posConseq = document.getElementById("txtMigratedPosConseq").value;
 	var particulars_negConseq = document.getElementById("txtMigratedNegConseq").value;
+	var migratetype_val = document.getElementById("migratetype").value;
+	
 	
 	
     set_storage_item('txtLbrFamMen',particulars_familyLabourMen);
@@ -530,32 +608,252 @@ function saveOnly(){
     set_storage_item('txtLbrHiredWomen',particulars_hiredLabouWomen);
     set_storage_item('txtLbrHiredAdequacy',particulars_hiredLabouAdequacy);
 	set_storage_item('migratedFamilyMem',migratedFamilyMem);
-	set_storage_item('txtMigratedDuration',particulars_duration);
-	set_storage_item('txtMigratedDistance',particulars_distance);
-	set_storage_item('txtMigratedPlace',particulars_place);
-	set_storage_item('txtMigratedPurpose',particulars_purpose);
-	set_storage_item('txtmigratedSavings',particulars_savings);
+	set_storage_item('migratedFamilyGen',migratedFamilygender);
+	set_storage_item('txtMigratedDuration',migratedduration);
+	set_storage_item('txtMigratedDistance',migratedDistance);
+	set_storage_item('txtMigratedPlace',migratedPlace);
+	set_storage_item('txtMigratedPurpose',migratedPurpose);
+	set_storage_item('txtmigratedSavings',migratedSaving);
 	set_storage_item('txtMigratedPosConseq',particulars_posConseq);
 	set_storage_item('txtMigratedNegConseq',particulars_negConseq);
+	set_storage_item('migratetype',migratetype_val);
 
 	}
 
 
-	function prevPage(){
-		saveOnly();
-		location.href = 'input7-livestock-animal-possession.html';	
-		}
+function prevPage(){
+	saveOnly();
+	location.href = 'input7-livestock-animal-possession.html';	
+}
 
 function save_current_form()
 {
 	saveOnly();
-    location.href = 'input9-land-holding-survey-numbers.html';
+	location.href = 'input9-land-holding-survey-numbers.html';
 }
 
 function set_storage_item(itm,val)
 {
     window.localStorage.setItem(itm,val);
 }
+function getgenval(val1)
+{
+	var famName = $(val1).val();
+	var farm_gen = get_current_data(familyMember_arr,famName,memberAge_arr);
+	var gidval = $(val1).closest('td').next('td').find('input:text').attr('id');
+	$('#'+gidval).val(farm_gen);
+}
+
+// back process
+		var cur_LbrFamMen_val = localStorage.getItem('txtLbrFamMen');
+		var cur_LbrFamWomen_val = localStorage.getItem('txtLbrFamWomen');
+		var cur_LbrFamAdequacy_val = localStorage.getItem('txtLbrFamAdequacy');
+		var cur_LbrHiredMen_val = localStorage.getItem('txtLbrHiredMen');
+		var cur_LbrHiredWomen_val = localStorage.getItem('txtLbrHiredWomen');
+		var cur_LbrHiredAdequacy_val = localStorage.getItem('txtLbrHiredAdequacy');
+		var cur_migratedFamilyMem_val = localStorage.getItem('migratedFamilyMem');
+		var cur_migratedFamilyGen_val = localStorage.getItem('migratedFamilyGen');
+		var cur_MigratedDuration_val = localStorage.getItem('txtMigratedDuration');
+		var cur_MigratedDistance_val = localStorage.getItem('txtMigratedDistance');
+		var cur_MigratedPlace_val = localStorage.getItem('txtMigratedPlace');
+		var cur_MigratedPurpose_val = localStorage.getItem('txtMigratedPurpose');
+		var cur_migratedSavings_val = localStorage.getItem('txtmigratedSavings');
+		var cur_MigratedPosConseq_val = localStorage.getItem('txtMigratedPosConseq');
+		var cur_MigratedNegConseq_val = localStorage.getItem('txtMigratedNegConseq');
+		var cur_migratetype_val = localStorage.getItem('migratetype');
+
+		
+		var adeqOwn = [{'ownAqid':'1', 'wonAqName':'Adequate'}, {'ownAqid':'2', 'wonAqName':'Inadequate'}];
+		
+		var ownAdqStat='';
+		ownAdqStat +='<option value="" >Choose</option>';
+		$.each(adeqOwn,function(i,itm){
+			var  selectval ='';
+					if(cur_LbrFamAdequacy_val==itm.ownAqid)
+					{
+						selectval="selected='selected'";
+					}
+			ownAdqStat +='<option value="'+ itm.ownAqid+'" '+selectval+'>'+itm.wonAqName+'</option>';
+		});
+		$('#txtLbrFamAdequacy').html(ownAdqStat).trigger('liszt:updated');
+		
+		var adeqHire = [{'hireAqid':'1', 'hireAqName':'Adequate'}, {'hireAqid':'2', 'hireAqName':'Inadequate'}];
+		
+		var hireAdqStat='';
+		hireAdqStat +='<option value="" >Choose</option>';
+		$.each(adeqHire,function(i,itm){
+			var  hAdqval ='';
+					if(cur_LbrHiredAdequacy_val==itm.hireAqid)
+					{
+						hAdqval="selected='selected'";
+					}
+			hireAdqStat +='<option value="'+ itm.hireAqid+'" '+hAdqval+'>'+itm.hireAqName+'</option>';
+		});
+		$('#txtLbrHiredAdequacy').html(hireAdqStat).trigger('liszt:updated');
+		
+		
+		
+		
+		var migPurp = [{'migPurId':'1', 'migPurName':'Job/wage/work'}, {'migPurId':'2', 'migPurName':'Business'}, {'migPurId':'3', 'migPurName':'Education of the children'}, {'migPurId':'4', 'migPurName':'Preference towards urban life'}, {'migPurId':'5', 'migPurName':'For agriculture in other location'}];
+		
+		
+		var migPurpDisp='';
+		migPurpDisp +='<option value="" >Choose</option>';
+		$.each(migPurp,function(i,itm){
+			
+			migPurpDisp +='<option value="'+ itm.migPurId+'" >'+itm.migPurName+'</option>';
+		});
+		$('#txtMigratedPurpose').html(migPurpDisp).trigger('liszt:updated');
+		
+		
+		
+		var migPcons = [{'migPcoId': '1', 'migPcoName': 'Construction of house'}, {'migPcoId': '2', 'migPcoName': 'Purchase of land'}, {'migPcoId': '3', 'migPcoName': 'Purchase of household asset'}, {'migPcoId': '4', 'migPcoName': 'Improved quality of life'}, {'migPcoId': '5', 'migPcoName': 'Better children education'}, {'migPcoId': '6', 'migPcoName': 'None'}];
+		
+		var migPcoDis='';
+		migPcoDis +='<option value="" >Choose</option>';
+		$.each(migPcons,function(i,itm){
+			var selvalup ='';
+			if(cur_MigratedPosConseq_val==itm.migPcoId)
+			{
+				selvalup="selected='selected'";
+			}
+			migPcoDis +='<option value="'+ itm.migPcoId+'" '+selvalup+'>'+itm.migPcoName+'</option>';
+		});
+		$('#txtMigratedPosConseq').html(migPcoDis).trigger('liszt:updated');
+		
+		
+		
+		var familyMember = localStorage.getItem('membername');	
+		var memberAge = localStorage.getItem('membergender');
+		var familyMember_arr = familyMember.split(',');
+		var memberAge_arr = memberAge.split(',');
+		
+
+	/*$('.txtFamMemName').change(function(){
+		alert('1');
+		$('#memberGender').val('');
+		var famName = $(this).val();
+		var farm_age = get_current_data(familyMember_arr,famName,memberAge_arr);
+			$('#memberGender').val(farm_age);
+		});*/
+			
+		
+		if(cur_LbrFamMen_val)
+			$('#txtLbrFamMen').val(cur_LbrFamMen_val);
+		if(cur_LbrFamWomen_val)
+			$('#txtLbrFamWomen').val(cur_LbrFamWomen_val);
+		if(cur_LbrHiredMen_val)
+			$('#txtLbrHiredMen').val(cur_LbrHiredMen_val);
+		if(cur_LbrHiredWomen_val)
+			$('#txtLbrHiredWomen').val(cur_LbrHiredWomen_val);
+		if(cur_MigratedDuration_val)
+			$('#txtMigratedDuration').val(cur_MigratedDuration_val);
+		if(cur_MigratedDistance_val)
+			$('#txtMigratedDistance').val(cur_MigratedDistance_val);
+		if(cur_MigratedPlace_val)
+			$('#txtMigratedPlace').val(cur_MigratedPlace_val);
+		if(cur_migratedSavings_val)
+			$('#txtmigratedSavings').val(cur_migratedSavings_val);
+		
+
+
+
+		var migNCon = [{'migNConId':'1', 'migNConName':'Workload for households increased'}, {'migNConId':'2', 'migNConName':'Parent felt neglect/ absence'}, {'migNConId':'3', 'migNConName':'Health hazards'}, {'migNConId':'4', 'migNConName':'Children education suffered'}, {'migNConId':'5', 'migNConName':'Disturbance in family life'}, {'migNConId':'6', 'migNConName':'None'}];
+		
+		
+		var migNCondisp='';
+		migNCondisp +='<option value="" >Choose</option>';
+		$.each(migNCon,function(i,itm){
+			var  migNConVa ='';
+					if(cur_MigratedNegConseq_val==itm.migNConId)
+					{
+						migNConVa="selected='selected'";
+					}
+			migNCondisp +='<option value="'+ itm.migNConId+'" '+migNConVa+'>'+itm.migNConName+'</option>';
+		});
+		$('#txtMigratedNegConseq').html(migNCondisp).trigger('liszt:updated');
+
+		
+		//hide show process
+		
+		if(cur_migratetype_val)
+		{
+			if(cur_migratetype_val=='Yes')
+			{
+				 $("#migratetype").val('Yes').attr('selected', true);
+				$("#enablediv").css("display", "");
+				
+			}
+			else if(cur_migratetype_val=='No')
+			{
+				 $("#migratetype").val('No').attr('selected', true);
+				$("#enablediv").css("display", "none");
+			}
+
+		}
+
+
+		$('#migratetype').change(function(){
+		
+			var selVal = $(this).val();
+			if(selVal=='Yes')
+			{
+				$("#enablediv").css("display", "");
+			}
+			else if(selVal=='No')
+			{
+				$("#enablediv").css("display", "none");
+			}
+		});
+
+			if(cur_migratedFamilyMem_val.length>0)
+			{
+				$('#addingTree').html('');
+				var curmigratedFamilyMemval = cur_migratedFamilyMem_val.split(',');
+				var curmigratedFamilyGenval = cur_migratedFamilyGen_val.split(',');
+				var curMigratedDurationval = cur_MigratedDuration_val.split(',');
+				var curMigratedDistanceval = cur_MigratedDistance_val.split(',');
+				var curMigratedPlaceval = cur_MigratedPlace_val.split(',');
+				var curMigratedPurposeval = cur_MigratedPurpose_val.split(',');
+				var curmigratedSavingsval = cur_migratedSavings_val.split(',');
+				var fhtml ='';
+				
+				 for (var i = 0; i < curmigratedFamilyMemval.length; i++) {
+					
+					fhtml += '<tr id="addedFamily">';
+                    fhtml += '<td><select id="txtFamMemName" class="form-control txtFamMemName" onchange="getgenval(this)" name="migratedMember[]">';
+                    fhtml += '<option value="">Select</option>';
+						$.each(familyMember_arr,function(h,itm){
+							var selintcrp ='';
+							if(curmigratedFamilyMemval[i]==itm)
+							{
+								selintcrp="selected='selected'";
+							}
+							fhtml +='<option value="'+ itm+'" '+selintcrp+' >'+itm+'</option>';
+						});
+                    fhtml += '</select></td>';
+                    fhtml += '<td><input id="memberGender'+i+'" type="text" placeholder="" value="'+curmigratedFamilyGenval[i]+'" class="form-control" name="memberGender[]" /></td>';
+                    fhtml += '<td><input id="txtMigratedDuration" name="txtMigratedDuration[]" type="number" min="0" placeholder="" value="'+curMigratedDurationval[i]+'" class="form-control" /></td>';
+                    fhtml += '<td><input id="txtMigratedDistance" name="txtMigratedDistance[]" value="'+curMigratedDistanceval[i]+'" type="number" min="0" placeholder="" class="form-control" /></td>';
+                    fhtml += '<td><input id="txtMigratedPlace" name="txtMigratedPlace[]" value="'+curMigratedPlaceval[i]+'" type="text" placeholder="" class="form-control" /></td>';
+                    fhtml += '<td><select id="txtMigratedPurpose"  name="txtMigratedPurpose[]" class="form-control">';
+                    fhtml += '<option value="">Select</option>';
+					$.each(migPurp,function(m,itm){
+							var selintcrp ='';
+							if(curMigratedPurposeval[i]==itm.migPurId)
+							{
+								selintcrp="selected='selected'";
+							}
+							fhtml +='<option value="'+ itm.migPurId+'" '+selintcrp+' >'+itm.migPurName+'</option>';
+						});
+                    fhtml += '</select></td>';
+                    fhtml += '<td><input id="txtmigratedSavings" name="txtmigratedSavings[]" value="'+curmigratedSavingsval[i]+'" type="number" min="0" placeholder="" class="form-control" /></td>';
+                    fhtml += '<td><button type="button" class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i>&nbsp;Delete</button></td></tr>';
+				 }
+
+				 $('#addingTree').append(fhtml);
+			}
+
     </script>
 </body>
 </html>

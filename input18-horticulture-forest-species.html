@@ -191,14 +191,15 @@
                                 <div class="col-lg-12">
                                     <div style="float:left; line-height:24px;">Are you interested in cultivating horticulture species ? &nbsp; &nbsp;</div>
                                     <div style="float:left;">
-                                        <select id="" class="form-control">
-                                            <option value="">Select</option>
-                                            <option value="yes">Yes</option>
-                                            <option value="no">No</option>
+                                        <select id="horticulId" class="form-control">
+											<option value="No">No</option>
+                                            <option value="Yes">Yes</option>
+                                          
                                         </select>
                                     </div>
                                     <div style="clear:both;"></div><br />
                                 </div>
+								<div id="enablehorsty" style="display:none;">
                                 <div class="table-responsive">
                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                         <thead>
@@ -209,7 +210,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id="addingTreeone">
-                                        <input type="hidden" id="treeCounter" name="itemCounterone" value="0">                                        
+                                        <input type="hidden" id="treeCounterone" name="itemCounterone" value="0">                                        
                                             <tr id="addedFamilyone">
                                                 <td>
                                                     <select id="selHortiPlantsInterest" name="selHortiPlantsInterest[]" class="form-control selHortiPlantsInterest">
@@ -227,6 +228,7 @@
                                         </tbody>
                                     </table>
                                 </div>
+								
 
                                 <!-- buttons starts -->
                                 <div class="pull-left" style="margin-bottom:5px;">
@@ -237,6 +239,7 @@
                                     <button type="button" id="btnSaveHortTree" class="btn btn-green">Save</button> &nbsp;
                                 </div>
                                 <!-- buttons ends -->
+								</div>
                             </div>
 
                             <!-- Another Table Start -->
@@ -285,16 +288,15 @@
                                 <div class="col-lg-12">
                                     <div style="float:left; line-height:24px;">Are you interested in cultivating forestry species ? &nbsp; &nbsp;</div>
                                     <div style="float:left;">
-                                        <select id="" class="form-control">
-                                            <option value="">Select</option>
-                                            <option>Yes</option>
-                                            <option>No</option>
+                                        <select id="forestyId" class="form-control">
+											 <option value="No">No</option>
+                                             <option value="Yes">Yes</option>
                                         </select>
                                     </div>
                                     <div style="clear:both;"></div><br />
                                 </div>
 
-
+								<div id="forestenableId" style="display:none;">
                                 <div class="table-responsive">
                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                         <thead>
@@ -308,7 +310,7 @@
                                         <input type="hidden" id="treeCounterthree" name="itemCounterteo[]" value="0">                                        
                                             <tr id="addedFamilythree">
                                                 <td>
-                                                    <select id="selForestrySpeciesInterested" name="selForestrySpeciesInterested[]" class="form-control">
+                                                    <select id="selForestrySpeciesInterested" name="selForestrySpeciesInterested[]" class="form-control selForestrySpeciesInterested">
                                                         <option value="">Select Forestry Species</option>
 
                                                     </select>
@@ -329,11 +331,13 @@
                                 <div class="pull-left" style="margin-bottom:5px;">
                                     <button type="button" class="btn btn-violet" id="btnfamilyAddthree">Add New</button>
                                 </div>
+
+								</div>
                                 <div class="pull-right">
                                     <button type="button" id="btnBackHortiForstSpp" class="btn btn-blue" onclick="prevPage()">< Back</button> &nbsp;
                                     <button type="submit" id="btnResetForstSpp" class="btn btn-primary">Reset</button> &nbsp;
                                     <button type="button" id="btnSaveForstSpp" class="btn btn-green" onclick="saveOnly()">Save</button> &nbsp;
-                                    <button type="button" id="btnNextHortiForstSpp" class=" btn btn-blue" onclick="location.href = 'input19-additional-investment-capacity.html'">Next ></button>
+                                    <button type="button" id="btnNextHortiForstSpp" class=" btn btn-blue" onclick="save_current_form()">Next ></button>
                                 </div>
                                 <!-- buttons ends -->
                                 <!--Another Table End-->
@@ -356,6 +360,7 @@
         <script src="js/jquery-1.10.2.min.js"></script>
         <script src="js/jquery-migrate-1.2.1.min.js"></script>
         <script src="js/jquery-ui.js"></script>
+		<script src="js/config.js"></script>
 
         <!--BOOTSTRAP JS-->
         <script src="vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -448,9 +453,11 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+           function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTree'));
     });
@@ -523,9 +530,11 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTreeone'));
     });
@@ -596,9 +605,11 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+             function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTreetwo'));
     });
@@ -672,9 +683,11 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+           function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTreethree'));
     });
@@ -690,8 +703,8 @@ function clearCloneValues(element){
 
 
 //fetch JSON data 
+//selHortiPlants selHortiPlantsInterest
 
-$(function(){
 	var horticulture_val = JSON.parse(localStorage.getItem('horticulturecrop_det'));
 	
 	var horticulture_html='';
@@ -699,7 +712,7 @@ $(function(){
 	$.each(horticulture_val,function(i,itm){
 		horticulture_html +='<option value="'+ itm.horticultureCropId +'">'+itm.horticultureCropName+'</option>';
 	});
-	$('.selForestrySpecies').html(horticulture_html).trigger('liszt:updated');
+	$('.selHortiPlants').html(horticulture_html).trigger('liszt:updated');
 	$('.selHortiPlantsInterest').html(horticulture_html).trigger('liszt:updated');	
 	
 	
@@ -711,12 +724,10 @@ $(function(){
 	$.each(forestryspecies_val,function(i,itm){
 		forestryspecies_html +='<option value="'+ itm.forestrySpeciesId +'">'+itm.forestrySpeciesName+'</option>';
 	});
-	$('.selHortiPlants').html(forestryspecies_html).trigger('liszt:updated');
+	$('.selForestrySpecies').html(forestryspecies_html).trigger('liszt:updated');
 	$('.selForestrySpeciesInterested').html(forestryspecies_html).trigger('liszt:updated');	
-	
-	
-	
-});
+
+
 
 
 
@@ -870,6 +881,9 @@ var forestInter = [];
 			 if($(this).val()!="")
 			 forestInter.push($(this).val());
 	    });		
+
+		var gethortval = document.getElementById("horticulId").value;
+		var getforestval = document.getElementById("forestyId").value;
 		
 		set_storage_item('selHortiPlants',selHortiPlants);
 		set_storage_item('selHortiPlantsInterest',selHortiPlantsInterest);
@@ -880,32 +894,227 @@ var forestInter = [];
 		set_storage_item('hortIntNo',hortIntNo);
 		set_storage_item('forestField',forestField);
 		set_storage_item('forestbackyard',forestbackyard);
-		set_storage_item('forestInter',forestInter);			
+		set_storage_item('forestInter',forestInter);	
+		set_storage_item('setcurhortval',gethortval);
+		set_storage_item('setcurforestval',getforestval);
 	
 	}
 
 
 function prevPage(){
-	
 		saveOnly();
-		location.href='input17-family-annual-income.html';
-	
-	
+		location.href= 'input17-family-annual-income.html';
 	}
 
 
 function save_current_form()
 {
-
 		saveOnly();
-		location.href='input18-horticulture-forest-species.html';
-	
+		location.href= 'input19-additional-investment-capacity';
 }
 
 function set_storage_item(itm,val)
 {
 	window.localStorage.setItem(itm,val);
 }
+
+// Back Process
+var cur_selHortiPlants_val = localStorage.getItem('selHortiPlants');
+var cur_selHortiPlantsInterest_val = localStorage.getItem('selHortiPlantsInterest');
+var cur_selForestrySpecies_val = localStorage.getItem('selForestrySpecies');
+var cur_selForestrySpeciesInterested_val = localStorage.getItem('selForestrySpeciesInterested');
+var cur_hortinfield_val = localStorage.getItem('hortinfield');
+var cur_hortiInBack_val = localStorage.getItem('hortiInBack');
+var cur_hortIntNo_val = localStorage.getItem('hortIntNo');
+var cur_forestField_val = localStorage.getItem('forestField');
+var cur_forestbackyard_val = localStorage.getItem('forestbackyard');
+var cur_forestInter_val = localStorage.getItem('forestInter');
+
+var cur_setcurhortval_val = localStorage.getItem('setcurhortval');
+var cur_setcurforestval_val = localStorage.getItem('setcurforestval');
+
+
+	//hide show process
+	if(cur_setcurhortval_val)
+	{
+		if(cur_setcurhortval_val=='Yes')
+		{
+			 $("#horticulId").val('Yes').attr('selected', true);
+			$("#enablehorsty").css("display", "");
+			
+		}
+		else if(cur_setcurhortval_val=='No')
+		{
+			 $("#horticulId").val('No').attr('selected', true);
+			$("#enablehorsty").css("display", "none");
+		}
+	}
+
+	$('#horticulId').change(function(){	
+		var selVal = $(this).val();
+		if(selVal=='Yes')
+		{
+			$("#enablehorsty").css("display", "");
+		}
+		else if(selVal=='No')
+		{
+			$("#enablehorsty").css("display", "none");
+		}
+	});
+
+
+
+	if(cur_setcurforestval_val)
+	{
+		if(cur_setcurforestval_val=='Yes')
+		{
+			 $("#forestyId").val('Yes').attr('selected', true);
+			$("#forestenableId").css("display", "");
+			
+		}
+		else if(cur_setcurforestval_val=='No')
+		{
+			 $("#forestyId").val('No').attr('selected', true);
+			$("#forestenableId").css("display", "none");
+		}
+	}
+
+	$('#forestyId').change(function(){	
+		
+		var selVal = $(this).val();
+		if(selVal=='Yes')
+		{
+			$("#forestenableId").css("display", "");
+		}
+		else if(selVal=='No')
+		{
+			$("#forestenableId").css("display", "none");
+		}
+	});
+			
+		if(cur_selHortiPlants_val.length > 0)
+		{
+			$('#addingTree').html('');
+			var curselHortiPlantsval = cur_selHortiPlants_val.split(',');
+			var curhortinfieldval = cur_hortinfield_val.split(',');
+			var curhortiInBackval = cur_hortiInBack_val.split(',');
+			var hfhtml ='';
+			for (var i = 0; i < curselHortiPlantsval.length; i++) {
+
+							hfhtml += '<tr id="addedFamily">';
+							hfhtml += '<td><select id="selHortiPlants" name="selHortiPlants[]" class="form-control selHortiPlants">';
+							hfhtml += '<option value="">Select Horticulture Plants</option>';
+							$.each(horticulture_val,function(j,itm){
+									var selInst ='';
+									if(curselHortiPlantsval[i]==itm.horticultureCropId)
+									{
+										selInst="selected='selected'";	
+									}
+								hfhtml +='<option value="'+ itm.horticultureCropId +'" '+selInst+'>'+itm.horticultureCropName+'</option>';
+							});
+							hfhtml += '</select></td>';
+							hfhtml += '<td><input id="hortinfield" name="hortinfield[]" type="number" min="0" value="'+curhortinfieldval[i]+'" class="form-control hortinfield" /></td>';
+							hfhtml += '<td><input id="hortiInBack" name="hortiInBack[]" type="number" min="0" value="'+curhortiInBackval[i]+'" class="form-control hortiInBack" /></td>';
+							hfhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)" onclick="deleteTable(this)">';
+							hfhtml += '<i class="fa fa-trash-o"></i>&nbsp;';
+							hfhtml += 'Delete</button></td></tr>';
+			}
+
+			 $('#addingTree').append(hfhtml);
+		}
+
+		if(cur_selHortiPlantsInterest_val.length>0)
+		{		
+				$('#addingTreeone').html('');
+				var curselHortiPlantsInterestval = cur_selHortiPlantsInterest_val.split(',');
+				var curhortIntNoval = cur_hortIntNo_val.split(',');
+					var hfhtml ='';
+				for (var i = 0; i < curselHortiPlantsInterestval.length; i++) {
+
+								hfhtml += '<tr id="addedFamilyone">';
+								hfhtml += '<td><select id="selHortiPlantsInterest" name="selHortiPlantsInterest[]" class="form-control selHortiPlantsInterest">';
+								hfhtml += '<option value="">Select Horticulture Plants</option>';
+								$.each(horticulture_val,function(j,itm){
+									var selInst ='';
+									if(curselHortiPlantsInterestval[i]==itm.horticultureCropId)
+									{
+										selInst="selected='selected'";	
+									}
+									hfhtml +='<option value="'+ itm.horticultureCropId +'" '+selInst+'>'+itm.horticultureCropName+'</option>';
+								});
+								hfhtml += '</select></td>';
+								hfhtml += ' <td><input id="hortIntNo" name="hortIntNo[]" type="number" min="0" value="'+curhortIntNoval[i]+'" class="form-control hortIntNo" /></td>';
+								hfhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)" onclick="deleteTable(this)">';
+								hfhtml += '<i class="fa fa-trash-o"></i>&nbsp;';
+								hfhtml += 'Delete</button></td></tr>';
+				}
+
+			 $('#addingTreeone').append(hfhtml);
+		}
+
+		if(cur_selForestrySpecies_val.length>0)
+		{		
+				$('#addingTreetwo').html('');
+				var curselForestrySpeciesval = cur_selForestrySpecies_val.split(',');
+				var curforestFieldval = cur_forestField_val.split(',');
+				var curforestbackyardval = cur_forestbackyard_val.split(',');
+				var hfhtml ='';
+				for (var i = 0; i < curselForestrySpeciesval.length; i++) {
+
+								hfhtml += '<tr id="addedFamilytwo">';
+								hfhtml += '<td> <select id="selForestrySpecies" name="selForestrySpecies[]" class="form-control selForestrySpecies">';
+								hfhtml += '<option value="">Select Forestry Species</option>';
+								$.each(forestryspecies_val,function(j,itm){
+									var selInst ='';
+									if(curselForestrySpeciesval[i]==itm.forestrySpeciesId)
+									{
+										selInst="selected='selected'";	
+									}
+									hfhtml +='<option value="'+ itm.forestrySpeciesId +'" '+selInst+'>'+itm.forestrySpeciesName+'</option>';
+								});
+								hfhtml += '</select></td>';
+								hfhtml += ' <td><input id="forestField" name="forestField[]" type="number" min="0" value="'+curforestFieldval[i]+'" class="form-control" /></td></td>';
+								hfhtml += ' <td><input id="forestbackyard" name="forestbackyard[]" type="number" min="0" value="'+curforestbackyardval[i]+'" class="form-control" /></td>';
+								hfhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)" onclick="deleteTable(this)">';
+								hfhtml += '<i class="fa fa-trash-o"></i>&nbsp;';
+								hfhtml += 'Delete</button></td></tr>';
+				}
+
+			 $('#addingTreetwo').append(hfhtml);
+		}
+
+
+		if(cur_selForestrySpeciesInterested_val.length>0)
+		{		
+				$('#addingTreethree').html('');
+				var curselForestrySpeciesInterestedval = cur_selForestrySpeciesInterested_val.split(',');
+				var curforestInterval = cur_forestInter_val.split(',');
+				
+				var hfhtml ='';
+				for (var i = 0; i < curselForestrySpeciesInterestedval.length; i++) {
+ 
+                                                       
+								hfhtml += '<tr id="addedFamilythree">';
+								hfhtml += '<td><select id="selForestrySpeciesInterested" name="selForestrySpeciesInterested[]" class="form-control selForestrySpeciesInterested">';
+								hfhtml += ' <option value="">Select Forestry Species</option>';
+								$.each(forestryspecies_val,function(j,itm){
+									var selInst ='';
+									if(curselForestrySpeciesInterestedval[i]==itm.forestrySpeciesId)
+									{
+										selInst="selected='selected'";	
+									}
+									hfhtml +='<option value="'+ itm.forestrySpeciesId +'" '+selInst+'>'+itm.forestrySpeciesName+'</option>';
+								});
+								hfhtml += '</select></td>';
+								hfhtml += ' <td><input id="forestInter" name="forestInter[]" type="number" min="0" value="'+curforestInterval[i]+'" class="form-control" /></td>';
+								hfhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)" onclick="deleteTable(this)">';
+								hfhtml += '<i class="fa fa-trash-o"></i>&nbsp;';
+								hfhtml += 'Delete</button></td></tr>';
+				}
+
+			 $('#addingTreethree').append(hfhtml);
+		}
+
 
 
 

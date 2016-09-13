@@ -172,21 +172,21 @@
                                                 <td>
                                                     <select id="selConservPracticeFieldBundStatus" name="selConservPracticeFieldBundStatus[]" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option value="Good">Good</option>
-                                                        <option value="Slightly Damaged">Slightly Damaged</option>
-                                                        <option value="Severely Damaged">Severely Damaged</option>
-                                                        <option value="Full Replacement Required">Full Replacement Required</option>
+                                                        <option value="1">Good</option>
+                                                        <option value="2">Slightly Damaged</option>
+                                                        <option value="3">Severely Damaged</option>
+                                                        <option value="4">Full Replacement Required</option>
                                                     </select>
                                                 </td>
                                                 <td>
                                                     <select id="selConservPracticeBundBuiltBy" name="selConservPracticeBundBuiltBy[]" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option value="Self">Self</option>
-                                                        <option value="External Agency">External Agency</option>
+                                                        <option value="1">Self</option>
+                                                        <option value="2">External Agency</option>
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select id="selConservPracticeBundBuiltExtAgency" name="selConservPracticeBundBuiltExtAgency" class="form-control">
+                                                    <select id="selConservPracticeBundBuiltExtAgency" name="selConservPracticeBundBuiltExtAgency[]" class="form-control">
                                                         <option value="">Select</option>
                                                         <option value="NGO">NGO</option>
                                                         <option value="Government">Government</option>
@@ -211,7 +211,7 @@
                                     <button type="button" id="btnBackConsPractices" class="btn btn-blue" onclick="prevPage()">< Back</button>&nbsp;
                                     <button type="button" id="btnResetConsPractices" class="btn btn-primary">Reset</button>&nbsp;
                                     <button type="submit" id="btnSaveConsPractices" class="btn btn-green" onclick="saveOnly()">Save</button>&nbsp;
-                                    <button type="button" id="btnNextConsPractices" class=" btn btn-blue" onclick="location.href = 'input23-access-to-basic-needs.html'">Next ></button>
+                                    <button type="button" id="btnNextConsPractices" class=" btn btn-blue" onclick="save_current_form()">Next ></button>
                                 </div>
                                 <!-- buttons ends -->
                             </div>
@@ -262,7 +262,7 @@
     <script src="js/table-action.js"></script>
             <script type="text/javascript" >
 
-		/* add rows */
+	/* add rows */
 
 function childRecursive(element, func){
     // Applies that function to the given element.
@@ -314,7 +314,7 @@ function clearCloneValues(element){
 //$(document).ready(function(){
     $('#btnfamilyAdd').click(function(){
         //increment the value of our counter
-        $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
+       $('#treeCounter').val(Number($('#treeCounter').val()) + 1);
         //clone the first .item element
         var newItem = $('tr#addedFamily').first().clone();
         //recursively set our id, name, and for attributes properly
@@ -326,12 +326,17 @@ function clearCloneValues(element){
         });
         // Clear the values recursively
         childRecursive(newItem,
-            function(e){
-                clearCloneValues(e);
-        });
+            function clearCloneValues(e){
+              
+					if(e.attr('type')==='text' || e.attr('type')==='number')
+					e.val('');
+				});
         // Finally, add the new div.item to the end
         newItem.appendTo($('#addingTree'));
+		//$('#addingTree').append(fetch_data());
+		
     });
+
 
 
 function deleteTable(btndel) {
@@ -342,21 +347,17 @@ function deleteTable(btndel) {
     }
 }
 
-
 //fetch JSON data 
 
-$(function(){
+
 	var conservation_val = JSON.parse(localStorage.getItem('soilconservation_det'));
 	
 	var conservation_html='';
 	conservation_html+='<option value="" >Choose</option>';
 	$.each(conservation_val,function(i,itm){
-		conservation_html +='<option value="'+ itm.assetTypeId +'">'+itm.assetType+'</option>';
+		conservation_html +='<option value="'+ itm.soilConservationId +'">'+itm.soilConservationStructure+'</option>';
 	});
 	$('.selConservationStr').html(conservation_html).trigger('liszt:updated');
-	
-	
-});
 
 
 
@@ -507,6 +508,107 @@ function set_storage_item(itm,val)
 {
 	window.localStorage.setItem(itm,val);
 }
+
+
+var conserStatus = [{'statusId':'1','statusName':'Good'},{'statusId':'2','statusName':'Slightly Damaged'},{'statusId':'3','statusName':'Severely Damaged'},{'statusId':'4','statusName':'Full Replacement Required'}];
+
+var globimp = [{'implementId':'1','implementName':'Self'}, {'implementId':'2','implementName':'External Agency'}];
+
+var agencyName = [{'agencyId':'1','agencyName':'NGO'},{'agencyId':'2','agencyName':'Government'},{'agencyId':'3','agencyName':'Farmers Organization'}];
+
+// back process
+
+var cur_ConservationStr_val = localStorage.getItem('selConservationStr');
+var cur_FieldBundStatus_val = localStorage.getItem('selConservPracticeFieldBundStatus');
+var cur_BundBuiltBy_val = localStorage.getItem('selConservPracticeBundBuiltBy');
+var cur_BuiltExtAgency_val = localStorage.getItem('selConservPracticeBundBuiltExtAgency');
+var cur_FieldBundYear_val = localStorage.getItem('txtConservPracticeFieldBundYear');
+
+
+
+			if(cur_ConservationStr_val.length > 0)
+			{
+				
+				$('#addingTree').html('');
+				var curConservationStrval = cur_ConservationStr_val.split(',');
+				var curFieldBundStatusval = cur_FieldBundStatus_val.split(',');
+				var curBundBuiltByval = cur_BundBuiltBy_val.split(',');
+				var curBuiltExtAgencyval = cur_BuiltExtAgency_val.split(',');
+				var curFieldBundYearval = cur_FieldBundYear_val.split(',');
+				var fhtml ='';
+				
+				 for (var i = 0; i < curConservationStrval.length; i++) {
+					
+					fhtml += '<tr id="addedFamily">';
+					fhtml += '<td><select id="selConservationStr" name="selConservationStr[]" class="form-control selConservationStr">';
+						fhtml += '		<option value="">Select</option>';
+								
+								$.each(conservation_val,function(k,itm){
+									var seledug ='';
+									if(curConservationStrval[i]==itm.soilConservationId)
+									{
+										seledug="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.soilConservationId+'" '+seledug+'>'+itm.soilConservationStructure+'</option>';
+							});
+						fhtml += '</select></td>';
+						fhtml += '<td><input type="text" id="" min="0" placeholder="" name="txtConservPracticeFieldBundYear[]" value="'+curFieldBundStatusval[i]+'" class="form-control" /></td>';
+						
+						
+						fhtml += '<td><select id="selConservPracticeFieldBundStatus" name="selConservPracticeFieldBundStatus[]" class="form-control selConservPracticeFieldBundStatus">';
+						fhtml += '		<option value="">Select</option>';
+								
+								$.each(conserStatus,function(k,itm){
+									var seledug ='';
+									if(curBundBuiltByval[i]==itm.statusId)
+									{
+										seledug="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.statusId+'" '+seledug+'>'+itm.statusName+'</option>';
+							});
+						fhtml += '</select></td>';
+						
+						
+						fhtml += '<td><select id="selConservPracticeBundBuiltBy" name="selConservPracticeBundBuiltBy[]" class="form-control selConservPracticeBundBuiltBy">';
+						fhtml += '		<option value="">Select</option>';
+								
+								$.each(globimp,function(k,itm){
+									var seledug ='';
+									if(curBuiltExtAgencyval[i]==itm.implementId)
+									{
+										seledug="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.implementId+'" '+seledug+'>'+itm.implementName+'</option>';
+							});
+						fhtml += '</select></td>';
+						
+						
+						fhtml += '<td><select id="selConservPracticeBundBuiltExtAgency" name="selConservPracticeBundBuiltExtAgency[]" class="form-control selConservPracticeBundBuiltExtAgency">';
+						fhtml += '		<option value="">Select</option>';
+								
+								$.each(agencyName,function(k,itm){
+									var seledug ='';
+									if(curFieldBundYearval[i]==itm.agencyId)
+									{
+										seledug="selected='selected'";
+											
+									}
+									fhtml +='<option value="'+ itm.agencyId+'" '+seledug+'>'+itm.agencyName+'</option>';
+							});
+						fhtml += '</select></td>';
+						
+						
+						fhtml += '<td><button type="button" class="btn btn-default btn-xs" onclick="deleteTable(this)"><i class="fa fa-trash-o">';
+						fhtml += '</i>&nbsp;Delete	</button></td></tr>';
+					 
+				 }
+				
+				$('#addingTree').append(fhtml);
+				
+			}
 
 
 

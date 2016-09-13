@@ -1,0 +1,448 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head><title>Ameya - Log In</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="never">
+
+    <meta name="publisher" content="dataworx">
+    <meta name="copyright" content="Copyright ©2016 UASB">
+
+    <link rel="shortcut icon" href="images/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="images/icons/favicon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icons/favicon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/favicon-114x114.png">
+
+    <!-- bootstrap stylesheets -->
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.min.css">
+
+    <!--Loading style vendors-->
+    <link type="text/css" rel="stylesheet" href="vendors/animate.css/animate.css">
+    <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
+
+    <!--Stylesheets -->
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+
+</head>
+<body id="signin-page">
+<div class="page-form">
+      <form action="input1-2-general-info.html" class="form" method="post" id="user_login_form">
+        <div class="header-content"><h1>Log In</h1></div>
+        <div class="body-content"><p style="text-align:center;">Welcome to Ameya</p>
+            <div class="form-group">
+                <div class="input-icon right"><i class="fa fa-user"></i>
+                <input type="text" placeholder="Username" name="username" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-icon right"><i class="fa fa-key"></i>
+                <input type="password" placeholder="Password"  name="password" class="form-control">
+                </div>
+            </div>
+            <div class="form-group pull-left">
+                <div class="checkbox-list"><label><input type="checkbox">&nbsp;
+                    Keep me signed in</label></div>
+            </div>
+            <div class="form-group pull-right">
+                <button type="submit" id="submitbutton" class="btn btn-success">Log In
+                    &nbsp;<i class="fa fa-chevron-circle-right"></i></button>
+            </div>
+            <div class="clearfix"></div>
+            <div class="forget-password"><h4>Forgotten your Password?</h4>
+
+                <p>Click <a href='#' class='btn-forgot-pwd'>here</a> to reset your password.</p></div>
+            <hr>
+            <p>Don't have an account? <a id="btn-register" href="signup.html">Register Now</a></p></div>
+    </form>
+</div>
+
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+
+<!--loading bootstrap js-->
+<script src="vendors/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+<script src="js/html5shiv.js"></script>
+<script src="js/respond.min.js"></script>
+<script src="vendors/iCheck/icheck.min.js"></script>
+<script src="vendors/iCheck/custom.min.js"></script>
+
+<script>//BEGIN CHECKBOX & RADIO
+$('input[type="checkbox"]').iCheck({
+    checkboxClass: 'icheckbox_minimal-grey',
+    increaseArea: '20%' // optional
+});
+$('input[type="radio"]').iCheck({
+    radioClass: 'iradio_minimal-grey',
+    increaseArea: '20%' // optional
+});
+
+//END CHECKBOX & RADIO</script>
+<script type="text/javascript" >  
+$(function(){
+/*$('#submitbutton').click(function(){
+	var error_msg = '';
+		 e.preventDefault();
+		 alert('1');
+		if($.trim($('input[name="username"]').val()) == '')
+		{
+			alert("Please enter username");
+			return false;
+		}	
+		if($.trim($('input[name="password"]').val()) == '')
+		{
+			alert("Please enter password");
+			return false;
+		}	
+
+		var username =  $("input[name=username]").val();
+		var password =  $("input[name=password]").val();*/
+		var username ='esgovindmca@gmail.com';
+		var password_val ='12345';
+		var site_url = "http://dataworx.info/sujala/index.php/api/login";
+		$.post(site_url,{emailid:username,password:password_val},function(resp){
+		var terr_linkedtwn_html='';
+		if(resp.status=='error')
+		{
+			console.log(resp.error_msg);
+			//alert(resp);
+		}
+		else
+		{
+			//console.log(resp.response.message.district_detail);
+			set_storage_item('dist_det',JSON.stringify(resp.response.message.district_detail));
+			set_storage_item('taluk_det',JSON.stringify(resp.response.message.taluk_detail));
+			set_storage_item('hobli_det',JSON.stringify(resp.response.message.hobli_detail));
+			set_storage_item('panchyat_det',JSON.stringify(resp.response.message.panchyat_detail));
+			set_storage_item('subwatershed_det',JSON.stringify(resp.response.message.subwatershed_detail));
+			set_storage_item('microwatershed_det',JSON.stringify(resp.response.message.microwatershed_detail));
+			set_storage_item('village_det',JSON.stringify(resp.response.message.village_detail));
+			set_storage_item('education_det',JSON.stringify(resp.response.message.education_detail));
+			set_storage_item('occupation_det',JSON.stringify(resp.response.message.occupation_detail));
+			set_storage_item('locOrgInv_det',JSON.stringify(resp.response.message.localorganization_detail));
+			set_storage_item('asset_det',JSON.stringify(resp.response.message.asset_detail));
+			set_storage_item('farmmachine_det',JSON.stringify(resp.response.message.farmmachine_detail));
+			set_storage_item('animal_det',JSON.stringify(resp.response.message.animal_detail));
+			set_storage_item('crop_det',JSON.stringify(resp.response.message.crop_detail));
+			set_storage_item('borrowingtype_det',JSON.stringify(resp.response.message.borrowingtype_detail));
+			set_storage_item('incomesource_det',JSON.stringify(resp.response.message.incomesource_detail));
+			set_storage_item('horticulturecrop_det',JSON.stringify(resp.response.message.horticulturecrop_detail));
+			set_storage_item('forestryspecies_det',JSON.stringify(resp.response.message.forestryspecies_detail));
+			set_storage_item('additioninvestment_det',JSON.stringify(resp.response.message.additioninvestment_detail));			
+			set_storage_item('additionalinvestmentsource_det',JSON.stringify(resp.response.message.additionalinvestmentsource_detail));
+			set_storage_item('watershedawareness_det',JSON.stringify(resp.response.message.watershedawareness_detail));
+			set_storage_item('markettype_det',JSON.stringify(resp.response.message.markettype_detail));
+			set_storage_item('transportmode_det',JSON.stringify(resp.response.message.transportmode_detail));
+			set_storage_item('soilconservation_det',JSON.stringify(resp.response.message.soilconservation_detail));
+			set_storage_item('farmingconstraints_det',JSON.stringify(resp.response.message.farmingconstraints_detail));
+			set_storage_item('adequcyselfsuffciency_det',JSON.stringify(resp.response.message.adequcyselfsuffciency_detail));
+			set_storage_item('fuel_det',JSON.stringify(resp.response.message.fuel_detail));
+			set_storage_item('drinkingwater_det',JSON.stringify(resp.response.message.drinkingwater_detail));
+			set_storage_item('fodder_det',JSON.stringify(resp.response.message.fodder_detail));
+
+			//set empty value
+			set_storage_item('selDistrict','');
+			set_storage_item('selTaluk','');
+			set_storage_item('selHobli','');
+  			set_storage_item('selGP','');
+			set_storage_item('selSWSName','');
+			set_storage_item('selSWSCode','');
+			set_storage_item('selMWSName','');
+			set_storage_item('selMWSCode','');
+			set_storage_item('selVillage','');
+			set_storage_item('keyHamlet','');
+			set_storage_item('selSoilManagement','');
+			set_storage_item('seltopography','');
+			set_storage_item('farmerName','');
+			set_storage_item('fatherName','');
+			set_storage_item('aadhaarNumber','');
+			set_storage_item('selCaste','');
+			set_storage_item('phoneNumber','');
+			set_storage_item('surveyNo','');
+			set_storage_item('Hissano','');
+			set_storage_item('firstGrid','');
+			set_storage_item('secGrid','');
+			set_storage_item('thirdGrid','');
+			set_storage_item('fourthGrid','');
+			set_storage_item('membername','');
+			set_storage_item('selFamMemLOOB','');
+			set_storage_item('memFamMemLOM','');			
+			set_storage_item('memOccupation','');
+			set_storage_item('memEducation','');
+			set_storage_item('membergender','');
+			set_storage_item('memberage','');
+			set_storage_item('txtThatchHouse','');
+			set_storage_item('txtThatchFlArea','');
+			set_storage_item('txtKatchaHouse','');
+			set_storage_item('txtKatchaFlArea','');
+			set_storage_item('txtPuccaHouse','');
+			set_storage_item('txtPuccaFlArea','');
+			set_storage_item('durableAssets','');
+			set_storage_item('durableAssetsNo','');
+			set_storage_item('durableAssetsValue','');
+			set_storage_item('selImplements','');
+			set_storage_item('machnieNo','');
+			set_storage_item('machineValue','');
+			set_storage_item('liveStock','');
+			set_storage_item('liveStockNo','');
+			set_storage_item('liveStockValue','');
+			set_storage_item('selSurvey','');
+			set_storage_item('selLandType','');
+			set_storage_item('txtHoldingArea','');
+			set_storage_item('landValue','');
+			set_storage_item('selSoilType','');
+			set_storage_item('selLandQuality','');
+			set_storage_item('SelIrrSource','');
+			set_storage_item('selIrrDefunct','');
+			set_storage_item('selIrrWorking','');
+			set_storage_item('selIrrWaterDepth','');
+			set_storage_item('selIrrYeld','');
+			set_storage_item('selIrrAreaKharif','');
+			set_storage_item('selIrrAreaRabi','');
+			set_storage_item('selIrrAreaSummer','');
+			set_storage_item('selIrrAreaHortCrops','');
+			set_storage_item('selIrrWaterQlty','');
+			set_storage_item('selSurveyNumber','');
+			set_storage_item('selCropIntensityTotalLand','');
+			set_storage_item('selCropPat','');
+			set_storage_item('selIntCropPat','');
+			set_storage_item('selCropIntensityCropType','');
+			set_storage_item('selCropIntAreaKharif','');
+			set_storage_item('selCropIntAreaRabi','');
+			set_storage_item('selCropIntAreaSummer','');
+			set_storage_item('bankAccAvail','');
+			set_storage_item('savingsAvail','');
+			set_storage_item('creditAvail','');
+			set_storage_item('txtInstSource','');
+			set_storage_item('txtInstSourceAmt','');
+			set_storage_item('txtInstSourceROI','');
+			set_storage_item('txtInstSourcePurpose','');
+			set_storage_item('selInstSourceReactions','');
+			set_storage_item('txtInstSourcePayStatus','');
+			set_storage_item('txtPvtSource','');
+			set_storage_item('txtPvtSourceAmt','');
+			set_storage_item('txtPvtSourceROI','');
+			set_storage_item('txtPvtSourcePurpose','');
+			set_storage_item('txtPvtSourcePayStatus','');
+			set_storage_item('selPvtSourceReactions','');
+			set_storage_item('animalCop','');
+			set_storage_item('animalNos','');
+			set_storage_item('animalMilching','');
+			set_storage_item('animalValue','');
+			set_storage_item('fodderDry','');
+			set_storage_item('fodderGreen','');
+			set_storage_item('fodderConc','');
+			set_storage_item('labourMoHrs','');
+			set_storage_item('labourMoAmount','');
+			set_storage_item('animalHealthExp','');
+			set_storage_item('milkYield','');
+			set_storage_item('lactationMonYeild','');
+			set_storage_item('manureYield','');
+			set_storage_item('unOutputPrice','');
+			set_storage_item('greenFodderCost','');
+			set_storage_item('dryFodderCost','');
+			set_storage_item('concentratesCost','');
+			set_storage_item('manureCost','');
+			set_storage_item('milkPriceCost','');
+			set_storage_item('lactationCost','');
+			set_storage_item('fodderType','');
+			set_storage_item('txtGreenFdAvailQty','');
+			set_storage_item('txtFdAvailDur','');
+			set_storage_item('selFdAdequacy','');
+			set_storage_item('txtLandDevInvest','');
+			set_storage_item('txtLandDevFundSrc','');
+			set_storage_item('additionalInvestmentPurpose','');
+			
+			
+			
+			//marketing of produce
+			set_storage_item('selCropNameMarket','');
+			set_storage_item('marketingMarketType','');
+			set_storage_item('marketingTransportation','');
+			set_storage_item('outputObtained','');
+			set_storage_item('outputRetained','');
+			set_storage_item('outputSold','');
+			set_storage_item('priceObtainer','');
+			
+			
+			
+			
+			//cost of production
+					set_storage_item('copPPCName','');
+		set_storage_item('copPPCOwMen','');
+		set_storage_item('copPPCHiMen','');
+		set_storage_item('copPPCOwWomen','');
+		set_storage_item('copPPCHiWomen','');
+		set_storage_item('copPPCOwBull','');
+		set_storage_item('copPPCHiBull','');
+		set_storage_item('copPPCOwTrac','');
+		set_storage_item('copPPCHiTrac','');
+		set_storage_item('copPPCInput','');
+		set_storage_item('copPPCAmount','');
+		set_storage_item('copFertName','');
+		set_storage_item('copFertOwMen','');
+		set_storage_item('copFertHiMen','');
+		set_storage_item('copFertOwWomen','');
+		set_storage_item('copFertHiWomen','');
+		set_storage_item('copFertOwBull','');
+		set_storage_item('copFertHiBull','');
+		set_storage_item('copFertOwTrac','');
+		set_storage_item('copFertHiTrac','');
+		set_storage_item('copFertHiTrac','');
+		set_storage_item('copFertHiTrac','');
+		set_storage_item('copMainCrp','');
+		set_storage_item('copInterCrp','');
+		set_storage_item('copAreaExt','');
+		set_storage_item('copSeason','');
+		set_storage_item('copLandType','');
+		set_storage_item('copIrriMeth','');
+		set_storage_item('copEstAcer','');
+		set_storage_item('copAnuManit','');
+		set_storage_item('copGardenAge','');
+		set_storage_item('copGardenSpan','');
+		set_storage_item('coplpOwMen','');
+		set_storage_item('coplpHiMen','');
+		set_storage_item('coplpOwWom','');
+		set_storage_item('coplpHiWom','');
+		set_storage_item('coplpOwBul','');
+		set_storage_item('coplpHiBul','');
+		set_storage_item('coplpOwTra','');
+		set_storage_item('coplpHiTra','');
+		set_storage_item('coplpOwMac','');
+		set_storage_item('coplpHiMac','');
+		set_storage_item('copSpOwMen','');
+		set_storage_item('copSpHiMen','');
+		set_storage_item('copSpOwWomen','');
+		set_storage_item('copSpHiWomen','');
+		set_storage_item('copSpOwBul','');
+		set_storage_item('copSpHiBul','');
+		set_storage_item('copSpOwTrac','');
+		set_storage_item('copSpHiTrac','');
+		set_storage_item('copSpOwMach','');
+		set_storage_item('copSpHiMach','');
+		set_storage_item('copSpInput','');
+		set_storage_item('copSpAmount','');
+		set_storage_item('copIrriOwMen','');
+		set_storage_item('copIrriHiMen','');
+		set_storage_item('copIrriOwWomen','');
+		set_storage_item('copIrriHiWomen','');
+		set_storage_item('copIrriOwBull','');
+		set_storage_item('copIrriHiBull','');
+		set_storage_item('copIrriOwTrac','');
+		set_storage_item('copIrriHiTrac','');
+		set_storage_item('copIrriOwMach','');
+		set_storage_item('copIrriHiMach','');
+		set_storage_item('copIrriInput','');
+		set_storage_item('copIrriAmount','');
+		set_storage_item('copIOOwMen','');
+		set_storage_item('copIOHiMen','');
+		set_storage_item('copIOOwWomen','');
+		set_storage_item('copIOHiWomen','');
+		set_storage_item('copIOOwBul','');
+		set_storage_item('copIOHiBul','');
+		set_storage_item('copIOOwTrac','');
+		set_storage_item('copIOHiTrac','');
+		set_storage_item('copIOOwMach','');
+		set_storage_item('copIOHiMach','');
+		set_storage_item('copWDOwMen','');
+		set_storage_item('copWDHiMen','');
+		set_storage_item('copWDOwWomen','');
+		set_storage_item('copWDHiWomen','');
+		set_storage_item('copWDOwBull','');
+		set_storage_item('copWDHiBull','');
+		set_storage_item('copWDOwTrac','');
+		set_storage_item('copWDHiTrac','');
+		set_storage_item('copWDOwMach','');
+		set_storage_item('copWDHiMach','');
+		set_storage_item('copHarOwMen','');
+		set_storage_item('copHarHiMen','');
+		set_storage_item('copHarOwWomen','');
+		set_storage_item('copHarOwWomen','');
+		set_storage_item('copHarHiWomen','');
+		set_storage_item('copHarOwBull','');
+		set_storage_item('copHarHiBull','');
+		set_storage_item('copHarOwTrac','');
+		set_storage_item('copHarHiTrac','');
+		set_storage_item('copHarOwMach','');
+		set_storage_item('copHarHiMach','');
+		set_storage_item('copElectCha','');
+		set_storage_item('copInsurExp','');
+		set_storage_item('copRentValIrri','');
+		set_storage_item('copRentValDry','');
+		set_storage_item('copManagCost','');
+		set_storage_item('copLandRev','');
+		set_storage_item('copIntVar','');
+		set_storage_item('copIntFix','');
+		set_storage_item('copMiscExp','');
+		set_storage_item('copCrYiMP','');
+		set_storage_item('copCrPRMP','');
+		set_storage_item('copCrYiBP','');
+		set_storage_item('copCrPrBP','');
+		set_storage_item('copICrYiMP','');
+		set_storage_item('copICrPrMP','');
+		set_storage_item('copICrYiBP','');
+		set_storage_item('copICrPrBP','');
+		set_storage_item('copPotYei','');
+		set_storage_item('copMalWag','');
+		set_storage_item('copFemWag','');
+		set_storage_item('copBulWag','');
+		set_storage_item('copTracWag','');
+		set_storage_item('copMachWag','');
+		set_storage_item('copFerthInput','');
+		set_storage_item('copFerthAmount','');		
+		set_storage_item('watershedAwarness','');
+		set_storage_item('selWSAwareSWErosion','');
+		set_storage_item('selConservationStr','');
+		set_storage_item('selConservPracticeFieldBundStatus','');
+		set_storage_item('selConservPracticeBundBuiltBy','');
+		set_storage_item('selConservPracticeBundBuiltExtAgency','');
+		set_storage_item('txtConservPracticeFieldBundYear','');
+		set_storage_item('selFarmConstrFertStatus','');
+		set_storage_item('selFarmingConstrains','');
+		set_storage_item('fuelVal','');
+		set_storage_item('fuelSource','');
+		set_storage_item('fuelDistance','');
+		set_storage_item('waterVal','');
+		set_storage_item('waterSource','');
+		set_storage_item('waterDistance','');
+		set_storage_item('fodderVal','');
+		set_storage_item('fodderSource','');
+		set_storage_item('fodderDistance','');
+		set_storage_item('lightSource','');
+		set_storage_item('toiletVal','');
+		set_storage_item('healthCard','');
+		set_storage_item('bplCard','');
+		set_storage_item('NREGArequired','');
+		set_storage_item('NREGANum','');
+		set_storage_item('NREGAdone','');
+		set_storage_item('selFoodMaterial','');
+		set_storage_item('foodAdeuqacy','');
+			
+			location.href='input1-2-general-info.html';
+			
+			
+			
+		}
+		 
+			
+	},'json');
+
+});
+
+function set_storage_item(itm,val)
+{
+	window.localStorage.setItem(itm,val);
+}
+//});
+</script>
+ 
+</body>
+</html>
